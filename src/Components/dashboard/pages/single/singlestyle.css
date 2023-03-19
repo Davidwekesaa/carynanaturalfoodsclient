@@ -1,0 +1,96 @@
+.dash-single {
+  display: flex;
+  height: 100vh;
+}
+.dash-singlecontainer {
+  flex: 6;
+  overflow-y: scroll;
+}
+.dash-singletop {
+  overflow-y: scroll;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+
+}
+.dash-singlecontainer::-webkit-scrollbar {
+  scrollbar-width: none;
+  display: none;
+}
+
+
+.dash-single .dash-singlebottom {
+  padding: 20px;
+}
+
+.dash-single .dash-singleTitle {
+  font-size: 16px;
+  color: lightgray;
+  margin-bottom: 20px;
+}
+
+.dash-singleItem {
+  display: flex;
+}
+.dash-singleleft {
+  position: relative;
+  flex: 1;
+  box-shadow: 0px 1px 4px 0px rgba(211, 211, 211, 0.473);
+  padding: 0 20px;
+  border-radius: 5px;
+}
+
+.dash-edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  background-color: thistle;
+  color: grey;
+  border-radius: 0 5px 0 5px;
+  cursor: pointer;
+}
+
+.dash-edit:hover{
+    color: white;
+    transition: all .3s ease-in-out;
+}
+.dash-singleimg {
+  box-shadow: 0px 1px 4px 0px rgba(211, 211, 211, 0.473);
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.dash-persondetails {
+  margin-left: 20px;
+  padding: 0 5px;
+}
+.dash-itemKey{
+    color: grey;
+}
+
+.dash-persondetails .dash-personTitle {
+  padding-bottom: 10px;
+  margin: 0;
+  color: #555;
+}
+
+.dash-detailsItem {
+  margin-bottom: 10px;
+  font-style: 14px;
+}
+.dash-itemKey {
+  font-weight: bold;
+  columns: gray;
+  margin-right: 10px;
+}
+
+.dash-itemValue {
+    font-size: 15px;
+}
+
+.dash-singlecenter {
+  flex: 2;
+}
+

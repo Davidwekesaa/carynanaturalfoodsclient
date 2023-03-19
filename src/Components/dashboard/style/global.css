@@ -1,0 +1,53 @@
+.app.dark {
+  background-color: #111;
+  color: lightgray;
+}
+.chartGrid {
+  stroke: rgba(228, 228, 228, 0.219);
+}
+
+.table {
+  background-color: #111;
+}
+.tableCell {
+  color: gray;
+}
+
+.dash-navbar {
+  color: #999;
+  border-color: #333;
+}
+.search {
+  border-color: gray;
+}
+
+.dash-sidebar {
+  background-color: #111;
+  border-color: #333;
+}
+.dash-top .dash-logo {
+  color: #999;
+}
+
+ul li:hover {
+  background-color: #333;
+}
+
+.dash-icon {
+  color: #999;
+}
+
+.dash-datatable .datagrid {
+  color: gray;
+  border: none;
+}
+.viewButton,
+.deleteButton,
+.cellWithStatus {
+  color: gray;
+  border: none;
+}
+
+input {
+  background-color: transparent;
+}

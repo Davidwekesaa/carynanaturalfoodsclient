@@ -1,0 +1,96 @@
+.dash-feature {
+  flex: 2;
+  box-shadow: 0px 1px 4px 0px rgba(211, 211, 211, 0.473);
+  border-radius: 10px;
+}
+
+.dash-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: grey;
+  padding: 0 20px;
+}
+
+.dash-title {
+  font-style: 16px;
+  font-weight: 500;
+}
+
+.dash-bottom {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dash-progress {
+  height: 120px;
+  width: 120px;
+}
+.dash-icon {
+  cursor: pointer;
+}
+
+.dash-title {
+  font-weight: 500;
+  color: grey;
+  font-size: 20px;
+  display: block;
+}
+
+.dash-bottomchart .dash-amount,
+.dash-subTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+.dash-bottomchart .dash-desc {
+  font-size: 12px;
+  color: grey;
+  font-weight: 300;
+}
+
+.dash-summary {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.dash-summary .dash-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  text-align: center;
+  font-size: 12px;
+  width: max-content;
+  padding: 0 15px;
+  justify-content: space-around;
+  color: gray;
+}
+
+.dash-item .dash-itemTitle {
+  font-size: 14px;
+  width: max-content;
+}
+
+.dash-itemResult {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  font-size: 12px;
+  align-items: center;
+}
+
+.dash-itemResult.positive {
+  color: green;
+}
+.dash-itemResult.negative {
+  color: red;
+}
+
+.dash-bottomchart p {
+  margin: 10px 0;
+}

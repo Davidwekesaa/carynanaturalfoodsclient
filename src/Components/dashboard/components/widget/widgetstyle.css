@@ -1,0 +1,66 @@
+.dash-widget {
+  display: flex;
+  flex: 1;
+  /* width: 400px; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  /* height: 100px; */
+  background: #d3d3d333;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px rgba(211, 211, 211, 0.473);
+  /* flex-wrap: wrap; */
+
+}
+
+.dash-widgetTitle {
+  font-weight: 400;
+}
+
+.dash-left,
+.dash-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dash-widgetNumbers {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.dash-widgetLink {
+  width: max-content;
+  font-size: 13px;
+}
+
+.dash-percentage {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.dash-widget.USERS {
+  background-color: #7f9af5;
+  color: white;
+}
+.dash-widget.ORDER {
+  background-color: #FC4F4F;
+  color: white;
+}
+.dash-widget.EARNING {
+  background-color: #60cf6fdc;
+  color: white;
+}
+.dash-widget.BALANCE {
+  background-color: #434f77d0;
+  color: white;
+}
+
+.dash-wicon {
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  align-self: flex-end;
+}

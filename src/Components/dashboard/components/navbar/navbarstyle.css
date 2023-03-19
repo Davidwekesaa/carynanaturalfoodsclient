@@ -1,0 +1,110 @@
+.dash-navbar {
+  display: flex;
+  box-shadow: 0px 2px 4px 0px rgba(211, 211, 211, 0.473);
+  height: 60px;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dash-navbarwrapper {
+  padding: 0 20px;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.dash-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 8px;
+  flex: 0.6;
+  border: 1px solid lightgray;
+}
+
+.dash-search input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 12px;
+}
+
+.dash-searchicon {
+  padding-left: 6px;
+  border-left: 1px solid lightgray;
+}
+
+.dash-items,
+.dash-item {
+  display: flex;
+  /* flex: 0.1; */
+  margin: 0 8px;
+  align-items: center;
+}
+.dash-items {
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.dash-item {
+  position: relative;
+  background-color: #d3d3d333;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.dash-language {
+  margin-left: 5px;
+}
+
+.dash-navbaricon:hover {
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.dash-navbaricon {
+  color: #aca5a5;
+  cursor: pointer;
+}
+
+.dash-inboxmsg {
+  background-color: rgb(240, 66, 66);
+  border-radius: 50%;
+  font-size: 10px;
+  height: 15px;
+  width: 15px;
+  padding: 3px;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  color: white;
+}
+.dash-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+  border-radius: 100vw;
+  border: none;
+  padding: 0px !important;
+}
+.dash-avatar {
+  border-radius: 100vw;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.dash-removebg {
+  background: white;
+}

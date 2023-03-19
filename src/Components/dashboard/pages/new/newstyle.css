@@ -1,0 +1,101 @@
+.dash-new {
+  display: flex;
+  width: 100%;
+}
+
+.dash-newContainer {
+  flex: 6;
+  height: 100vh;
+}
+
+.dash-newTop,
+.dash-newBottom {
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0px 1px 4px 0px rgba(211, 211, 211, 0.473);
+  display: flex;
+  border-radius: 5px;
+}
+.dash-newBottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottomLeft {
+  /* flex: 1; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 70px;
+}
+
+.dash-bottomRight {
+  flex: 2;
+}
+
+h1 {
+  color: lightgray;
+  font-size: 20px;
+}
+
+.dash-leftimg {
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.dash-formInput {
+  width: 40%;
+}
+
+.dash-label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.dash-icon,
+.dash-button {
+  cursor: pointer;
+}
+.dash-icon:hover {
+  color: green;
+}
+.dash-input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+}
+
+.dash-button {
+  width: 150px;
+  padding: 10px;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: blueviolet;
+  color: white;
+}
+.dash-button:hover {
+  background-color: rgb(137, 75, 196);
+}
+
+.dash-form-new-user {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}

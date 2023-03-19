@@ -1,0 +1,96 @@
+.dash-datatable {
+  padding: 20px;
+  overflow-y: scroll;
+}
+.dash-datatableTitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 20px;
+  color: grey;
+  margin-bottom: 10px;
+}
+.dash-userGrid{
+  height: 500px;
+  width: 100%;
+}
+
+.dash-datatableTitle .dash-link{
+  color: rgb(41, 187, 41);
+  font-size: 15px;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  color: grey;
+  font-weight: bold;
+}
+
+.dash-cellwithimg {
+  display: flex;
+  align-items: center;
+}
+.dash-cellimg {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall.MuiDataGrid-menuIconButton.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
+  border-radius: 0px;
+}
+
+.dash-cellwithstatus {
+  display: flex;
+  text-align: center;
+}
+
+.dash-cellstatus.active {
+  border-radius: 5px;
+  padding: 5px;
+  color: #0bff0296;
+}
+
+.dash-cellstatus.pending,.dash-cellstatus.passive{
+  border-radius: 5px;
+  padding: 5px;
+  color: #d3d3d3;
+}
+
+.dash-cellstatus.passive {
+  color: #f36262;
+}
+
+.dash-cellAction {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dash-viewButton,.dash-deleteButton {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  width: fit-content;
+  color: white;
+  background-color: lightblue;
+}
+.dash-deleteButton {
+  background-color: #f36262;
+}
+
+.dash-dg.MuiDataGrid-root.css-1fajery-MuiDataGrid-root{
+border: none;
+box-shadow: 0px 1px 10px 0px rgba(211, 211, 211, 0.473);
+}
+
+.dash-dg.MuiDataGrid-root.css-1fajery-MuiDataGrid-root::-webkit-scrollbar {
+  scrollbar-width: none;
+  display: none;
+}
+
+.MuiPaper-roo.MuiPaper-elevatio .MuiPaper-rounded .MuiPaper-elevation1 .MuiTableContainer-root .table .css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+  background-color: red;
+}

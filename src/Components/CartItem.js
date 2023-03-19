@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from "react";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import { useStateValue } from "../store/StateProvider";
+import { actionType } from "../store/reducer";
+import axios from "axios";
+let cartItems = [];
+function CartItem({ name, imgSrc, price, itemId, itemQty }) {
+  const [qty, setQty] = useState(parseInt(itemQty));
+  const [{ cart, total }, dispatch] = useStateValue();
+  const [itemPrice, setItemPrice] = useState(parseInt(qty) * parseInt(price));
+
+  useEffect(() => {
+    cartItems = cart;
+    setItemPrice(parseInt(qty) * parseInt(price));
+    const cartPriceUpdate = cartItems.find((uItem) => uItem.id === itemId);
+    cartPriceUpdate.total = itemPrice;
+    console.log("price " + price + " total" + cartPriceUpdate.total);
+    cartPriceUpdate.qty = qty;
+    //update total
+    dispatch({
+      type: actionType.SET_TOTAL,
+      total: cart.reduce((acc, curr) => {
+        return acc + curr.total;
+      }, 0),
+    });
+    localStorage.setItem('cart',JSON.stringify(cartItems))
+    console.log("cart", cart);
+    localStorage.setItem(
+      "total",
+      JSON.stringify(
+        cart.reduce((acc, curr) => {
+          return acc + curr.total;
+        }, 0)
+      )
+    );
+  }, [qty, itemPrice, cart]);
+
+  const updateQuantity = (action, id) => {
+    if (action === "add") {
+      const getProductById = async () => {
+        await axios
+          .get(`${process.env.REACT_APP_Server_Url}Product/${id}`)
+          .then((logins) => {
+            if(logins.data.qty - (qty + 1) >= 0){
+              setQty(qty + 1);
+            }
+          })
+          .catch((error) => {
+            // wronUser();
+            console.log(error);
+          });
+      };
+      getProductById();
+      
+    } else {
+      if (qty === 1) {
+        cartItems.pop(id);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        dispatch({
+          type: actionType.SET_CART,
+          cart: cartItems,
+        });
+      }
+      setQty(qty - 1);
+    }
+  };
+  return (
+    <div className="cartItem">
+      <div className="imgBox">
+        <img src={imgSrc} alt="" />
+      </div>
+      <div className="itemSection">
+        <h2 className="itemName">{name}</h2>
+        <div className="itemQuantity">
+          <span>x {qty}</span>
+          <div className="quantity">
+            <RemoveIcon
+              className="itemRemove"
+              onClick={() => updateQuantity("remove", itemId)}
+            />
+            <AddIcon
+              className="itemAdd"
+              onClick={() => updateQuantity("add", itemId)}
+            />
+          </div>
+        </div>
+      </div>
+      <p className="itemPrice">
+        <span className="currency">Ksh </span>
+        <span className="itemPriceValue">{itemPrice}</span>
+      </p>
+    </div>
+  );
+}
+
+export default CartItem;
