@@ -7,7 +7,7 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background:#D0F0C0;;
+  background: #d0f0c0;
   overflow-x: hidden;
 }
 .App::-webkit-scrollbar {
@@ -127,13 +127,13 @@ main {
   width: 100%;
   height: auto;
   margin-top: 60px;
-  background:  #D0F0C0;
+  background: #d0f0c0;
 }
 /* banner */
 .mainContainer {
   width: 100%;
   height: auto;
-  background:  #D0F0C0;
+  background: #d0f0c0;
   padding: 10px;
   padding-bottom: 100px;
 }
@@ -352,19 +352,19 @@ main {
   align-items: center;
   margin: 10px 0;
   transition: 0.5s;
-  }
+}
 .itemCard .imgBox {
   width: 100px;
-  height: 100px;
+  height: 90px;
   border-radius: 100vw;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 5px; */
+  padding: 6px;
   position: absolute;
-  top: -2px;
-  background:  #D0F0C0;
+  top: -17px;
+  background: #d0f0c0;
 }
 
 .itemCard .imgBox img {
@@ -800,7 +800,6 @@ label {
     /* position: absolute; */
     top: -3px;
   }
-  
 }
 
 /* big screen */

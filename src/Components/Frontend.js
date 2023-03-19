@@ -250,7 +250,7 @@ function Frontend({ isItemActivee }) {
               type: actionType.SET_CART,
               cart: null,
             });
-         
+
             setDeliveryFee("");
             setCounties("");
             setLocation("");
@@ -425,24 +425,22 @@ function Frontend({ isItemActivee }) {
                       items={Items}
                     />
                   ))
-                : 
-                
-                // search.trim().length != 0
-                // ? isMainDishSearch?.map((data) => (
-                //     <ItemCard
-                //       key={data._id}
-                //       itemId={data._id}
-                //       imgSrc={data.imgSrc}
-                //       name={data.name}
-                //       price={data.price}
-                //       kg={data.kgs}
-                //       capacity={data.capacity}
-                //       items={Items}
-                //     />
-                //   ))
-                // : 
-                
-                Items?.filter((item) => item.itemId === isItemActive).map(
+                : // search.trim().length != 0
+                  // ? isMainDishSearch?.map((data) => (
+                  //     <ItemCard
+                  //       key={data._id}
+                  //       itemId={data._id}
+                  //       imgSrc={data.imgSrc}
+                  //       name={data.name}
+                  //       price={data.price}
+                  //       kg={data.kgs}
+                  //       capacity={data.capacity}
+                  //       items={Items}
+                  //     />
+                  //   ))
+                  // :
+
+                  Items?.filter((item) => item.itemId === isItemActive).map(
                     (data) => (
                       <ItemCard
                         key={data._id}
@@ -654,7 +652,6 @@ function Frontend({ isItemActivee }) {
               {/* onClick={checkOut} */}
               <p> Check Out</p>
             </button>
-            <p>admin</p>
           </div>
         </div>
       </main>

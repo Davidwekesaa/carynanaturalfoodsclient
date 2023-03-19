@@ -19,6 +19,7 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
   };
   return (
     <header>
+      
       <img src={logo} alt="Logo" className="logo" />
       <div className="inputBox">
         <SearchIcon className="searchIcon" />
