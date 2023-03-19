@@ -654,6 +654,7 @@ function Frontend({ isItemActivee }) {
               {/* onClick={checkOut} */}
               <p> Check Out</p>
             </button>
+            <p>admin</p>
           </div>
         </div>
       </main>
