@@ -5,10 +5,12 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import logo from "../assets/logo.png";
 import notImge from "../assets/notImge.png";
 import { useStateValue } from "../store/StateProvider";
+import { useNavigate } from "react-router-dom";
 function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
   const [{ cart, user }, dispatch] = useStateValue();
+  const navigate = useNavigate();
   // useEffect(() => {
-    
+
   // }, [cart]);
 
   const hundleLogout = (e) => {
@@ -17,9 +19,21 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
     window.location.reload();
 
   };
+
+  const hundleLog = (e) =>{
+    e.preventDefault();
+    navigate("/login")
+  }
+
+  const handledash = (e) =>{
+    e.preventDefault();
+
+    if(user != null && user.userRights > 0){
+      navigate("/dashboard")
+    }
+  }
   return (
     <header>
-
       <img src={logo} alt="Logo" className="logo" />
       <div className="inputBox">
         <SearchIcon className="searchIcon" />
@@ -48,11 +62,18 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
               src={user == null ? notImge : user.profile}
               alt="profile"
               className="profilePic"
+              onClick={handledash}
             />
           </div>
-          <p className="logout" onClick={hundleLogout}>
-            {user == null ? "" : "Logout"}
-          </p>
+          {user == null ? (
+            <p className="logout" onClick={hundleLog}>
+             Login
+            </p>
+          ) : (
+            <p className="logout" onClick={hundleLogout}>
+              Logout
+            </p>
+          )}
         </div>
         <h2 className="userName">{user == null ? "" : user.userName}</h2>
       </div>
@@ -61,17 +82,17 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
         onClick={(e) => setToggleCartMenu(!toggleCartMenu)}
       >
         <div className="shoppingCart">
-        <ShoppingCartIcon className="cart" />
-        <div className="cart_content">
-          <p>
-            {cart
-              ? cart.reduce((acc, curr) => {
-                  return acc + curr.qty;
-                }, 0)
-              : 0}
-          </p>
+          <ShoppingCartIcon className="cart" />
+          <div className="cart_content">
+            <p>
+              {cart
+                ? cart.reduce((acc, curr) => {
+                    return acc + curr.qty;
+                  }, 0)
+                : 0}
+            </p>
+          </div>
         </div>
-      </div>
       </div>
     </header>
   );
