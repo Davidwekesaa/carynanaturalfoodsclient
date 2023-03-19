@@ -75,7 +75,7 @@ function App() {
 
   //get all products
   useEffect(() => {
-  //   //get all products
+    //   //get all products
     // const getAllProducts = async () => {
     //   await axios
     //     .get(`${process.env.REACT_APP_Server_Url}Product/`)
@@ -86,7 +86,7 @@ function App() {
     //       console.log(error);
     //     });
     // };
-  //get category
+    //get category
     const getAllCategory = async () => {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}Category/`)
@@ -332,7 +332,6 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Frontend isItemActivee={isItemActive} />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/dashboard">
@@ -373,6 +372,12 @@ function App() {
               <Route index element={<Expenses />} />
             )}
           </Route>
+
+          <Route
+            exact
+            path="/"
+            element={<Frontend isItemActivee={isItemActive} />}
+          />
         </Routes>
       </Router>
     </div>

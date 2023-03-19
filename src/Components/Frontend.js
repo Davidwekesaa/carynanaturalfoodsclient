@@ -295,70 +295,201 @@ function Frontend({ isItemActivee }) {
             </div>
 
             <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
-              <div className="debitCardContainer">
-                <div className="debitCard">
-                  <DebitCard />
-                </div>
-              </div>
+            <div className="debitCardContainer">
+              {/* <div className="debitCard">
+                <DebitCard />
+                <DebitCard />
+              </div> */}
+              <form className="form-select">
+                <label htmlFor="Countriess">County:</label>
+                {/* <select
+                  name="Countries"
+                  id="Countries"
+                  className="custome-select"
+                  onChange={handleDelivery}
+                  value={counties}
+                >
+                  {Counties?.map((data) => (
+                    <option key={data.id} value={data.name} name={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </select> */}
 
-              <div className="cartCheckOutContainer">
-                <SubMenuContainer name={"Cart Items"} />
-                <div className="cartContainer">
-                  <div className="cartItems">
-                    {cart &&
-                      cart.map((data) => (
-                        <CartItem
-                          key={data.id}
-                          name={data.name}
-                          imgSrc={data.imgSrc}
-                          itemQty={data.qty}
-                          price={data.price}
-                          itemId={data.id}
-                        />
-                      ))}
-                  </div>
-                </div>
-              </div>
-              <div className="totalSection">
-                <div className="total">
-                  <h3>Cart Total</h3>
-                  <p>
-                    <span>Ksh </span>
-                    {cart && total ? total : 0}
-                  </p>
-                </div>
-                <div className="total check">
-                  <p>Pay On Delivery With</p>
-                  <div className="checkboxes">
-                    <form>
-                      <div className="checkboxCash">
-                        <label htmlFor="cash">Cash</label>
-                        <input
-                          type="radio"
-                          id="cash"
-                          name="payment"
-                          value="cash"
-                        />
-                      </div>
+                <input
+                  name="Countries"
+                  id="Countriess"
+                  list="Countries"
+                  className="custome-select"
+                  onChange={handleDelivery}
+                  value={counties}
+                />
+                <datalist id="Countries">
+                  {Counties?.map((data) => (
+                    <option key={data.id} value={data.name} name={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </datalist>
+              </form>
 
-                      <div className="checkboxCash">
-                        <label htmlFor="mpesa">Mpesa</label>
-                        <input
-                          type="radio"
-                          id="mpesa"
-                          name="payment"
-                          value="mpesa"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                  <div className="inputBox">
-                    <input type="text" placeholder="Enter Phone Number" />
-                  </div>
-                </div>
-              </div>
-              <button className="checkOut">Check Out</button>
+              <form className="form-select">
+                <label htmlFor="sub-countyy">Sub County:</label>
+                {/* <select
+                  name="sub-county"
+                  id="sub-county"
+                  className="custome-select"
+                  onChange={(e) => setSubCountiese(e.target.value)}
+                  value={subCountiese}
+                >
+                  {subCounties?.map((data) => (
+                    <option key={data.id} value={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </select> */}
+
+                <input
+                  list="sub-county"
+                  id="sub-countyy"
+                  className="custome-select"
+                  onChange={(e) => setSubCountiese(e.target.value)}
+                  value={subCountiese}
+                />
+                <datalist id="sub-county">
+                  {subCounties?.map((data) => (
+                    <option key={data.id} value={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </datalist>
+              </form>
+
+              <form className="form-select">
+                <label htmlFor="locations">Location:</label>
+                {/* <select
+                  name="location"
+                  id="location"
+                  className="custome-select"
+                  onChange={(e) => setLocation(e.target.value)}
+                  value={location}
+                >
+                  {locations?.map((data) => (
+                    <option key={data.id} value={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </select> */}
+
+                <input
+                  name="location"
+                  id="locations"
+                  list="location"
+                  className="custome-select"
+                  onChange={(e) => setLocation(e.target.value)}
+                  value={location}
+                />
+                <datalist id="location">
+                  {locations?.map((data) => (
+                    <option key={data.id} value={data.name}>
+                      {data.name}
+                    </option>
+                  ))}
+                </datalist>
+              </form>
             </div>
+
+            <div className="cartCheckOutContainer">
+              <SubMenuContainer name={"Cart Items"} />
+              <div className="cartContainer">
+                <div className="cartItems">
+                  {cart &&
+                    cart.map((data) => (
+                      <CartItem
+                        key={data.id}
+                        name={data.name}
+                        imgSrc={data.imgSrc}
+                        itemQty={data.qty}
+                        price={data.price}
+                        itemId={data.id}
+                      />
+                    ))}
+                </div>
+              </div>
+            </div>
+            <div className="totalSection">
+              <div className="total">
+                <h3>Cart Total</h3>
+                <p>
+                  <span>Ksh </span>
+                  {cart && total ? total : 0}
+                </p>
+              </div>
+              <div className="total">
+                <h3>Delivery Fee</h3>
+                <p>
+                  <span>Ksh </span>
+                  {deliveryFee ? deliveryFee : 0}
+                </p>
+              </div>
+              <div className="total">
+                <h3>Total cost</h3>
+                <p>
+                  <span>Ksh </span>
+                  {deliveryFee ? parseInt(deliveryFee) + parseInt(total) : 0}
+                </p>
+              </div>
+              <div className="total check">
+                <p>Pay On Delivery With</p>
+                <div className="checkboxes">
+                  <form className="paywith-wat">
+                    <div className="checkboxCash">
+                      <label htmlFor="cash">Cash</label>
+                      <input
+                        type="radio"
+                        id="cash"
+                        name="payment"
+                        value="cash"
+                        onChange={(e) => setMpesa(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="checkboxCash">
+                      <label htmlFor="mpesa">Mpesa</label>
+                      <input
+                        type="radio"
+                        id="mpesa"
+                        name="payment"
+                        value="mpesa"
+                        onChange={(e) => setMpesa(e.target.value)}
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div className={`inputBox `}>
+                  {/* ${
+                              mpesa && mpesa === "cash" ? "cashh" : "mpesaa"
+                            } */}
+                  <input
+                    type="text"
+                    placeholder="Enter Phone Number"
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              className="checkOut"
+              onClick={checkOut}
+              disabled={
+                cart === null || cart.length == 0 || checkDisable ? true : false
+              }
+            >
+              {/* onClick={checkOut} */}
+              <p> Check Out</p>
+            </button>
+          </div>
           </div>
         </main>
         {/* Bottom container */}
