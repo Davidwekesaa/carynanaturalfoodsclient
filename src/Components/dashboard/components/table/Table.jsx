@@ -11,6 +11,7 @@ import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ToastContainer, toast } from "react-toastify";
+import { useStateValue } from "../../../../store/StateProvider";
 
 // popup
 import Button from "@mui/material/Button";
@@ -25,8 +26,10 @@ const BasicTable = ({ rows }) => {
   const [arrayOrderData, arratOrderData] = useState(null);
   const [status, setStatus] = useState(null);
   const [updateId, setUpdateId] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
 
   const orderSuccess = () => toast.success("Status Updated Successfuly");
+  const orderDeleteSuccess = () => toast.success("Order deleted Successfuly");
   const orderError = () => toast.error("Error occured");
 
   const orderstatus = [
@@ -73,11 +76,30 @@ const BasicTable = ({ rows }) => {
         console.log(error);
       });
   };
+
+  const hundleRowDelete = async (e) => {
+    e.preventDefault();
+
+    // const confirmed = confirm("you are about to delete!");
+    // if (confirmed) {
+    //   console.log(true);
+    // }
+
+    await axios
+      .delete(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`)
+      .then((user) => {
+        orderDeleteSuccess();
+        handleClose();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <TableContainer component={Paper} className="dash-table">
         <Table
-        className="dash-table-table"
+          className="dash-table-table"
           sx={{ minWidth: 650, textAlign: "center" }}
           aria-label="simple table"
         >
@@ -215,7 +237,6 @@ const BasicTable = ({ rows }) => {
               id="sub-county"
               className="dialog-dash-custome-select"
               onChange={(e) => setStatus(e.target.value)}
-              
             >
               {orderstatus?.map((data) => (
                 <option key={data.id} value={data.name}>
@@ -234,6 +255,17 @@ const BasicTable = ({ rows }) => {
           >
             Update
           </Button>
+
+          {user.userRights !== 1 ? (
+            <span
+              className={`dash-status declined order-del`}
+              onClick={hundleRowDelete}
+            >
+              Delete
+            </span>
+          ) : (
+            ""
+          )}
         </DialogActions>
       </Dialog>
       <ToastContainer />

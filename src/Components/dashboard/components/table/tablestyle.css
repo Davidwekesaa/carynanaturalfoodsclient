@@ -106,7 +106,7 @@
 }
 .dash-table-data {
   margin: 20px;
-flex: 1;
+  flex: 1;
 }
 
 .dash-user-add-user {
@@ -127,12 +127,56 @@ flex: 1;
   cursor: pointer;
   color: green;
 }
+.order-del{
+  margin-left: 40px;
+}
 
+.order-del:hover{
+  cursor: pointer;
+}
+.text-inpt{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
+}
+.text-inpt > h4{
+  margin-bottom: 6px;
+}
+.text-inpt > .submit-text > button{
+  width: 60px;
+  padding: 10px;
+  margin-left: 20px;
+  border: none;
+}
+
+.text-inpt > .submit-text > button:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0.1, 0.6);
+}
+.submit-text{
+  display: flex;
+  justify-content: flex-end;
+}
+.bt-nt-show{
+  display: none;
+}
+.bt-show{
+display: block;
+}
+.dash-input-box{
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  margin-bottom: 10px;
+}
 @media screen and (max-width: 650px) {
   .dash-user-add-user {
-  
     justify-content: flex-start;
-    
   }
- }
+}

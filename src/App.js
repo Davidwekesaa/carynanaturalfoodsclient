@@ -14,36 +14,15 @@ import {
   Navigate,
   // useHistory
 } from "react-router-dom";
-// import { Switch, Route,useNavigate } from 'react-router';
-// import "./App.css";
-// import Header from "./Components/Header";
-// import MenuContainer from "./Components/MenuContainer";
-// import HomeIcon from "@mui/icons-material/Home";
-// import ChatIcon from "@mui/icons-material/Chat";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-// import SettingsIcon from "@mui/icons-material/Settings";
-// import BannerName from "./Components/BannerName";
-// import delivery from "./assets/delivery.png";
-// import honey from "./assets/honey.png";
-// import SubMenuContainer from "./Components/SubMenuContainer";
-// import MenuCard from "./Components/MenuCard";
-// import { menuItems, Items } from "./Components/Data";
-// import ItemCard from "./Components/ItemCard";
-// import DebitCard from "./Components/DebitCard";
-// import CartItem from "./Components/CartItem";
 import { useStateValue } from "./store/StateProvider";
 import axios from "axios";
-// import CircularProgress from "@mui/material/CircularProgress";
-// import { subCounties, locations, Counties } from "./Data";
-// import { actionType } from "./store/reducer";
-
-// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./Components/login/Login";
 import Register from "./Components/login/Register";
 import List from "./Components/dashboard/pages/list/List";
 import ProductList from "./Components/dashboard/pages/list/ProductList";
 import Expenses from "./Components/dashboard/pages/list/Expenses";
+import Abouts from "./Components/dashboard/pages/list/Abouts";
 import Single from "./Components/dashboard/pages/single/Single";
 // import New from "./Components/dashboard/pages/new/New";
 import Home from "./Components/dashboard/pages/home/Home";
@@ -370,6 +349,16 @@ function App() {
               <Route index element={<DashboardLogin />} />
             ) : (
               <Route index element={<Expenses />} />
+            )}
+          </Route>
+
+          <Route exact path="/edits">
+            {user === null ? (
+              <Route index element={<DashboardLogin />} />
+            ) : user.userRights === 0 ? (
+              <Route index element={<DashboardLogin />} />
+            ) : (
+              <Route index element={<Abouts />} />
             )}
           </Route>
 

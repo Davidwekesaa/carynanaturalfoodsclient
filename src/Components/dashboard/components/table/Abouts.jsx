@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./tablestyle.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -23,49 +23,77 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const Expense = ({ rows }) => {
-  const [open, setOpen] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
-  const [openCategory, setOpenCategory] = useState(false);
+  const [openEdit, setOpenEdit] = useState("");
+  const [openAboutId, setOpenAboutId] = useState("");
 
   const emptyFields = () => toast.error("An error occured");
-  const deleteSuccess = () => toast.success("Expense deleted successfuly");
+  const deleteSuccess = () => toast.success("Updated successfuly");
 
-  const [{ user }, dispatch] = useStateValue();
+  useEffect(() => {
+    const getAbout = async () => {
+      await axios
+        .get(`${process.env.REACT_APP_Server_Url}about/`)
+        .then((user) => {
+          console.log(user.data.length != 0 ? user.data[0]._id : "" )
+          setOpenEdit(user.data.length != 0 ? user.data[0].About : "" );
+          setOpenAboutId(user.data.length != 0 ? user.data[0]._id : "")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    // const updateAbout = async () => {
+    //   await axios
+    //     .put(`${process.env.REACT_APP_Server_Url}about/${openAboutId}`,{
+    //       About:openEdit
+    //     })
+    //     .then((useroders) => {
+    //       // console.log(useroders.data)
+    //       deleteSuccess()
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // };
 
-  const handleClickOpenCategory = () => {
-    setOpenCategory(true);
-  };
+    getAbout();
+    // updateAbout()
+  }, []);
 
-  const handleClickCloseCategory = () => {
-    setOpenCategory(false);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleCloseEdit = () => {
-    setOpenEdit(false);
-  };
-
-  const hundleRowDelete = async (e, rowdel) => {
+  const handleUpdate = async (e) => {
+    e.preventDefault();
     await axios
-      .delete(`${process.env.REACT_APP_Server_Url}expenses/${rowdel}`)
-      .then((user) => {
-        deleteSuccess();
-      })
-      .catch((error) => {
-        emptyFields();
-      });
+    .put(`${process.env.REACT_APP_Server_Url}about/${openAboutId}`,{
+      About:openEdit
+    })
+    .then((useroders) => {
+      // console.log(useroders.data)
+      deleteSuccess()
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
+
+  const handleSend = async (e) =>{
+    e.preventDefault();
+    await axios
+        .post(`${process.env.REACT_APP_Server_Url}about/`,{
+          About:openEdit
+        })
+        .then((useroders) => {
+          // console.log(useroders.data)
+          deleteSuccess()
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 
   return (
     <div className="dash-table-data">
-      <div className="dash-user-add-user">
+      {/* <div className="dash-user-add-user">
         <div
           className="dash-user-add-user-add add-category"
           onClick={handleClickOpenCategory}
@@ -78,8 +106,8 @@ const Expense = ({ rows }) => {
           <LibraryAddIcon />
           <p>Add Expense Cost</p>
         </div>
-      </div>
-      <TableContainer component={Paper} className="dash-table">
+      </div> */}
+      {/* <TableContainer component={Paper} className="dash-table">
         <Table
           sx={{ minWidth: 650, textAlign: "center" }}
           aria-label="simple table"
@@ -125,9 +153,23 @@ const Expense = ({ rows }) => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
+      <div className="text-inpt">
+        <h4>Edit about Page</h4>
+        <textarea
+          type="text"
+          className="dash-input-box"
+          value={openEdit}
+          onChange={(e) => setOpenEdit(e.target.value)}
+        />
+        <div className="submit-text">
+          <button onClick={handleUpdate} className={openAboutId.trim().length === 0 ?  "bt-nt-show" :"  bt-show"}>update</button>
+          <button onClick={handleSend} className={openAboutId.trim().length === 0 ? "bt-show" :"bt-nt-show"}>send</button>
+        </div>
+        <div></div>
+      </div>
 
-      <Dialog
+      {/* <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
@@ -143,9 +185,9 @@ const Expense = ({ rows }) => {
           <UserExpenses />
         </DialogContent>
         <DialogActions className="dailog-dash-status"></DialogActions>
-      </Dialog>
+      </Dialog> */}
 
-      <Dialog
+      {/* <Dialog
         open={openCategory}
         onClose={handleClickCloseCategory}
         aria-labelledby="alert-dialog-title"
@@ -161,7 +203,7 @@ const Expense = ({ rows }) => {
           <Expenser />
         </DialogContent>
         <DialogActions className="dailog-dash-status"></DialogActions>
-      </Dialog>
+      </Dialog> */}
       <ToastContainer />
     </div>
   );

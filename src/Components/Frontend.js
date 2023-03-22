@@ -59,6 +59,7 @@ function Frontend({ isItemActivee }) {
   const [subCountiese, setSubCountiese] = useState(subCounty);
   const [location, setLocation] = useState(locationn);
   const [phone, setPhone] = useState(phonee);
+  const [openEdit, setOpenEdit] = useState("");
   const navigate = useNavigate();
 
   //get all products
@@ -93,7 +94,19 @@ function Frontend({ isItemActivee }) {
           console.log(error);
         });
     };
+    const getAbout = async () => {
+      await axios
+        .get(`${process.env.REACT_APP_Server_Url}about/`)
+        .then((user) => {
+          setOpenEdit(user.data.length != 0 ? user.data[0].About : "");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     getAllCategory();
+    getAbout();
   }, []);
 
   useEffect(() => {
@@ -285,7 +298,7 @@ function Frontend({ isItemActivee }) {
           <div className="mainContainer">
             {/* Banner */}
             <div className="Banner">
-              <BannerName name={""} />
+              <BannerName name={""} bannername={openEdit} />
               <img src={delivery} alt="delivery" className="delivery" />
             </div>
             {/* dishContainer */}
@@ -295,14 +308,14 @@ function Frontend({ isItemActivee }) {
             </div>
 
             <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
-            <div className="debitCardContainer">
-              {/* <div className="debitCard">
+              <div className="debitCardContainer">
+                {/* <div className="debitCard">
                 <DebitCard />
                 <DebitCard />
               </div> */}
-              <form className="form-select">
-                <label htmlFor="Countriess">County:</label>
-                {/* <select
+                <form className="form-select">
+                  <label htmlFor="Countriess">County:</label>
+                  {/* <select
                   name="Countries"
                   id="Countries"
                   className="custome-select"
@@ -316,26 +329,26 @@ function Frontend({ isItemActivee }) {
                   ))}
                 </select> */}
 
-                <input
-                  name="Countries"
-                  id="Countriess"
-                  list="Countries"
-                  className="custome-select"
-                  onChange={handleDelivery}
-                  value={counties}
-                />
-                <datalist id="Countries">
-                  {Counties?.map((data) => (
-                    <option key={data.id} value={data.name} name={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </datalist>
-              </form>
+                  <input
+                    name="Countries"
+                    id="Countriess"
+                    list="Countries"
+                    className="custome-select"
+                    onChange={handleDelivery}
+                    value={counties}
+                  />
+                  <datalist id="Countries">
+                    {Counties?.map((data) => (
+                      <option key={data.id} value={data.name} name={data.name}>
+                        {data.name}
+                      </option>
+                    ))}
+                  </datalist>
+                </form>
 
-              <form className="form-select">
-                <label htmlFor="sub-countyy">Sub County:</label>
-                {/* <select
+                <form className="form-select">
+                  <label htmlFor="sub-countyy">Sub County:</label>
+                  {/* <select
                   name="sub-county"
                   id="sub-county"
                   className="custome-select"
@@ -349,25 +362,25 @@ function Frontend({ isItemActivee }) {
                   ))}
                 </select> */}
 
-                <input
-                  list="sub-county"
-                  id="sub-countyy"
-                  className="custome-select"
-                  onChange={(e) => setSubCountiese(e.target.value)}
-                  value={subCountiese}
-                />
-                <datalist id="sub-county">
-                  {subCounties?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </datalist>
-              </form>
+                  <input
+                    list="sub-county"
+                    id="sub-countyy"
+                    className="custome-select"
+                    onChange={(e) => setSubCountiese(e.target.value)}
+                    value={subCountiese}
+                  />
+                  <datalist id="sub-county">
+                    {subCounties?.map((data) => (
+                      <option key={data.id} value={data.name}>
+                        {data.name}
+                      </option>
+                    ))}
+                  </datalist>
+                </form>
 
-              <form className="form-select">
-                <label htmlFor="locations">Location:</label>
-                {/* <select
+                <form className="form-select">
+                  <label htmlFor="locations">Location:</label>
+                  {/* <select
                   name="location"
                   id="location"
                   className="custome-select"
@@ -381,115 +394,117 @@ function Frontend({ isItemActivee }) {
                   ))}
                 </select> */}
 
-                <input
-                  name="location"
-                  id="locations"
-                  list="location"
-                  className="custome-select"
-                  onChange={(e) => setLocation(e.target.value)}
-                  value={location}
-                />
-                <datalist id="location">
-                  {locations?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </datalist>
-              </form>
-            </div>
-
-            <div className="cartCheckOutContainer">
-              <SubMenuContainer name={"Cart Items"} />
-              <div className="cartContainer">
-                <div className="cartItems">
-                  {cart &&
-                    cart.map((data) => (
-                      <CartItem
-                        key={data.id}
-                        name={data.name}
-                        imgSrc={data.imgSrc}
-                        itemQty={data.qty}
-                        price={data.price}
-                        itemId={data.id}
-                      />
+                  <input
+                    name="location"
+                    id="locations"
+                    list="location"
+                    className="custome-select"
+                    onChange={(e) => setLocation(e.target.value)}
+                    value={location}
+                  />
+                  <datalist id="location">
+                    {locations?.map((data) => (
+                      <option key={data.id} value={data.name}>
+                        {data.name}
+                      </option>
                     ))}
-                </div>
+                  </datalist>
+                </form>
               </div>
-            </div>
-            <div className="totalSection">
-              <div className="total">
-                <h3>Cart Total</h3>
-                <p>
-                  <span>Ksh </span>
-                  {cart && total ? total : 0}
-                </p>
-              </div>
-              <div className="total">
-                <h3>Delivery Fee</h3>
-                <p>
-                  <span>Ksh </span>
-                  {deliveryFee ? deliveryFee : 0}
-                </p>
-              </div>
-              <div className="total">
-                <h3>Total cost</h3>
-                <p>
-                  <span>Ksh </span>
-                  {deliveryFee ? parseInt(deliveryFee) + parseInt(total) : 0}
-                </p>
-              </div>
-              <div className="total check">
-                <p>Pay On Delivery With</p>
-                <div className="checkboxes">
-                  <form className="paywith-wat">
-                    <div className="checkboxCash">
-                      <label htmlFor="cash">Cash</label>
-                      <input
-                        type="radio"
-                        id="cash"
-                        name="payment"
-                        value="cash"
-                        onChange={(e) => setMpesa(e.target.value)}
-                      />
-                    </div>
 
-                    <div className="checkboxCash">
-                      <label htmlFor="mpesa">Mpesa</label>
-                      <input
-                        type="radio"
-                        id="mpesa"
-                        name="payment"
-                        value="mpesa"
-                        onChange={(e) => setMpesa(e.target.value)}
-                      />
-                    </div>
-                  </form>
+              <div className="cartCheckOutContainer">
+                <SubMenuContainer name={"Cart Items"} />
+                <div className="cartContainer">
+                  <div className="cartItems">
+                    {cart &&
+                      cart.map((data) => (
+                        <CartItem
+                          key={data.id}
+                          name={data.name}
+                          imgSrc={data.imgSrc}
+                          itemQty={data.qty}
+                          price={data.price}
+                          itemId={data.id}
+                        />
+                      ))}
+                  </div>
                 </div>
-                <div className={`inputBox `}>
-                  {/* ${
+              </div>
+              <div className="totalSection">
+                <div className="total">
+                  <h3>Cart Total</h3>
+                  <p>
+                    <span>Ksh </span>
+                    {cart && total ? total : 0}
+                  </p>
+                </div>
+                <div className="total">
+                  <h3>Delivery Fee</h3>
+                  <p>
+                    <span>Ksh </span>
+                    {deliveryFee ? deliveryFee : 0}
+                  </p>
+                </div>
+                <div className="total">
+                  <h3>Total cost</h3>
+                  <p>
+                    <span>Ksh </span>
+                    {deliveryFee ? parseInt(deliveryFee) + parseInt(total) : 0}
+                  </p>
+                </div>
+                <div className="total check">
+                  <p>Pay On Delivery With</p>
+                  <div className="checkboxes">
+                    <form className="paywith-wat">
+                      <div className="checkboxCash">
+                        <label htmlFor="cash">Cash</label>
+                        <input
+                          type="radio"
+                          id="cash"
+                          name="payment"
+                          value="cash"
+                          onChange={(e) => setMpesa(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="checkboxCash">
+                        <label htmlFor="mpesa">Mpesa</label>
+                        <input
+                          type="radio"
+                          id="mpesa"
+                          name="payment"
+                          value="mpesa"
+                          onChange={(e) => setMpesa(e.target.value)}
+                        />
+                      </div>
+                    </form>
+                  </div>
+                  <div className={`inputBox `}>
+                    {/* ${
                               mpesa && mpesa === "cash" ? "cashh" : "mpesaa"
                             } */}
-                  <input
-                    type="text"
-                    placeholder="Enter Phone Number"
-                    onChange={(e) => setPhone(e.target.value)}
-                    value={phone}
-                  />
+                    <input
+                      type="text"
+                      placeholder="Enter Phone Number"
+                      onChange={(e) => setPhone(e.target.value)}
+                      value={phone}
+                    />
+                  </div>
                 </div>
               </div>
+              <button
+                className="checkOut"
+                onClick={checkOut}
+                disabled={
+                  cart === null || cart.length == 0 || checkDisable
+                    ? true
+                    : false
+                }
+              >
+                {/* onClick={checkOut} */}
+                <p> Check Out</p>
+              </button>
             </div>
-            <button
-              className="checkOut"
-              onClick={checkOut}
-              disabled={
-                cart === null || cart.length == 0 || checkDisable ? true : false
-              }
-            >
-              {/* onClick={checkOut} */}
-              <p> Check Out</p>
-            </button>
-          </div>
           </div>
         </main>
         {/* Bottom container */}
@@ -517,7 +532,7 @@ function Frontend({ isItemActivee }) {
         <div className="mainContainer">
           {/* Banner */}
           <div className="Banner">
-            <BannerName name={user === null ? "" : user.userName} />
+            <BannerName name={user === null ? "" : user.userName} bannername={openEdit} />
             <img src={delivery} alt="delivery" className="delivery" />
           </div>
           {/* dishContainer */}
@@ -544,18 +559,33 @@ function Frontend({ isItemActivee }) {
             </div>
             <div className="dishItemContainer">
               {isMainDish.length != 0
-                ? isMainDish.map((data) => (
-                    <ItemCard
-                      key={data._id}
-                      itemId={data._id}
-                      imgSrc={data.imgSrc}
-                      name={data.name}
-                      price={data.price}
-                      kg={data.kgs}
-                      capacity={data.capacity}
-                      items={Items}
-                    />
-                  ))
+                ? isMainDish.map((data) =>
+                    // <ItemCard
+                    //   key={data._id}
+                    //   itemId={data._id}
+                    //   imgSrc={data.imgSrc}
+                    //   name={data.name}
+                    //   price={data.price}
+                    //   kg={data.kgs}
+                    //   capacity={data.capacity}
+                    //   items={Items}
+                    // />
+
+                    data.qty == 0 ? (
+                      ""
+                    ) : (
+                      <ItemCard
+                        key={data._id}
+                        itemId={data._id}
+                        imgSrc={data.imgSrc}
+                        name={data.name}
+                        price={data.price}
+                        kg={data.kgs}
+                        capacity={data.capacity}
+                        items={Items}
+                      />
+                    )
+                  )
                 : // search.trim().length != 0
                   // ? isMainDishSearch?.map((data) => (
                   //     <ItemCard
@@ -572,18 +602,21 @@ function Frontend({ isItemActivee }) {
                   // :
 
                   Items?.filter((item) => item.itemId === isItemActive).map(
-                    (data) => (
-                      <ItemCard
-                        key={data._id}
-                        itemId={data._id}
-                        imgSrc={data.imgSrc}
-                        name={data.name}
-                        price={data.price}
-                        kg={data.kgs}
-                        capacity={data.capacity}
-                        items={Items}
-                      />
-                    )
+                    (data) =>
+                      data.qty == 0 ? (
+                        ""
+                      ) : (
+                        <ItemCard
+                          key={data._id}
+                          itemId={data._id}
+                          imgSrc={data.imgSrc}
+                          name={data.name}
+                          price={data.price}
+                          kg={data.kgs}
+                          capacity={data.capacity}
+                          items={Items}
+                        />
+                      )
                   )}
             </div>
           </div>

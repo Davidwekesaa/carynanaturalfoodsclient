@@ -9,8 +9,8 @@ import "react-circular-progressbar/dist/styles.css";
 const Feature = () => {
   return (
     <div className="dash-feature">
-      {/* <div className="dash-top">
-        <h1 className="dash-title">Total Revenue</h1>
+      <div className="dash-top">
+        <h1 className="dash-title">Update ABout Infor</h1>
         <MoreVertRoundedIcon className="dash-icon" />
       </div>
       <div className="dash-bottom">
@@ -53,7 +53,7 @@ const Feature = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

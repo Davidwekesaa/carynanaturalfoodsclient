@@ -58,7 +58,6 @@ const Sidebar = () => {
             </li>
           </Link>
 
-
           <Link to="/expenses" style={{ textDecoration: "none" }}>
             {" "}
             <li>
@@ -66,9 +65,18 @@ const Sidebar = () => {
               <span>Expenses</span>
             </li>
           </Link>
-
-          {/* <Link to="/" style={{textDecoration:'none'}}> <li><CreditCardIcon className="dash-sidebaricon" /><span>Credit</span></li></Link>
-          <Link to="/" style={{textDecoration:'none'}}> <li><InsertChartIcon className="dash-sidebaricon" /><span>Charts</span></li></Link>
+          {user.userRights !== 1 ? (
+            <Link to="/edits" style={{ textDecoration: "none" }}>
+              {" "}
+              <li>
+                <CreditCardIcon className="dash-sidebaricon" />
+                <span>Edits</span>
+              </li>
+            </Link>
+          ) : (
+            ""
+          )}
+          {/* <Link to="/" style={{textDecoration:'none'}}> <li><InsertChartIcon className="dash-sidebaricon" /><span>Charts</span></li></Link>
           <Link to="/" style={{textDecoration:'none'}}> <li><SettingsSystemDaydreamOutlinedIcon className="dash-sidebaricon" /><span>Cloud</span></li></Link> */}
           <div className="user">
             {/* <Link to="/" style={{textDecoration:'none'}}> <li><SettingsApplicationsIcon className="dash-sidebaricon" /><span>Setting</span></li></Link> */}
