@@ -203,32 +203,32 @@ function Frontend({ isItemActivee }) {
     );
   };
   //set delivery
-  useEffect(() => {
-    if (counties.toLowerCase() === "kiambu") {
-      setDeliveryFee("100");
-      // setCounties(event.target.value);
-    } else if (counties.toLowerCase() === "nairobi") {
-      setDeliveryFee("150");
-      // setCounties(event.target.value);
-    } else {
-      setDeliveryFee("350");
-      // setCounties(event.target.value);
-    }
-  }, [counties]);
-
-  // function handleDelivery(event) {
-  //   event.preventDefault();
-  //   if (event.target.value.toLowerCase() === "kiambu") {
+  // useEffect(() => {
+  //   if (counties.toLowerCase() === "kiambu") {
   //     setDeliveryFee("100");
-  //     setCounties(event.target.value);
-  //   } else if (event.target.value.toLowerCase() === "nairobi") {
+  //     // setCounties(event.target.value);
+  //   } else if (counties.toLowerCase() === "nairobi") {
   //     setDeliveryFee("150");
-  //     setCounties(event.target.value);
+  //     // setCounties(event.target.value);
   //   } else {
   //     setDeliveryFee("350");
-  //     setCounties(event.target.value);
+  //     // setCounties(event.target.value);
   //   }
-  // }
+  // }, [counties]);
+
+  function handleDelivery(event) {
+    event.preventDefault();
+    if (event.target.value.toLowerCase() === "kiambu") {
+      setDeliveryFee("100");
+      setCounties(event.target.value);
+    } else if (event.target.value.toLowerCase() === "nairobi") {
+      setDeliveryFee("150");
+      setCounties(event.target.value);
+    } else {
+      setDeliveryFee("350");
+      setCounties(event.target.value);
+    }
+  }
 
   const orderSuccess = () =>
     toast.success(
@@ -398,7 +398,7 @@ function Frontend({ isItemActivee }) {
                     id="Countriess"
                     list="Countries"
                     className="custome-select"
-                    onChange={(e) => setCounties(e.target.value)}
+                    onChange={handleDelivery}
                     value={counties}
                   />
                   <datalist id="Countries">
@@ -716,7 +716,7 @@ function Frontend({ isItemActivee }) {
                   id="Countriess"
                   list="Countries"
                   className="custome-select"
-                  onChange={(e) => setCounties(e.target.value)}
+                  onChange={handleDelivery}
                   value={counties}
                 />
                 <datalist id="Countries">
@@ -739,13 +739,15 @@ function Frontend({ isItemActivee }) {
                 />
                 <datalist id="sub-county">
                   {
-                    sSbCounty?.length != 0 ?
-                    sSbCounty?.map((data, index) => (
-                      <option key={index} value={data.name}>
-                        {data.name}
-                      </option>
-                    ))
-                    : subCounties?.map((data, index) => (
+                    // sSbCounty?.length != 0 ?
+                    // sSbCounty?.map((data, index) => (
+                    //   <option key={index} value={data.name}>
+                    //     {data.name}
+                    //   </option>
+                    // ))
+                    // : 
+                    
+                    subCounties?.map((data, index) => (
                         <option key={index} value={data.name}>
                           {data.name}
                         </option>
