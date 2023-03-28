@@ -1,5 +1,5 @@
 import React from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 function SubMenuContainerCart({ name, setToggleCartMenu, toggleCartMenu }) {
   return (
     <div className="subMenuContainer">
@@ -8,10 +8,10 @@ function SubMenuContainerCart({ name, setToggleCartMenu, toggleCartMenu }) {
         className="viewAll"
         onClick={(e) => setToggleCartMenu(!toggleCartMenu)}
       >
-        <i>
-          <ChevronLeftIcon />
-        </i>
         <p>Back</p>
+        <i>
+          <ChevronRightIcon />
+        </i>
       </div>
     </div>
   );
