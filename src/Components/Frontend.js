@@ -34,6 +34,37 @@ import { actionType } from "../store/reducer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import SubMenuContainerCart from "./SubMenuContainerCart";
+
+const divStyle = {
+  width: "100%",
+  /* height: 130px; */
+  borderRadius: "10px",
+  /* background: url("./assets/honey-g6.jpg") no-repeat center; */
+  backgroundSize: "cover",
+  position: "relative",
+  display: "flex",
+  aligntems: "center",
+  padding: "0px 10px",
+};
+
+const slideImages = [
+  {
+    url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    caption: "Slide 1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
+    caption: "Slide 2",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    caption: "Slide 3",
+  },
+];
+
 function Frontend({ isItemActivee }) {
   const [
     { cart, total, user, county, subCounty, locationn, phonee, deliveryfee },
@@ -60,6 +91,9 @@ function Frontend({ isItemActivee }) {
   const [location, setLocation] = useState(locationn);
   const [phone, setPhone] = useState(phonee);
   const [openEdit, setOpenEdit] = useState("");
+
+  const [selectCode, setSelectCode] = useState([]);
+  const [sSbCounty, setSSbCounty] = useState([]);
   const navigate = useNavigate();
 
   //get all products
@@ -143,6 +177,23 @@ function Frontend({ isItemActivee }) {
       )
     );
   }, [search]);
+  //selected county
+  useEffect(() => {
+    const cuti = counties.toString().toLowerCase();
+    setSelectCode(
+      Counties.filter((item) => item.name.toString().toLowerCase() === cuti)
+    );
+    console.log(selectCode[0]?.code);
+  }, [counties]);
+
+  //sub-County
+  useEffect(() => {
+    const cuti = selectCode[0]?.code.toString().toLowerCase();
+    setSSbCounty(
+      subCounties.filter((item) => item.code.toString().toLowerCase() === cuti)
+    );
+    console.log(sSbCounty);
+  }, [selectCode[0]?.code]);
 
   //set main dish on filter
   const setFilterData = (itemid, e) => {
@@ -152,19 +203,32 @@ function Frontend({ isItemActivee }) {
     );
   };
   //set delivery
-  function handleDelivery(event) {
-    event.preventDefault();
-    if (event.target.value.toLowerCase() === "kiambu") {
+  useEffect(() => {
+    if (counties.toLowerCase() === "kiambu") {
       setDeliveryFee("100");
-      setCounties(event.target.value);
-    } else if (event.target.value.toLowerCase() === "nairobi") {
+      // setCounties(event.target.value);
+    } else if (counties.toLowerCase() === "nairobi") {
       setDeliveryFee("150");
-      setCounties(event.target.value);
+      // setCounties(event.target.value);
     } else {
       setDeliveryFee("350");
-      setCounties(event.target.value);
+      // setCounties(event.target.value);
     }
-  }
+  }, [counties]);
+
+  // function handleDelivery(event) {
+  //   event.preventDefault();
+  //   if (event.target.value.toLowerCase() === "kiambu") {
+  //     setDeliveryFee("100");
+  //     setCounties(event.target.value);
+  //   } else if (event.target.value.toLowerCase() === "nairobi") {
+  //     setDeliveryFee("150");
+  //     setCounties(event.target.value);
+  //   } else {
+  //     setDeliveryFee("350");
+  //     setCounties(event.target.value);
+  //   }
+  // }
 
   const orderSuccess = () =>
     toast.success(
@@ -334,7 +398,7 @@ function Frontend({ isItemActivee }) {
                     id="Countriess"
                     list="Countries"
                     className="custome-select"
-                    onChange={handleDelivery}
+                    onChange={(e) => setCounties(e.target.value)}
                     value={counties}
                   />
                   <datalist id="Countries">
@@ -531,12 +595,26 @@ function Frontend({ isItemActivee }) {
       <main>
         <div className="mainContainer">
           {/* Banner */}
-          <div className="Banner">
-            <BannerName name={user === null ? "" : user.userName} bannername={openEdit} />
-            <img src={delivery} alt="delivery" className="delivery" />
+          <div>
+            <Slide>
+              {slideImages.map((slideImage, index) => (
+                <div
+                  className="Banner"
+                  style={{
+                    ...divStyle,
+                    backgroundImage: `url(${slideImage.url})`,
+                  }}
+                  key={index}
+                >
+                  <BannerName
+                    name={user === null ? "" : user.userName}
+                    bannername={openEdit}
+                  />
+                  <img src={delivery} alt="delivery" className="delivery" />
+                </div>
+              ))}
+            </Slide>
           </div>
-          {/* dishContainer */}
-
           <div className="dishContainer">
             <div className="menuCard">
               <SubMenuContainer name={"Menu category"} />
@@ -583,6 +661,8 @@ function Frontend({ isItemActivee }) {
                         kg={data.kgs}
                         capacity={data.capacity}
                         items={Items}
+                        setToggleCartMenu={setToggleCartMenu}
+                        toggleCartMenu={toggleCartMenu}
                       />
                     )
                   )
@@ -615,6 +695,8 @@ function Frontend({ isItemActivee }) {
                           kg={data.kgs}
                           capacity={data.capacity}
                           items={Items}
+                          setToggleCartMenu={setToggleCartMenu}
+                          toggleCartMenu={toggleCartMenu}
                         />
                       )
                   )}
@@ -629,31 +711,17 @@ function Frontend({ isItemActivee }) {
               </div> */}
               <form className="form-select">
                 <label htmlFor="Countriess">County:</label>
-                {/* <select
-                  name="Countries"
-                  id="Countries"
-                  className="custome-select"
-                  onChange={handleDelivery}
-                  value={counties}
-                >
-                  {Counties?.map((data) => (
-                    <option key={data.id} value={data.name} name={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
-
                 <input
                   name="Countries"
                   id="Countriess"
                   list="Countries"
                   className="custome-select"
-                  onChange={handleDelivery}
+                  onChange={(e) => setCounties(e.target.value)}
                   value={counties}
                 />
                 <datalist id="Countries">
-                  {Counties?.map((data) => (
-                    <option key={data.id} value={data.name} name={data.name}>
+                  {Counties?.map((data, index) => (
+                    <option key={index} value={data.name} name={data.name}>
                       {data.name}
                     </option>
                   ))}
@@ -662,20 +730,6 @@ function Frontend({ isItemActivee }) {
 
               <form className="form-select">
                 <label htmlFor="sub-countyy">Sub County:</label>
-                {/* <select
-                  name="sub-county"
-                  id="sub-county"
-                  className="custome-select"
-                  onChange={(e) => setSubCountiese(e.target.value)}
-                  value={subCountiese}
-                >
-                  {subCounties?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
-
                 <input
                   list="sub-county"
                   id="sub-countyy"
@@ -684,50 +738,48 @@ function Frontend({ isItemActivee }) {
                   value={subCountiese}
                 />
                 <datalist id="sub-county">
-                  {subCounties?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
+                  {
+                    sSbCounty?.length != 0 ?
+                    sSbCounty?.map((data, index) => (
+                      <option key={index} value={data.name}>
+                        {data.name}
+                      </option>
+                    ))
+                    : subCounties?.map((data, index) => (
+                        <option key={index} value={data.name}>
+                          {data.name}
+                        </option>
+                      ))
+                  }
                 </datalist>
               </form>
 
-              <form className="form-select">
+              <form className="form-select f-last">
                 <label htmlFor="locations">Location:</label>
-                {/* <select
-                  name="location"
-                  id="location"
-                  className="custome-select"
-                  onChange={(e) => setLocation(e.target.value)}
-                  value={location}
-                >
-                  {locations?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
-
                 <input
                   name="location"
                   id="locations"
-                  list="location"
+                  // list="location"
                   className="custome-select"
                   onChange={(e) => setLocation(e.target.value)}
                   value={location}
                 />
-                <datalist id="location">
-                  {locations?.map((data) => (
-                    <option key={data.id} value={data.name}>
+                {/* <datalist id="location">
+                  {locations?.map((data, index) => (
+                    <option key={index} value={data.name}>
                       {data.name}
                     </option>
                   ))}
-                </datalist>
+                </datalist> */}
               </form>
             </div>
 
             <div className="cartCheckOutContainer">
-              <SubMenuContainer name={"Cart Items"} />
+              <SubMenuContainerCart
+                name={"Cart Items"}
+                setToggleCartMenu={setToggleCartMenu}
+                toggleCartMenu={toggleCartMenu}
+              />
               <div className="cartContainer">
                 <div className="cartItems">
                   {cart &&
