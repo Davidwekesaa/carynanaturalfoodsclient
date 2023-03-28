@@ -333,6 +333,8 @@ function Frontend({ isItemActivee }) {
             setLocation("");
             setSubCountiese("");
             setPhone("");
+
+            setToggleCartMenu(!toggleCartMenu);
           })
           .catch((error) => {
             console.log(error);
@@ -745,13 +747,13 @@ function Frontend({ isItemActivee }) {
                     //     {data.name}
                     //   </option>
                     // ))
-                    // : 
-                    
+                    // :
+
                     subCounties?.map((data, index) => (
-                        <option key={index} value={data.name}>
-                          {data.name}
-                        </option>
-                      ))
+                      <option key={index} value={data.name}>
+                        {data.name}
+                      </option>
+                    ))
                   }
                 </datalist>
               </form>
