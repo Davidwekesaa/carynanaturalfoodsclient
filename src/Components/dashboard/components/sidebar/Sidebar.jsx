@@ -28,7 +28,7 @@ const Sidebar = () => {
     <div className="dash-sidebar">
       <div className="dash-top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <img className="dash-logo" src={logo} alt="" />
+          <img className="dash-logo " src={logo} alt="" />
         </Link>
       </div>
       <div className="dash-center">

@@ -18,10 +18,7 @@ function ItemCard({
   const [isCart, setIsCart] = useState(null);
   const [{}, dispatch] = useStateValue();
 
-  const alreadyInCart = () =>
-    toast.success(
-      "Item added to cart successfuly"
-    );
+  const alreadyInCart = () => toast.success("Item added to cart successfuly");
 
   useEffect(() => {
     if (isCart) {
@@ -53,17 +50,17 @@ function ItemCard({
       kgs: kg,
       qty: 1,
     });
-    alreadyInCart()
+    alreadyInCart();
     setToggleCartMenu(!toggleCartMenu);
   };
 
+  
   return (
     <div>
       <div
         className="itemCard"
         id={itemId}
         onClick={
-          
           // (e) =>
           // setIsCart({
           //   id: itemId,

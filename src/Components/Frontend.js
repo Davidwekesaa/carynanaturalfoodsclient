@@ -38,30 +38,24 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import SubMenuContainerCart from "./SubMenuContainerCart";
 
-const divStyle = {
-  width: "100%",
-  /* height: 130px; */
-  borderRadius: "10px",
-  /* background: url("./assets/honey-g6.jpg") no-repeat center; */
-  backgroundSize: "cover",
-  position: "relative",
-  display: "flex",
-  aligntems: "center",
-  padding: "0px 10px",
-};
-
 const slideImages = [
   {
-    url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black%20Gold%20Elegant%20Happy%20Birthday%20Card.png?alt=media&token=cea76b1b-ee0b-4b40-9e03-a7fb3ca6c3a7",
     caption: "Slide 1",
+    message:
+      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please call or WhatsApp us on 0111 201 762.",
   },
   {
-    url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black%20Gold%20Elegant.png?alt=media&token=96fe83fa-57f5-40fa-90b8-67a7c7e1a379",
     caption: "Slide 2",
+    message:
+      "We offer you pure honey, harvested from Baringo's expansive forests, naturally processed and packed, with no additives used.",
   },
   {
-    url: "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black.png?alt=media&token=d5e61ea6-69ca-48bc-86e6-45bca801b4f6",
     caption: "Slide 3",
+    message:
+      "Enjoy this thick and smooth product,100% full of natural taste of sweetness.",
   },
 ];
 
@@ -603,14 +597,13 @@ function Frontend({ isItemActivee }) {
                 <div
                   className="Banner"
                   style={{
-                    ...divStyle,
                     backgroundImage: `url(${slideImage.url})`,
                   }}
                   key={index}
                 >
                   <BannerName
                     name={user === null ? "" : user.userName}
-                    bannername={openEdit}
+                    bannername={slideImage.message}
                   />
                   <img src={delivery} alt="delivery" className="delivery" />
                 </div>
@@ -638,7 +631,20 @@ function Frontend({ isItemActivee }) {
                 ))}
             </div>
             <div className="dishItemContainer">
-              {isMainDish.length != 0
+              {search.trim().length != 0
+                ? isMainDishSearch?.map((data) => (
+                    <ItemCard
+                      key={data._id}
+                      itemId={data._id}
+                      imgSrc={data.imgSrc}
+                      name={data.name}
+                      price={data.price}
+                      kg={data.kgs}
+                      capacity={data.capacity}
+                      items={Items}
+                    />
+                  ))
+                : isMainDish.length != 0
                 ? isMainDish.map((data) =>
                     // <ItemCard
                     //   key={data._id}
@@ -668,22 +674,7 @@ function Frontend({ isItemActivee }) {
                       />
                     )
                   )
-                : // search.trim().length != 0
-                  // ? isMainDishSearch?.map((data) => (
-                  //     <ItemCard
-                  //       key={data._id}
-                  //       itemId={data._id}
-                  //       imgSrc={data.imgSrc}
-                  //       name={data.name}
-                  //       price={data.price}
-                  //       kg={data.kgs}
-                  //       capacity={data.capacity}
-                  //       items={Items}
-                  //     />
-                  //   ))
-                  // :
-
-                  Items?.filter((item) => item.itemId === isItemActive).map(
+                : Items?.filter((item) => item.itemId === isItemActive).map(
                     (data) =>
                       data.qty == 0 ? (
                         ""

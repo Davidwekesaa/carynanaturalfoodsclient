@@ -31,7 +31,7 @@ header {
 }
 .logo {
   min-width: 40px;
-  width: 50px;
+  width: 100px;
 }
 .inputBox {
   background-color: var(--header-backgound);
@@ -139,20 +139,24 @@ main {
 }
 .mainContainer .Banner {
   width: 100%;
-  /* height: 130px; */
-  /* border-radius: 10px;
-  background: url("./assets/honey-g6.jpg") no-repeat center;
+  /* height: 20px; */
+  border-radius: 10px;
   background-size: cover;
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0px 10px; */
+  padding: 0px 10px; 
+  /* min-height: 300px; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
 }
+
 .react-slideshow-container .react-slideshow-arrow {
   display: none;
 }
 
-.bner{
+.bner {
   position: absolute;
   top: 10px;
   display: flex;
@@ -178,13 +182,10 @@ main {
   /* height: 130px; */
   width: 100%;
   font-weight: 600;
-
-  
 }
 .bannerContent h3 {
   font-size: 18px;
   font-weight: 500;
-  
 }
 .bannerContent p {
   width: 100%;
@@ -376,13 +377,13 @@ main {
 }
 .itemCard {
   width: 160px;
-  height: 180px;
+  /* height: 180px; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin: 10px 0;
+  margin: 40px 0;
   transition: 0.5s;
 }
 .itemCard .imgBox {
@@ -395,7 +396,8 @@ main {
   justify-content: center;
   padding: 6px;
   position: absolute;
-  top: -17px;
+  top: 0;
+  transform: translateY(-50%);
   background: #d0f0c0;
 }
 
@@ -441,7 +443,7 @@ main {
 }
 
 .itemContent .bottom .pricediv .price p {
-font-size: 30px;
+  font-size: 30px;
 }
 .itemContent .bottom .addToCart {
   background: var(--primary-color);
@@ -453,7 +455,6 @@ font-size: 30px;
   justify-content: center;
   cursor: pointer;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
-  
 }
 
 .itemContent .bottom .addToCart .MuiSvgIcon-root {
@@ -825,7 +826,7 @@ label {
   display: none;
 }
 
-.f-last{
+.f-last {
   margin-bottom: 10px;
 }
 /* bottom menu ends */
@@ -858,7 +859,7 @@ label {
   .bannerContent {
     width: 70%;
   }
-  .f-last{
+  .f-last {
     margin-bottom: 1px;
   }
 }
@@ -883,12 +884,13 @@ label {
     padding: 10px 30px;
   }
   .mainContainer .Banner {
-    height: 130px;
+    height: auto;
   }
   .mainContainer .Banner .delivery {
     bottom: -32px;
     width: 200px;
   }
+  
   .bannerContent h3 {
     font-size: 24px;
   }
@@ -907,10 +909,10 @@ label {
     /* top: unset; */
     padding: 20px 15px;
   }
-  .itemCard {
+  /* .itemCard {
     width: 180px;
     height: 200px;
-  }
+  } */
 
   .cartContainer {
     height: 180px;
@@ -925,4 +927,11 @@ label {
   /* .dishItemContainer {
     padding-bottom: 40px;
   } */
+  .logo {
+    min-width: 40px;
+    width: 150px;
+  }
+  .mainContainer .Banner {
+    /* min-height: 250px; */
+  }
 }
