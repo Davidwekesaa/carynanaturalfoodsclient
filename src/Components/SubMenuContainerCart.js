@@ -2,7 +2,7 @@ import React from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 function SubMenuContainerCart({ name, setToggleCartMenu, toggleCartMenu }) {
   return (
-    <div className="subMenuContainer">
+    <div className="subMenuContainer popo">
       <h3>{name}</h3>
       <div
         className="viewAll"

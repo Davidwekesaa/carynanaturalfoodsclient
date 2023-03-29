@@ -18,6 +18,7 @@ import HomeIcon from "@mui/icons-material/Home";
 // import SettingsIcon from "@mui/icons-material/Settings";
 import BannerName from "./BannerName";
 import delivery from "../assets/delivery.png";
+import deliver from "../assets/Black.png";
 // import honey from "./assets/honey.png";
 import SubMenuContainer from "./SubMenuContainer";
 import MenuCard from "./MenuCard";
@@ -40,19 +41,19 @@ import SubMenuContainerCart from "./SubMenuContainerCart";
 
 const slideImages = [
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black%20Gold%20Elegant%20Happy%20Birthday%20Card.png?alt=media&token=cea76b1b-ee0b-4b40-9e03-a7fb3ca6c3a7",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/1kg.png?alt=media&token=860bfb43-1df5-4ebd-aba1-4f4b82f1aa35",
     caption: "Slide 1",
     message:
       "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please call or WhatsApp us on 0111 201 762.",
   },
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black%20Gold%20Elegant.png?alt=media&token=96fe83fa-57f5-40fa-90b8-67a7c7e1a379",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/350g.png?alt=media&token=a47d2ad8-8a15-4314-85d5-1e3399145ee9",
     caption: "Slide 2",
     message:
       "We offer you pure honey, harvested from Baringo's expansive forests, naturally processed and packed, with no additives used.",
   },
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/Black.png?alt=media&token=d5e61ea6-69ca-48bc-86e6-45bca801b4f6",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/500g.png?alt=media&token=eedb7726-a64c-42a9-9f59-b72d41dc91cf",
     caption: "Slide 3",
     message:
       "Enjoy this thick and smooth product,100% full of natural taste of sweetness.",
@@ -357,10 +358,26 @@ function Frontend({ isItemActivee }) {
         <main>
           <div className="mainContainer">
             {/* Banner */}
-            <div className="Banner">
-              <BannerName name={""} bannername={openEdit} />
-              <img src={delivery} alt="delivery" className="delivery" />
-            </div>
+            <Slide>
+              {slideImages.map((slideImage, index) => (
+                <div
+                  className="Banner"
+                  style={{
+                    backgroundImage: `url(${slideImage.url})`,
+                  }}
+                  key={index}
+                >
+                  <img src={slideImage.url} alt="delivery" className="deliver" />
+                  <div className="bnn">
+                    <BannerName
+                      name={user === null ? "" : user.userName}
+                      bannername={slideImage.message}
+                    />
+                  </div>
+                  <img src={delivery} alt="delivery" className="delivery" />
+                </div>
+              ))}
+            </Slide>
             {/* dishContainer */}
 
             <div className="dishContainer progress">
@@ -369,25 +386,8 @@ function Frontend({ isItemActivee }) {
 
             <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
               <div className="debitCardContainer">
-                {/* <div className="debitCard">
-                <DebitCard />
-                <DebitCard />
-              </div> */}
                 <form className="form-select">
                   <label htmlFor="Countriess">County:</label>
-                  {/* <select
-                  name="Countries"
-                  id="Countries"
-                  className="custome-select"
-                  onChange={handleDelivery}
-                  value={counties}
-                >
-                  {Counties?.map((data) => (
-                    <option key={data.id} value={data.name} name={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
 
                   <input
                     name="Countries"
@@ -594,17 +594,14 @@ function Frontend({ isItemActivee }) {
           <div>
             <Slide>
               {slideImages.map((slideImage, index) => (
-                <div
-                  className="Banner"
-                  style={{
-                    backgroundImage: `url(${slideImage.url})`,
-                  }}
-                  key={index}
-                >
-                  <BannerName
-                    name={user === null ? "" : user.userName}
-                    bannername={slideImage.message}
-                  />
+                <div className="Banner" key={index}>
+                  <img src={slideImage.url} alt="delivery" className="deliver" />
+                  <div className="bnn">
+                    <BannerName
+                      name={user === null ? "" : user.userName}
+                      bannername={slideImage.message}
+                    />
+                  </div>
                   <img src={delivery} alt="delivery" className="delivery" />
                 </div>
               ))}
@@ -698,10 +695,6 @@ function Frontend({ isItemActivee }) {
 
           <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
             <div className="debitCardContainer">
-              {/* <div className="debitCard">
-                <DebitCard />
-                <DebitCard />
-              </div> */}
               <form className="form-select">
                 <label htmlFor="Countriess">County:</label>
                 <input
@@ -796,7 +789,7 @@ function Frontend({ isItemActivee }) {
                 <h3>Cart Total</h3>
                 <p>
                   <span>Ksh </span>
-                  {cart && total ? total : 0}
+                  {cart.length > 0 && total ? total : 0}
                 </p>
               </div>
               <div className="total">
