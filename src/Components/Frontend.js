@@ -89,6 +89,10 @@ function Frontend({ isItemActivee }) {
 
   const [selectCode, setSelectCode] = useState([]);
   const [sSbCounty, setSSbCounty] = useState([]);
+
+  //recepient name
+  const [recepientName, setRecepientName] = useState("");
+  const [recepientTrue, setRecepientTrue] = useState(false);
   const navigate = useNavigate();
 
   //get all products
@@ -286,6 +290,10 @@ function Frontend({ isItemActivee }) {
             total: amount,
             profile: user.profile,
             payment: mpesa,
+            OrderFor:
+              recepientName.toString().trim().length === 0
+                ? "none"
+                : recepientName,
           })
           .then((crt) => {
             console.log(crt);
@@ -824,7 +832,7 @@ function Frontend({ isItemActivee }) {
                     </div>
 
                     <div className="checkboxCash">
-                      <label htmlFor="mpesa">Mpesa</label>
+                      <label htmlFor="mpesa">{`Mpesa(Till no: 5412199)`}</label>
                       <input
                         type="radio"
                         id="mpesa"
@@ -834,6 +842,42 @@ function Frontend({ isItemActivee }) {
                       />
                     </div>
                   </form>
+                </div>
+                <div className="checkboxes">
+                  <form className="paywith-wat">
+                    <div className="checkboxCash">
+                      <label htmlFor="order">Order For</label>
+                      <input
+                        type="radio"
+                        id="order"
+                        onChange={(e) => setRecepientTrue(!recepientTrue)}
+                        checked={recepientTrue}
+                      />
+                    </div>
+
+                    {/* <div className="checkboxCash">
+                      <label htmlFor="mpesa">{`Mpesa(Till no: 5412199)`}</label>
+                      <input
+                        type="radio"
+                        id="mpesa"
+                        name="payment"
+                        value="mpesa"
+                        onChange={(e) => setMpesa(e.target.value)}
+                      />
+                    </div> */}
+                  </form>
+                  <div
+                    className={`inputBox ${
+                      recepientTrue ? "recept-disp" : "recept"
+                    } `}
+                  >
+                    <input
+                      type="text"
+                      placeholder=" recepient name"
+                      onChange={(e) => setRecepientName(e.target.value)}
+                      value={recepientName}
+                    />
+                  </div>
                 </div>
                 <div className={`inputBox `}>
                   {/* ${

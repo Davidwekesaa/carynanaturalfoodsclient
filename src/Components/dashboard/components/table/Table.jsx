@@ -108,6 +108,7 @@ const BasicTable = ({ rows }) => {
               {/* <TableCell className="dash-tableCell">Tracking ID</TableCell> */}
               <TableCell className="dash-tableCell">Customer</TableCell>
               <TableCell className="dash-tableCell">Phone</TableCell>
+              <TableCell className="dash-tableCell">Order For</TableCell>
               <TableCell className="dash-tableCell">Address</TableCell>
               <TableCell className="dash-tableCell">Amount</TableCell>
               <TableCell className="dash-tableCell">Orders</TableCell>
@@ -135,6 +136,7 @@ const BasicTable = ({ rows }) => {
                   </div>
                 </TableCell>
                 <TableCell className="dash-tableCell">{row.phone}</TableCell>
+                <TableCell className="dash-tableCell">{row.OrderFor}</TableCell>
                 <TableCell className="dash-tableCell">{row.address}</TableCell>
                 <TableCell className="dash-tableCell">{`Ksh ${row.total}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>

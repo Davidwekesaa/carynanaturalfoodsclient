@@ -6,6 +6,8 @@ import logo from "../assets/logo.png";
 import notImge from "../assets/notImge.png";
 import { useStateValue } from "../store/StateProvider";
 import { useNavigate } from "react-router-dom";
+import ChatIcon from "@mui/icons-material/Chat";
+
 function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
   const [{ cart, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
@@ -17,21 +19,25 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
     e.preventDefault();
     localStorage.removeItem("user");
     window.location.reload();
-
   };
 
-  const hundleLog = (e) =>{
+  const hundleLog = (e) => {
     e.preventDefault();
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
-  const handledash = (e) =>{
+  const handledash = (e) => {
     e.preventDefault();
 
-    if(user != null && user.userRights > 0){
-      navigate("/dashboard")
+    if (user != null && user.userRights > 0) {
+      navigate("/dashboard");
     }
-  }
+  };
+
+  // const ContactMe = (e) => {
+  //   e.preventDefault();
+  //   navigate("/contact")
+  // };
   return (
     <header>
       <img src={logo} alt="Logo" className="logo" />
@@ -43,8 +49,9 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           onChange={(e) => serch(e.target.value)}
         />
       </div>
-      {/* <div>
+      {/* <div className="contact-us" onClick={ContactMe}>
         <h1>Contact Us</h1>
+        <ChatIcon />
       </div> */}
       <div className="shoppingCart todisplay">
         <ShoppingCartIcon className="cart" />
@@ -70,7 +77,7 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           </div>
           {user == null ? (
             <p className="logout" onClick={hundleLog}>
-             Login
+              Login
             </p>
           ) : (
             <p className="logout" onClick={hundleLogout}>

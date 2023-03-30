@@ -28,6 +28,7 @@ import Single from "./Components/dashboard/pages/single/Single";
 import Home from "./Components/dashboard/pages/home/Home";
 import DashboardLogin from "./Components/dashboard/pages/login/DashboardLogin";
 import Frontend from "./Components/Frontend";
+import ContactUs from "./Components/contact/ContactUs";
 
 function App() {
   //products
@@ -364,9 +365,16 @@ function App() {
 
           <Route
             exact
+            path="/contact"
+            element={<ContactUs/>}
+          />
+
+          <Route
+            exact
             path="/"
             element={<Frontend isItemActivee={isItemActive} />}
           />
+          
         </Routes>
       </Router>
     </div>
