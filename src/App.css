@@ -516,6 +516,9 @@ main {
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
+.rightContainer::-webkit-scrollbar {
+  display: none;
+}
 
 .active {
   transform: translateX(0%);
