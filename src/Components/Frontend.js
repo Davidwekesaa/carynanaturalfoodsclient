@@ -360,14 +360,12 @@ function Frontend({ isItemActivee }) {
             {/* Banner */}
             <Slide>
               {slideImages.map((slideImage, index) => (
-                <div
-                  className="Banner"
-                  style={{
-                    backgroundImage: `url(${slideImage.url})`,
-                  }}
-                  key={index}
-                >
-                  <img src={slideImage.url} alt="delivery" className="deliver" />
+                <div className="Banner" key={index}>
+                  <img
+                    src={slideImage.url}
+                    alt="delivery"
+                    className="deliver"
+                  />
                   <div className="bnn">
                     <BannerName
                       name={user === null ? "" : user.userName}
@@ -595,7 +593,11 @@ function Frontend({ isItemActivee }) {
             <Slide>
               {slideImages.map((slideImage, index) => (
                 <div className="Banner" key={index}>
-                  <img src={slideImage.url} alt="delivery" className="deliver" />
+                  <img
+                    src={slideImage.url}
+                    alt="delivery"
+                    className="deliver"
+                  />
                   <div className="bnn">
                     <BannerName
                       name={user === null ? "" : user.userName}
@@ -789,7 +791,7 @@ function Frontend({ isItemActivee }) {
                 <h3>Cart Total</h3>
                 <p>
                   <span>Ksh </span>
-                  {cart.length > 0 && total ? total : 0}
+                  {cart && total ? total : 0}
                 </p>
               </div>
               <div className="total">
@@ -866,6 +868,7 @@ function Frontend({ isItemActivee }) {
           <div className="indicator"></div>
         </ul>
       </div> */}
+
       <ToastContainer />
     </div>
   );

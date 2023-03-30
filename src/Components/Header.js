@@ -43,6 +43,9 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           onChange={(e) => serch(e.target.value)}
         />
       </div>
+      {/* <div>
+        <h1>Contact Us</h1>
+      </div> */}
       <div className="shoppingCart todisplay">
         <ShoppingCartIcon className="cart" />
         <div className="cart_content">
