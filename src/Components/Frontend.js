@@ -873,7 +873,7 @@ function Frontend({ isItemActivee }) {
                   >
                     <input
                       type="text"
-                      placeholder=" recepient name"
+                      placeholder=" recipient name"
                       onChange={(e) => setRecepientName(e.target.value)}
                       value={recepientName}
                     />
