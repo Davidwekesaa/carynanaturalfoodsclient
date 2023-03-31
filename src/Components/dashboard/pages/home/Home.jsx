@@ -10,6 +10,7 @@ import "./homestyle.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { actionType } from "../../../../store/reducer";
 import { useStateValue } from "../../../../store/StateProvider";
+import TimeOders from "../../components/tomeOders/TimeOders";
 
 function Home() {
   const [users, setUsers] = useState("");
@@ -17,6 +18,11 @@ function Home() {
   const [ordersTotal, setOrdersTotal] = useState("");
   const [orders, setOrders] = useState(null);
   const [dataAmout, setDataAmout] = useState(null);
+
+  const [todayOrder, setTodayOrder] = useState(null);
+  const [weekOrder, setWeekOrder] = useState(null);
+  const [monthOrder, setMonthOrder] = useState(null);
+  
 
   const [{ user }, dispatch] = useStateValue();
   useEffect(() => {
@@ -66,16 +72,55 @@ function Home() {
         });
     };
 
+    const getTodayOeders = async () => {
+      await axios
+        .get(`${process.env.REACT_APP_Server_Url}todayorders/`)
+        .then((useroders) => {
+          console.log(useroders.data)
+          setTodayOrder(useroders.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    const getWeekOeders = async () => {
+      await axios
+        .get(`${process.env.REACT_APP_Server_Url}weekorders/`)
+        .then((useroders) => {
+          // console.log(useroders.data)
+          setWeekOrder(useroders.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    const getMonthOeders = async () => {
+      await axios
+        .get(`${process.env.REACT_APP_Server_Url}monthorders/`)
+        .then((useroders) => {
+          // console.log(useroders.data)
+          setMonthOrder(useroders.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     getTotalUsers();
     getTotalOders();
     getUserOders();
     getMonthAmount();
+    getTodayOeders()
+    getWeekOeders()
+    getMonthOeders()
   }, []);
   return (
     <div className="dash-home">
       <Sidebar />
       <div className="dash-homecontainer">
         <Navbar />
+
         <div className="dash-widgetcontainer">
           <Widget type="users" title={"USERS"} numbers={users ? users : 0} />
           <Widget
@@ -96,7 +141,11 @@ function Home() {
           )}
           {/* <Widget type="balance" /> */}
         </div>
-
+        <div className="dash-widgetcontainer">
+          <TimeOders title={`Today Sales`}  data={todayOrder}/>
+          <TimeOders title={`Last Week Sales`} data={weekOrder}/>
+          <TimeOders title={`Last Month Sales`} data={monthOrder}/>
+        </div>
         <div className="dash-charts">
           {/* <Feature /> */}
 

@@ -1,0 +1,47 @@
+.dash-time-orders {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: 1;
+  background-color: #70d47a;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 2px 4px 0px rgba(211, 211, 211, 0.473);
+}
+.dash-time-orders .dash-tins {
+  width: 100%;
+}
+.dash-time-orders .dash-tins .can-heading {
+  color: #e8ffff;
+  font-size: 25px;
+  font-weight: 600;
+}
+.dash-time-orders .dash-tins .time-can-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.dash-time-orders .dash-tins .time-can-order .cans {
+  /* width: 100px; */
+  margin: 10px;
+  background-color:  #4F7942;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.dash-time-orders .dash-tins .time-can-order .cans p{
+    font-size: 19px;
+}
+
+.dash-time-orders .dash-tins .time-can-order .cans .can-total{
+font-size: 28px;
+font-weight: 700;
+}
+.dash-time-orders .dash-tins .time-can-order .cans .cans-item{
+ font-size: 19px;
+ font-weight: 600;
+}
