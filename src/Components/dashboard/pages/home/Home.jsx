@@ -141,11 +141,11 @@ function Home() {
           )}
           {/* <Widget type="balance" /> */}
         </div>
-        <div className="dash-widgetcontainer">
+        {user.userRights !== 1 ? ( <div className="dash-widgetcontainer">
           <TimeOders title={`Today Sales`}  data={todayOrder}/>
           <TimeOders title={`Last Week Sales`} data={weekOrder}/>
           <TimeOders title={`Last Month Sales`} data={monthOrder}/>
-        </div>
+        </div> ) : ""}
         <div className="dash-charts">
           {/* <Feature /> */}
 

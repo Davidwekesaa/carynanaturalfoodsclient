@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
-function MenuContainer({link,icon,isHome}) {
-  return <li className={isHome? "active" : ""}>
-    <a href={link}>
-      <span className='icon'>{icon}</span>
-    </a>
-  </li>    
+function MenuContainer({ link, icon, isHome }) {
+  return (
+    <li className={isHome ? "active" : ""}>
+      <a href={link} target="_blank">
+        <span className="icon">{icon}</span>
+      </a>
+    </li>
+  );
 }
 
-export default MenuContainer
+export default MenuContainer;

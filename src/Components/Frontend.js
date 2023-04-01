@@ -38,13 +38,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import SubMenuContainerCart from "./SubMenuContainerCart";
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const slideImages = [
   {
     url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/1kg.png?alt=media&token=860bfb43-1df5-4ebd-aba1-4f4b82f1aa35",
     caption: "Slide 1",
     message:
-      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please call or WhatsApp us on 0111 201 762.",
+      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please use our contacts bellow .",
   },
   {
     url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/350g.png?alt=media&token=a47d2ad8-8a15-4314-85d5-1e3399145ee9",
@@ -909,10 +912,34 @@ function Frontend({ isItemActivee }) {
       {/* <div className="bottomMenu">
         <ul id="menu">
           <MenuContainer link={"#"} icon={<HomeIcon />} isHome />
+          <MenuContainer link={"#"} icon={<HomeIcon />} isHome />
           <div className="indicator"></div>
         </ul>
       </div> */}
-
+      <div className="footerr">
+        <h1>Contact Us</h1>
+        <div className="contact-icon">
+          <div className="icon-name">
+            <ul>
+            <MenuContainer link={"#"} icon={<AddIcCallIcon style={{ color: "black",background:"white",borderRadius:"10px" }} />} />
+            </ul>
+            <p>0111 201 762</p>
+          </div>
+          <div className="iconp">
+          <div className="icon-name">
+          <ul>
+            <MenuContainer link={"https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"} icon={<FacebookIcon style={{ color: "#4867aa",background:"white",borderRadius:"10px" }} />} />
+            </ul>
+          </div>
+          <div className="icon-name">
+          <ul>
+            <MenuContainer link={"https://wa.me/c/254111201762"} icon={<WhatsAppIcon style={{ color: "#1bd741",background:"white",borderRadius:"10px"}} />} />
+            </ul>
+          </div>
+          
+          </div>
+        </div>
+      </div>
       <ToastContainer />
     </div>
   );

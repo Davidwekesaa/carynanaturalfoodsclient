@@ -44,10 +44,10 @@ header {
   padding: 8px 15px;
   width: 120px;
 }
-.recept{
+.recept {
   display: none;
 }
-.recept-disp{
+.recept-disp {
   display: block;
 }
 .inputBox .searchIcon {
@@ -882,10 +882,44 @@ label {
   color: #373848;
 }
 .contact-us:hover {
- cursor: pointer;
+  cursor: pointer;
 }
 .contact-us h1 {
- display: none;
+  display: none;
+}
+
+.footerr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100%);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 25px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.footerr .contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.footerr .contact-icon .iconp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerr .contact-icon .iconp .icon-name ul {
+  margin-left: 20px;
+}
+.icon-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 /* table screens */
 @media screen and (min-width: 650px) {
@@ -925,7 +959,8 @@ label {
   .toggleMenu {
     display: none;
   }
-  .todisplay,.contact-us h1  {
+  .todisplay,
+  .contact-us h1 {
     display: block;
   }
   .profileContainer .userName {
@@ -989,5 +1024,8 @@ label {
   }
   .mainContainer .Banner {
     /* min-height: 250px; */
+  }
+  .footerr {
+    width: calc(100% - 350px);
   }
 }
