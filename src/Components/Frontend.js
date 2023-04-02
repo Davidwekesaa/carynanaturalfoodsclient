@@ -37,10 +37,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { carrt } from "./Functions";
+
 import SubMenuContainerCart from "./SubMenuContainerCart";
-import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+
 
 const slideImages = [
   {
@@ -96,6 +99,7 @@ function Frontend({ isItemActivee }) {
   //recepient name
   const [recepientName, setRecepientName] = useState("");
   const [recepientTrue, setRecepientTrue] = useState(false);
+
   const navigate = useNavigate();
 
   //get all products
@@ -341,6 +345,7 @@ function Frontend({ isItemActivee }) {
             setPhone("");
 
             setToggleCartMenu(!toggleCartMenu);
+            carrt.splice(0, carrt.length);
           })
           .catch((error) => {
             console.log(error);
@@ -348,8 +353,6 @@ function Frontend({ isItemActivee }) {
           });
       }
     }
-
-    // orderSuccess();
   };
 
   if (
@@ -369,7 +372,7 @@ function Frontend({ isItemActivee }) {
         <main>
           <div className="mainContainer">
             {/* Banner */}
-            <Slide>
+            <Slide arrows={false}>
               {slideImages.map((slideImage, index) => (
                 <div className="Banner" key={index}>
                   <img
@@ -417,19 +420,6 @@ function Frontend({ isItemActivee }) {
 
                 <form className="form-select">
                   <label htmlFor="sub-countyy">Sub County:</label>
-                  {/* <select
-                  name="sub-county"
-                  id="sub-county"
-                  className="custome-select"
-                  onChange={(e) => setSubCountiese(e.target.value)}
-                  value={subCountiese}
-                >
-                  {subCounties?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
 
                   <input
                     list="sub-county"
@@ -449,19 +439,6 @@ function Frontend({ isItemActivee }) {
 
                 <form className="form-select">
                   <label htmlFor="locations">Location:</label>
-                  {/* <select
-                  name="location"
-                  id="location"
-                  className="custome-select"
-                  onChange={(e) => setLocation(e.target.value)}
-                  value={location}
-                >
-                  {locations?.map((data) => (
-                    <option key={data.id} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </select> */}
 
                   <input
                     name="location"
@@ -577,14 +554,6 @@ function Frontend({ isItemActivee }) {
           </div>
         </main>
         {/* Bottom container */}
-        {/* <div className="bottomMenu">
-          <ul id="menu">
-           
-            <MenuContainer link={"#"} icon={<HomeIcon/>} isHome />
-            
-            <div className="indicator"></div>
-          </ul>
-        </div> */}
       </div>
     );
   }
@@ -601,7 +570,7 @@ function Frontend({ isItemActivee }) {
         <div className="mainContainer">
           {/* Banner */}
           <div>
-            <Slide>
+            <Slide arrows={false}>
               {slideImages.map((slideImage, index) => (
                 <div className="Banner" key={index}>
                   <img
@@ -887,7 +856,7 @@ function Frontend({ isItemActivee }) {
                               mpesa && mpesa === "cash" ? "cashh" : "mpesaa"
                             } */}
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Enter Phone Number"
                     onChange={(e) => setPhone(e.target.value)}
                     value={phone}
@@ -921,22 +890,56 @@ function Frontend({ isItemActivee }) {
         <div className="contact-icon">
           <div className="icon-name">
             <ul>
-            <MenuContainer link={"#"} icon={<AddIcCallIcon style={{ color: "black",background:"white",borderRadius:"10px" }} />} />
+              <MenuContainer
+                link={"#"}
+                icon={
+                  <AddIcCallIcon
+                    style={{
+                      color: "black",
+                      background: "white",
+                      borderRadius: "10px",
+                    }}
+                  />
+                }
+              />
             </ul>
             <p>0111 201 762</p>
           </div>
           <div className="iconp">
-          <div className="icon-name">
-          <ul>
-            <MenuContainer link={"https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"} icon={<FacebookIcon style={{ color: "#4867aa",background:"white",borderRadius:"10px" }} />} />
-            </ul>
-          </div>
-          <div className="icon-name">
-          <ul>
-            <MenuContainer link={"https://wa.me/c/254111201762"} icon={<WhatsAppIcon style={{ color: "#1bd741",background:"white",borderRadius:"10px"}} />} />
-            </ul>
-          </div>
-          
+            <div className="icon-name">
+              <ul>
+                <MenuContainer
+                  link={
+                    "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
+                  }
+                  icon={
+                    <FacebookIcon
+                      style={{
+                        color: "#4867aa",
+                        background: "white",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  }
+                />
+              </ul>
+            </div>
+            <div className="icon-name">
+              <ul>
+                <MenuContainer
+                  link={"https://wa.me/c/254111201762"}
+                  icon={
+                    <WhatsAppIcon
+                      style={{
+                        color: "#1bd741",
+                        background: "white",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  }
+                />
+              </ul>
+            </div>
           </div>
         </div>
       </div>

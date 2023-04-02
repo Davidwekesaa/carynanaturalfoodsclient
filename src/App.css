@@ -899,6 +899,7 @@ label {
   padding: 10px 25px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+ 
 }
 .footerr .contact-icon {
   display: flex;
@@ -921,6 +922,7 @@ label {
   justify-content: center;
   flex-direction: column;
 }
+
 /* table screens */
 @media screen and (min-width: 650px) {
   .rightContainer {

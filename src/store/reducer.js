@@ -1,6 +1,6 @@
 export const initialState = {
   cart:
-    localStorage.getItem("cart") && JSON.parse(localStorage.getItem("cart"))
+    localStorage.getItem("cart") && localStorage.getItem("cart")!= null
       ? JSON.parse(localStorage.getItem("cart"))
       : null,
   total: null,

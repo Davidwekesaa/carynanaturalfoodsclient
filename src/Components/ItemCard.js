@@ -3,7 +3,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { useStateValue } from "../store/StateProvider";
 import { actionType } from "../store/reducer";
 import { ToastContainer, toast } from "react-toastify";
-const cart = [];
+import { carrt } from "./Functions";
+// const cart = [];
 function ItemCard({
   imgSrc,
   name,
@@ -22,12 +23,12 @@ function ItemCard({
 
   useEffect(() => {
     if (isCart) {
-      cart.push(isCart);
-      console.log(cart);
-      localStorage.setItem("cart", JSON.stringify(cart));
+      carrt.push(isCart);
+      console.log(carrt);
+      localStorage.setItem("cart", JSON.stringify(carrt));
       dispatch({
         type: actionType.SET_CART,
-        cart: cart,
+        cart: carrt,
       });
     }
   }, [isCart]);

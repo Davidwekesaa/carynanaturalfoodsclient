@@ -63,7 +63,6 @@ const BasicTable = ({ rows }) => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log(updateId);
     await axios
       .put(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`, {
         status: status.toString(),
