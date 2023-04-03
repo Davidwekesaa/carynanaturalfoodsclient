@@ -54,7 +54,7 @@ const slideImages = [
     url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/1kg.png?alt=media&token=860bfb43-1df5-4ebd-aba1-4f4b82f1aa35",
     caption: "Slide 1",
     message:
-      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please use our contacts bellow .",
+      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please use our contacts below .",
   },
   {
     url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/350g.png?alt=media&token=a47d2ad8-8a15-4314-85d5-1e3399145ee9",
