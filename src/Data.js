@@ -1,4 +1,5 @@
 const Counties = [
+  { name: "Pick From Shop", code: "00" },
   { name: "Baringo", code: "01" },
   { name: "Bomet", code: "02" },
   { name: "Bungoma", code: "03" },
@@ -245,6 +246,8 @@ const locations = [
 ];
 
 const subCounties = [
+  { id: 1, code: "00", name: "Nairobi CBD Shop,Magic bussiness center" },
+  { id: 2, code: "00", name: "Kamutiini Shop,Lower kabete Rd" },
   { id: 1, code: "01", name: "Baringo Central" },
   { id: 2, code: "01", name: "Baringo North" },
   { id: 3, code: "01", name: "Baringo South" },

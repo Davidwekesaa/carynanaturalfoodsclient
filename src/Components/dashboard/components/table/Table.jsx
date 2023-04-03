@@ -110,6 +110,7 @@ const BasicTable = ({ rows }) => {
               <TableCell className="dash-tableCell">Order For</TableCell>
               <TableCell className="dash-tableCell">Address</TableCell>
               <TableCell className="dash-tableCell">Amount</TableCell>
+              <TableCell className="dash-tableCell">Delivey Fee</TableCell>
               <TableCell className="dash-tableCell">Orders</TableCell>
               <TableCell className="dash-tableCell">Payment</TableCell>
               <TableCell className="dash-tableCell">Status</TableCell>
@@ -138,6 +139,7 @@ const BasicTable = ({ rows }) => {
                 <TableCell className="dash-tableCell">{row.OrderFor}</TableCell>
                 <TableCell className="dash-tableCell">{row.address}</TableCell>
                 <TableCell className="dash-tableCell">{`Ksh ${row.total}`}</TableCell>
+                <TableCell className="dash-tableCell">{`Ksh ${row.delivery}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.payment}`}</TableCell>
                 <TableCell className="dash-tableCell">

@@ -894,12 +894,11 @@ label {
   align-items: center;
   justify-content: center;
   width: calc(100%);
-  background-color: var(--primary-color);
+  /* background-color: brown; */
   color: white;
   padding: 10px 25px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
- 
 }
 .footerr .contact-icon {
   display: flex;
@@ -916,13 +915,53 @@ label {
 .footerr .contact-icon .iconp .icon-name ul {
   margin-left: 20px;
 }
+.footerr .contact-icon .icon-name p {
+  color: black;
+}
 .icon-name {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 10px;
 }
-
+.footerr .contact-icon .icon-name ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerr .contact-icon .icon-name .ul-emails {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footerr .contact-icon .icon-name .ul-emails .emails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.instaa {
+  background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+}
+.droplet {
+  width: 40px;
+  position: absolute;
+  z-index: 0;
+}
+.droplet1 {
+  bottom: 0;
+}
+.droplet12 {
+  bottom: 0;
+}
+.droplet13 {
+  top: 0;
+}
 /* table screens */
 @media screen and (min-width: 650px) {
   .rightContainer {
@@ -1028,6 +1067,21 @@ label {
     /* min-height: 250px; */
   }
   .footerr {
-    width: calc(100% - 350px);
+    width: calc(100%);
+  }
+
+  .footerr .contact-icon .icon-name .ul-emails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .footerr .contact-icon .icon-name .ul-emails .emails {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

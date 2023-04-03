@@ -18,7 +18,9 @@ import HomeIcon from "@mui/icons-material/Home";
 // import SettingsIcon from "@mui/icons-material/Settings";
 import BannerName from "./BannerName";
 import delivery from "../assets/delivery.png";
-import deliver from "../assets/Black.png";
+import droplet1 from "../assets/droplet1.png";
+import droplet12 from "../assets/droplet12.png";
+import droplet13 from "../assets/droplet12.png";
 // import honey from "./assets/honey.png";
 import SubMenuContainer from "./SubMenuContainer";
 import MenuCard from "./MenuCard";
@@ -43,7 +45,9 @@ import SubMenuContainerCart from "./SubMenuContainerCart";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
+import InstagramIcon from "@mui/icons-material/Instagram";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import LanguageIcon from "@mui/icons-material/Language";
 
 const slideImages = [
   {
@@ -185,28 +189,38 @@ function Frontend({ isItemActivee }) {
   }, [search]);
   //selected county
   useEffect(() => {
-    const cuti = counties.toString().toLowerCase();
-    setSelectCode(
-      Counties.filter((item) => item.name.toString().toLowerCase() === cuti)
+    // const cuti = counties.toString().toLowerCase();
+    const cuti = Counties.find(
+      (item) =>
+        item?.name?.toString().toLowerCase() ===
+        counties?.toString().toLowerCase()
     );
-    console.log(selectCode[0]?.code);
+    setSelectCode(cuti ? cuti?.code : null);
+    console.log(selectCode);
   }, [counties]);
 
   //sub-County
   useEffect(() => {
-    const cuti = selectCode[0]?.code.toString().toLowerCase();
-    setSSbCounty(
-      subCounties.filter((item) => item.code.toString().toLowerCase() === cuti)
+    const cuti = selectCode?.toString().toLowerCase();
+    const gb = subCounties.filter(
+      (item) => item.code.toString().toLowerCase() === cuti
     );
+    setSSbCounty(gb ? gb : subCounties);
     console.log(sSbCounty);
-  }, [selectCode[0]?.code]);
+  }, [selectCode]);
 
   //set main dish on filter
+
   const setFilterData = (itemid, e) => {
     e.preventDefault();
-    setIsMainDish(
-      Items.filter((item) => item.itemId === itemid && item.qty != 0)
+    const poppo = Items.filter(
+      (item) => item.itemId === itemid && item.qty != 0
     );
+    if (poppo.length != 0) {
+      setIsMainDish(poppo);
+    } else {
+      setIsMainDish([]);
+    }
   };
   //set delivery
   // useEffect(() => {
@@ -225,10 +239,13 @@ function Frontend({ isItemActivee }) {
   function handleDelivery(event) {
     event.preventDefault();
     if (event.target.value.toLowerCase() === "kiambu") {
-      setDeliveryFee("100");
+      setDeliveryFee("200");
       setCounties(event.target.value);
     } else if (event.target.value.toLowerCase() === "nairobi") {
-      setDeliveryFee("150");
+      setDeliveryFee("300");
+      setCounties(event.target.value);
+    } else if (event.target.value.toLowerCase() === "pick from shop") {
+      setDeliveryFee("0");
       setCounties(event.target.value);
     } else {
       setDeliveryFee("350");
@@ -283,7 +300,7 @@ function Frontend({ isItemActivee }) {
 
         navigate("/login");
       } else {
-        const amount = parseInt(total) + parseInt(deliveryFee);
+        const amount = parseInt(total) ;
         let addrss = `${counties}/${subCountiese}/${location}`;
         setCheckDisble(true);
 
@@ -295,6 +312,7 @@ function Frontend({ isItemActivee }) {
             address: addrss,
             cart: cart,
             total: amount,
+            delivery:parseInt(deliveryFee),
             profile: user.profile,
             payment: mpesa,
             OrderFor:
@@ -355,6 +373,16 @@ function Frontend({ isItemActivee }) {
     }
   };
 
+  const handleSubCounty = (event) => {
+    event.preventDefault();
+    if (event.target.value.toLowerCase() === "kabete") {
+      setDeliveryFee("100");
+      setSubCountiese(event.target.value);
+    } else {
+      setSubCountiese(event.target.value);
+    }
+  };
+
   if (
     Items.length === 0 ||
     menuItems.length === 0 ||
@@ -390,7 +418,110 @@ function Frontend({ isItemActivee }) {
                 </div>
               ))}
             </Slide>
-            {/* dishContainer */}
+            <div className="footerr">
+              {/* <h1>Contact Us</h1> */}
+              <div className="contact-icon">
+                <div className="icon-name">
+                  <ul>
+                    <MenuContainer
+                      link={"#"}
+                      icon={
+                        <AddIcCallIcon
+                          style={{
+                            color: "black",
+                            background: "white",
+                            borderRadius: "10px",
+                            marginRight: "10px",
+                          }}
+                        />
+                      }
+                    />
+                    <MenuContainer
+                      link={"https://wa.me/c/254111201762"}
+                      icon={
+                        <WhatsAppIcon
+                          style={{
+                            color: "#1bd741",
+                            background: "white",
+                            borderRadius: "10px",
+                          }}
+                        />
+                      }
+                    />
+                  </ul>
+                  <p>0111 201 762</p>
+                </div>
+                <div className="icon-name">
+                  <ul>
+                    <MenuContainer
+                      link={"#"}
+                      icon={
+                        <InstagramIcon
+                          className="instaa"
+                          style={{
+                            color: "black",
+                            borderRadius: "10px",
+                            marginRight: "10px",
+                          }}
+                        />
+                      }
+                    />
+                    <MenuContainer
+                      link={
+                        "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
+                      }
+                      icon={
+                        <FacebookIcon
+                          style={{
+                            color: "#4867aa",
+                            background: "white",
+                            borderRadius: "10px",
+                          }}
+                        />
+                      }
+                    />
+                  </ul>
+                  <p>carynanaturalfoods</p>
+                </div>
+                <div className="icon-name">
+                  <ul className="ul-emails">
+                    <div className="emails">
+                      <MenuContainer
+                        link={"#"}
+                        icon={
+                          <MailOutlineIcon
+                            style={{
+                              color: "black",
+                              borderRadius: "10px",
+                              background: "white",
+                              marginRight: "10px",
+                            }}
+                          />
+                        }
+                      />
+                      <p>carynanaturalfoods@gmail.com</p>
+                    </div>
+
+                    <div className="emails">
+                      <MenuContainer
+                        link={"#"}
+                        icon={
+                          <LanguageIcon
+                            style={{
+                              color: "black",
+                              borderRadius: "10px",
+                              background: "white",
+                              marginRight: "10px",
+                            }}
+                          />
+                        }
+                      />
+                      <p>carynanaturalfoods.com</p>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             <div className="dishContainer progress">
               <CircularProgress className="circularProgress" />
@@ -589,13 +720,117 @@ function Frontend({ isItemActivee }) {
               ))}
             </Slide>
           </div>
+          <div className="footerr">
+            {/* <h1>Contact Us</h1> */}
+            <div className="contact-icon">
+              <div className="icon-name">
+                <ul>
+                  <MenuContainer
+                    link={"#"}
+                    icon={
+                      <AddIcCallIcon
+                        style={{
+                          color: "black",
+                          background: "white",
+                          borderRadius: "10px",
+                          marginRight: "10px",
+                        }}
+                      />
+                    }
+                  />
+                  <MenuContainer
+                    link={"https://wa.me/c/254111201762"}
+                    icon={
+                      <WhatsAppIcon
+                        style={{
+                          color: "#1bd741",
+                          background: "white",
+                          borderRadius: "10px",
+                        }}
+                      />
+                    }
+                  />
+                </ul>
+                <p>0111 201 762</p>
+              </div>
+              <div className="icon-name">
+                <ul>
+                  <MenuContainer
+                    link={"#"}
+                    icon={
+                      <InstagramIcon
+                        className="instaa"
+                        style={{
+                          color: "black",
+                          borderRadius: "10px",
+                          marginRight: "10px",
+                        }}
+                      />
+                    }
+                  />
+                  <MenuContainer
+                    link={
+                      "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
+                    }
+                    icon={
+                      <FacebookIcon
+                        style={{
+                          color: "#4867aa",
+                          background: "white",
+                          borderRadius: "10px",
+                        }}
+                      />
+                    }
+                  />
+                </ul>
+                <p>carynanaturalfoods</p>
+              </div>
+              <div className="icon-name">
+                <ul className="ul-emails">
+                  <div className="emails">
+                    <MenuContainer
+                      link={"#"}
+                      icon={
+                        <MailOutlineIcon
+                          style={{
+                            color: "black",
+                            borderRadius: "10px",
+                            background: "white",
+                            marginRight: "10px",
+                          }}
+                        />
+                      }
+                    />
+                    <p>carynanaturalfoods@gmail.com</p>
+                  </div>
+
+                  <div className="emails">
+                    <MenuContainer
+                      link={"#"}
+                      icon={
+                        <LanguageIcon
+                          style={{
+                            color: "black",
+                            borderRadius: "10px",
+                            background: "white",
+                            marginRight: "10px",
+                          }}
+                        />
+                      }
+                    />
+                    <p>carynanaturalfoods.com</p>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div className="dishContainer">
             <div className="menuCard">
               <SubMenuContainer name={"Menu category"} />
             </div>
             <div className="rowContainer">
               {menuItems &&
-                menuItems.map((data) => (
+                menuItems?.map((data) => (
                   <div
                     key={data._id}
                     onClick={(e) => setFilterData(data._id, e)}
@@ -623,19 +858,8 @@ function Frontend({ isItemActivee }) {
                       items={Items}
                     />
                   ))
-                : isMainDish.length != 0
-                ? isMainDish.map((data) =>
-                    // <ItemCard
-                    //   key={data._id}
-                    //   itemId={data._id}
-                    //   imgSrc={data.imgSrc}
-                    //   name={data.name}
-                    //   price={data.price}
-                    //   kg={data.kgs}
-                    //   capacity={data.capacity}
-                    //   items={Items}
-                    // />
-
+                : isMainDish?.length != 0
+                ? isMainDish?.map((data) =>
                     data.qty == 0 ? (
                       ""
                     ) : (
@@ -702,25 +926,21 @@ function Frontend({ isItemActivee }) {
                   list="sub-county"
                   id="sub-countyy"
                   className="custome-select"
-                  onChange={(e) => setSubCountiese(e.target.value)}
+                  onChange={handleSubCounty}
                   value={subCountiese}
                 />
                 <datalist id="sub-county">
-                  {
-                    // sSbCounty?.length != 0 ?
-                    // sSbCounty?.map((data, index) => (
-                    //   <option key={index} value={data.name}>
-                    //     {data.name}
-                    //   </option>
-                    // ))
-                    // :
-
-                    subCounties?.map((data, index) => (
-                      <option key={index} value={data.name}>
-                        {data.name}
-                      </option>
-                    ))
-                  }
+                  {sSbCounty
+                    ? sSbCounty?.map((data, index) => (
+                        <option key={index} value={data.name}>
+                          {data.name}
+                        </option>
+                      ))
+                    : subCounties?.map((data, index) => (
+                        <option key={index} value={data.name}>
+                          {data.name}
+                        </option>
+                      ))}
                 </datalist>
               </form>
 
@@ -876,6 +1096,9 @@ function Frontend({ isItemActivee }) {
             </button>
           </div>
         </div>
+        {/* <img src={droplet1} alt="" className="droplet droplet1" />
+          <img src={droplet12} alt="" className="droplet droplet12" />
+          <img src={droplet13} alt="" className="droplet droplet13" /> */}
       </main>
       {/* Bottom container */}
       {/* <div className="bottomMenu">
@@ -885,64 +1108,7 @@ function Frontend({ isItemActivee }) {
           <div className="indicator"></div>
         </ul>
       </div> */}
-      <div className="footerr">
-        <h1>Contact Us</h1>
-        <div className="contact-icon">
-          <div className="icon-name">
-            <ul>
-              <MenuContainer
-                link={"#"}
-                icon={
-                  <AddIcCallIcon
-                    style={{
-                      color: "black",
-                      background: "white",
-                      borderRadius: "10px",
-                    }}
-                  />
-                }
-              />
-            </ul>
-            <p>0111 201 762</p>
-          </div>
-          <div className="iconp">
-            <div className="icon-name">
-              <ul>
-                <MenuContainer
-                  link={
-                    "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
-                  }
-                  icon={
-                    <FacebookIcon
-                      style={{
-                        color: "#4867aa",
-                        background: "white",
-                        borderRadius: "10px",
-                      }}
-                    />
-                  }
-                />
-              </ul>
-            </div>
-            <div className="icon-name">
-              <ul>
-                <MenuContainer
-                  link={"https://wa.me/c/254111201762"}
-                  icon={
-                    <WhatsAppIcon
-                      style={{
-                        color: "#1bd741",
-                        background: "white",
-                        borderRadius: "10px",
-                      }}
-                    />
-                  }
-                />
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <ToastContainer />
     </div>
   );
