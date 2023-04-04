@@ -150,7 +150,7 @@ function Home() {
           ?.toString()
           .toLowerCase()
           .includes(filterr.toString().toLowerCase()) ||
-        item.orderFor
+        item.OrderFor
           ?.toString()
           .toLowerCase()
           .includes(filterr.toString().toLowerCase())
