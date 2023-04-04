@@ -6,6 +6,7 @@ import Feature from "../../components/feature/Feature";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 import axios from "axios";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import "./homestyle.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { actionType } from "../../../../store/reducer";
@@ -27,6 +28,9 @@ function Home() {
   const [todayOrder, setTodayOrder] = useState(null);
   const [weekOrder, setWeekOrder] = useState(null);
   const [monthOrder, setMonthOrder] = useState(null);
+
+  const [filterr, setFilterr] = useState("");
+  const [filterrData, setFilterrData] = useState(null);
 
   // const emptyFiled = () => toast.error("All checkout fields are required");
 
@@ -123,11 +127,38 @@ function Home() {
     getMonthOeders();
   }, []);
 
-
-
+  useEffect(() => {
+    let oder = orders?.filter(
+      (item) =>
+        item.userName
+          ?.toLowerCase()
+          .toString()
+          .includes(filterr.toString().toLowerCase()) ||
+        item.phone
+          ?.toString()
+          .toLowerCase()
+          .includes(filterr.toString().toLowerCase()) ||
+        item.status
+          ?.toString()
+          .toLowerCase()
+          .includes(filterr.toString().toLowerCase()) ||
+        item.payment
+          ?.toString()
+          .toLowerCase()
+          .includes(filterr.toString().toLowerCase()) ||
+        item.address
+          ?.toString()
+          .toLowerCase()
+          .includes(filterr.toString().toLowerCase()) ||
+        item.orderFor
+          ?.toString()
+          .toLowerCase()
+          .includes(filterr.toString().toLowerCase())
+    );
+    setFilterrData(oder);
+  }, [filterr]);
   // socket.on("receive_order", (data) => {
-    
-    
+
   //   // const audio = new Audio(notification);
   //   // audio.addEventListener("ended", () => {
   //   //   audio.currentTime = 0; // Reset the audio to the beginning
@@ -159,8 +190,7 @@ function Home() {
   //   // tastsuc();
 
   //   emptyFiled()
-   
-      
+
   // });
   return (
     <>
@@ -213,13 +243,32 @@ function Home() {
           </div>
 
           <div className="dash-tablecontainer">
-            <div className="dash-tableTitle">Latest Transactions</div>
+            <div className="dash-tableTitle">
+              <p>Latest Transactions</p>
+              <div className="dash-search dash-p">
+                <input
+                  className="dash-search-input filtering"
+                  type="text"
+                  placeholder="filter by name | phone | Payment | status | address |order for"
+                  onChange={(e) => setFilterr(e.target.value)}
+                  value={filterr}
+                />
+                <SearchRoundedIcon className="dash-navbaricon dash-searchicon" />
+              </div>
+            </div>
+
             {orders === null ? (
               <div className="dash-circular">
                 <CircularProgress />
               </div>
             ) : (
-              <Table rows={orders} />
+              <Table
+                rows={
+                  filterr.trim().length != 0 && filterrData
+                    ? filterrData
+                    : orders
+                }
+              />
             )}
           </div>
           {/* <div className="dash-circular"><CircularProgress/></div> */}
