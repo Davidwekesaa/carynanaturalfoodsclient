@@ -51,19 +51,19 @@ import LanguageIcon from "@mui/icons-material/Language";
 
 const slideImages = [
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/1kg.png?alt=media&token=860bfb43-1df5-4ebd-aba1-4f4b82f1aa35",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.34_AM-removebg-preview%20(1)scale(1kg).png?alt=media&token=2ae96bc9-7b89-4fca-8682-f801cc4b7d66",
     caption: "Slide 1",
     message:
       "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please use our contacts below .",
   },
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/350g.png?alt=media&token=a47d2ad8-8a15-4314-85d5-1e3399145ee9",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.33_AM-removebg-preview%20(1)scale(300).png?alt=media&token=d046dbda-720b-4eea-8b3e-2585b87929f1",
     caption: "Slide 2",
     message:
       "We offer you pure honey, harvested from Baringo's expansive forests, naturally processed and packed, with no additives used.",
   },
   {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/500g.png?alt=media&token=eedb7726-a64c-42a9-9f59-b72d41dc91cf",
+    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.34_AM__1_-removebg-preview%20(1)scale(500).png?alt=media&token=0fb26f40-4dad-466e-8b97-195098ada2bd",
     caption: "Slide 3",
     message:
       "Enjoy this thick and smooth product,100% full of natural taste of sweetness.",
@@ -300,26 +300,82 @@ function Frontend({ isItemActivee }) {
 
         navigate("/login");
       } else {
-        const amount = parseInt(total) ;
+        const amount = parseInt(total);
         let addrss = `${counties}/${subCountiese}/${location}`;
+        let userData =  {
+          userName: user.userName,
+          userEmail: user.userEmail,
+          phone: phone,
+          address: addrss,
+          cart: cart,
+          total: amount,
+          delivery: parseInt(deliveryFee),
+          profile: user.profile,
+          payment: mpesa,
+          OrderFor:
+            recepientName.toString().trim().length === 0
+              ? "none"
+              : recepientName,
+        }
         setCheckDisble(true);
 
+        // if( mpesa.toString().toLowerCase() === "mpesa"){
+
+        //   await axios
+        //   .post(`${process.env.REACT_APP_Server_Url}mpesa/`,userData)
+        //   .then((crt) => {
+        //     console.log(crt);
+        //     orderSuccess();
+        //     localStorage.setItem("county", "");
+        //     dispatch({
+        //       type: actionType.SET_COUNTY,
+        //       county: "",
+        //     });
+        //     localStorage.setItem("subCounty", "");
+        //     dispatch({
+        //       type: actionType.SET_SUBCOUNTY,
+        //       subCounty: "",
+        //     });
+        //     localStorage.setItem("location", "");
+        //     dispatch({
+        //       type: actionType.SET_LOCATION,
+        //       locationn: "",
+        //     });
+        //     localStorage.setItem("phone", "");
+        //     dispatch({
+        //       type: actionType.SET_PHONE,
+        //       phonee: "",
+        //     });
+
+        //     localStorage.setItem("fee", "");
+        //     dispatch({
+        //       type: actionType.SET_DELIVERY,
+        //       deliveryfee: "",
+        //     });
+
+        //     localStorage.setItem("cart", null);
+        //     dispatch({
+        //       type: actionType.SET_CART,
+        //       cart: null,
+        //     });
+
+        //     setDeliveryFee("");
+        //     setCounties("");
+        //     setLocation("");
+        //     setSubCountiese("");
+        //     setPhone("");
+
+        //     setToggleCartMenu(!toggleCartMenu);
+        //     carrt.splice(0, carrt.length);
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     orderError();
+        //   });
+
+        // }else{
         await axios
-          .post(`${process.env.REACT_APP_Server_Url}Orders/`, {
-            userName: user.userName,
-            userEmail: user.userEmail,
-            phone: phone,
-            address: addrss,
-            cart: cart,
-            total: amount,
-            delivery:parseInt(deliveryFee),
-            profile: user.profile,
-            payment: mpesa,
-            OrderFor:
-              recepientName.toString().trim().length === 0
-                ? "none"
-                : recepientName,
-          })
+          .post(`${process.env.REACT_APP_Server_Url}Orders/`,userData)
           .then((crt) => {
             console.log(crt);
             orderSuccess();
@@ -369,7 +425,8 @@ function Frontend({ isItemActivee }) {
             console.log(error);
             orderError();
           });
-      }
+        }
+      // }
     }
   };
 
