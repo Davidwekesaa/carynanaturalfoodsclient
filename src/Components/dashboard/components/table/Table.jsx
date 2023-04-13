@@ -97,8 +97,8 @@ const BasicTable = ({ rows }) => {
 
   function formatDate(isoDateString) {
     const date = new Date(isoDateString);
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+    const options = { day: "numeric", month: "long", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
   }
   return (
     <div>
@@ -124,42 +124,54 @@ const BasicTable = ({ rows }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row._id}
-                onClick={(e) => hundleRowClick(e, row.orders, row._id)}
-                className="dash-table-row"
-              >
-                <TableCell className="dash-tableCell">
-                  <div className="dash-productimgwrapper">
-                    <div className="dash-l-image">
-                      <img
-                        className="dash-image"
-                        src={row.userProfile}
-                        alt="productimg"
-                      />
+            {rows
+              ?.sort((a, b) => {
+                return new Date(b.createdAt) - new Date(a.createdAt);
+              })
+              ?.map((row) => (
+                <TableRow
+                  key={row._id}
+                  onClick={(e) => hundleRowClick(e, row.orders, row._id)}
+                  className="dash-table-row"
+                >
+                  <TableCell className="dash-tableCell">
+                    <div className="dash-productimgwrapper">
+                      <div className="dash-l-image">
+                        <img
+                          className="dash-image"
+                          src={row.userProfile}
+                          alt="productimg"
+                        />
+                      </div>
+                      {row.userName}
                     </div>
-                    {row.userName}
-                  </div>
-                </TableCell>
-                <TableCell className="dash-tableCell">{formatDate(row.createdAt)}</TableCell>
-                <TableCell className="dash-tableCell">{row.phone}</TableCell>
-                <TableCell className="dash-tableCell">{row.OrderFor}</TableCell>
-                <TableCell className="dash-tableCell">{row.address}</TableCell>
-                <TableCell className="dash-tableCell">{`Ksh ${row.total}`}</TableCell>
-                <TableCell className="dash-tableCell">{`Ksh ${row.delivery? row.delivery : 0}`}</TableCell>
-                <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
-                <TableCell className="dash-tableCell">{`${row.payment}`}</TableCell>
-                <TableCell className="dash-tableCell">
-                  <span
-                    className={`dash-status ${row.status}`}
-                    onClick={console.log(`${row.status}`)}
-                  >
-                    {row.status}
-                  </span>{" "}
-                </TableCell>
-              </TableRow>
-            ))}
+                  </TableCell>
+                  <TableCell className="dash-tableCell">
+                    {formatDate(row.createdAt)}
+                  </TableCell>
+                  <TableCell className="dash-tableCell">{row.phone}</TableCell>
+                  <TableCell className="dash-tableCell">
+                    {row.OrderFor}
+                  </TableCell>
+                  <TableCell className="dash-tableCell">
+                    {row.address}
+                  </TableCell>
+                  <TableCell className="dash-tableCell">{`Ksh ${row.total}`}</TableCell>
+                  <TableCell className="dash-tableCell">{`Ksh ${
+                    row.delivery ? row.delivery : 0
+                  }`}</TableCell>
+                  <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
+                  <TableCell className="dash-tableCell">{`${row.payment}`}</TableCell>
+                  <TableCell className="dash-tableCell">
+                    <span
+                      className={`dash-status ${row.status}`}
+                      onClick={console.log(`${row.status}`)}
+                    >
+                      {row.status}
+                    </span>{" "}
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
