@@ -94,6 +94,12 @@ const BasicTable = ({ rows }) => {
         console.log(error);
       });
   };
+
+  function formatDate(isoDateString) {
+    const date = new Date(isoDateString);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
   return (
     <div>
       <TableContainer component={Paper} className="dash-table">
@@ -106,6 +112,7 @@ const BasicTable = ({ rows }) => {
             <TableRow>
               {/* <TableCell className="dash-tableCell">Tracking ID</TableCell> */}
               <TableCell className="dash-tableCell">Customer</TableCell>
+              <TableCell className="dash-tableCell">Date</TableCell>
               <TableCell className="dash-tableCell">Phone</TableCell>
               <TableCell className="dash-tableCell">Order For</TableCell>
               <TableCell className="dash-tableCell">Address</TableCell>
@@ -135,11 +142,12 @@ const BasicTable = ({ rows }) => {
                     {row.userName}
                   </div>
                 </TableCell>
+                <TableCell className="dash-tableCell">{formatDate(row.createdAt)}</TableCell>
                 <TableCell className="dash-tableCell">{row.phone}</TableCell>
                 <TableCell className="dash-tableCell">{row.OrderFor}</TableCell>
                 <TableCell className="dash-tableCell">{row.address}</TableCell>
                 <TableCell className="dash-tableCell">{`Ksh ${row.total}`}</TableCell>
-                <TableCell className="dash-tableCell">{`Ksh ${row.delivery}`}</TableCell>
+                <TableCell className="dash-tableCell">{`Ksh ${row.delivery? row.delivery : 0}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.payment}`}</TableCell>
                 <TableCell className="dash-tableCell">
