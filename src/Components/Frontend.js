@@ -385,8 +385,6 @@ function Frontend({ isItemActivee }) {
             })
             .catch((error) => {
               setCheckDisble(false);
-              console.log(crt);
-              orderSuccess();
               localStorage.setItem("county", "");
               dispatch({
                 type: actionType.SET_COUNTY,
@@ -428,7 +426,7 @@ function Frontend({ isItemActivee }) {
 
               setToggleCartMenu(!toggleCartMenu);
               carrt.splice(0, carrt.length);
-              
+
               // orderError();
             });
         } else {
