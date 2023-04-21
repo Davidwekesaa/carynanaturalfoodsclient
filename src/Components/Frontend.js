@@ -428,6 +428,7 @@ function Frontend({ isItemActivee }) {
 
               setToggleCartMenu(!toggleCartMenu);
               carrt.splice(0, carrt.length);
+              
               // orderError();
             });
         } else {
