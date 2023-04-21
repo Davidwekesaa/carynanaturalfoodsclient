@@ -385,49 +385,7 @@ function Frontend({ isItemActivee }) {
             })
             .catch((error) => {
               setCheckDisble(false);
-              localStorage.setItem("county", "");
-              dispatch({
-                type: actionType.SET_COUNTY,
-                county: "",
-              });
-              localStorage.setItem("subCounty", "");
-              dispatch({
-                type: actionType.SET_SUBCOUNTY,
-                subCounty: "",
-              });
-              localStorage.setItem("location", "");
-              dispatch({
-                type: actionType.SET_LOCATION,
-                locationn: "",
-              });
-              localStorage.setItem("phone", "");
-              dispatch({
-                type: actionType.SET_PHONE,
-                phonee: "",
-              });
-
-              localStorage.setItem("fee", "");
-              dispatch({
-                type: actionType.SET_DELIVERY,
-                deliveryfee: "",
-              });
-
-              localStorage.setItem("cart", null);
-              dispatch({
-                type: actionType.SET_CART,
-                cart: null,
-              });
-
-              setDeliveryFee("");
-              setCounties("");
-              setLocation("");
-              setSubCountiese("");
-              setPhone("");
-
-              setToggleCartMenu(!toggleCartMenu);
-              carrt.splice(0, carrt.length);
-
-              // orderError();
+              orderError();
             });
         } else {
           await axios
