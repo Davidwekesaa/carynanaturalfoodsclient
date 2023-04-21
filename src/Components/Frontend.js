@@ -257,6 +257,14 @@ function Frontend({ isItemActivee }) {
     toast.success(
       `Thanks for your oder ${user.userName}! Your order will be delivered in the next 24hrs. Enjoy its natural taste.`
     );
+
+  const transactionProcessed = () =>
+    toast.success(`Please wait as we process your payment.`);
+
+  const transactionProcessedSuccess = () =>
+    toast.success(`payment processed successfuly .`);
+
+  const payMentError = () => toast.error("Payment process error");
   const orderError = () => toast.error("Error during checkout");
   const emptyFiled = () => toast.error("All checkout fields are required");
 
@@ -302,7 +310,7 @@ function Frontend({ isItemActivee }) {
       } else {
         const amount = parseInt(total);
         let addrss = `${counties}/${subCountiese}/${location}`;
-        let userData =  {
+        let userData = {
           userName: user.userName,
           userEmail: user.userEmail,
           phone: phone,
@@ -316,117 +324,166 @@ function Frontend({ isItemActivee }) {
             recepientName.toString().trim().length === 0
               ? "none"
               : recepientName,
-        }
+        };
         setCheckDisble(true);
 
-        // if( mpesa.toString().toLowerCase() === "mpesa"){
+        if (mpesa.toString().toLowerCase() === "mpesa") {
+          transactionProcessed();
+          await axios
+            .post(`${process.env.REACT_APP_Server_Url}mpesa/`, userData)
+            .then((crt) => {
+              console.log(crt?.data);
+              if (crt?.data === 0) {
+                console.log(crt);
+                orderSuccess();
+                localStorage.setItem("county", "");
+                dispatch({
+                  type: actionType.SET_COUNTY,
+                  county: "",
+                });
+                localStorage.setItem("subCounty", "");
+                dispatch({
+                  type: actionType.SET_SUBCOUNTY,
+                  subCounty: "",
+                });
+                localStorage.setItem("location", "");
+                dispatch({
+                  type: actionType.SET_LOCATION,
+                  locationn: "",
+                });
+                localStorage.setItem("phone", "");
+                dispatch({
+                  type: actionType.SET_PHONE,
+                  phonee: "",
+                });
 
-        //   await axios
-        //   .post(`${process.env.REACT_APP_Server_Url}mpesa/`,userData)
-        //   .then((crt) => {
-        //     console.log(crt);
-        //     orderSuccess();
-        //     localStorage.setItem("county", "");
-        //     dispatch({
-        //       type: actionType.SET_COUNTY,
-        //       county: "",
-        //     });
-        //     localStorage.setItem("subCounty", "");
-        //     dispatch({
-        //       type: actionType.SET_SUBCOUNTY,
-        //       subCounty: "",
-        //     });
-        //     localStorage.setItem("location", "");
-        //     dispatch({
-        //       type: actionType.SET_LOCATION,
-        //       locationn: "",
-        //     });
-        //     localStorage.setItem("phone", "");
-        //     dispatch({
-        //       type: actionType.SET_PHONE,
-        //       phonee: "",
-        //     });
+                localStorage.setItem("fee", "");
+                dispatch({
+                  type: actionType.SET_DELIVERY,
+                  deliveryfee: "",
+                });
 
-        //     localStorage.setItem("fee", "");
-        //     dispatch({
-        //       type: actionType.SET_DELIVERY,
-        //       deliveryfee: "",
-        //     });
+                localStorage.setItem("cart", null);
+                dispatch({
+                  type: actionType.SET_CART,
+                  cart: null,
+                });
 
-        //     localStorage.setItem("cart", null);
-        //     dispatch({
-        //       type: actionType.SET_CART,
-        //       cart: null,
-        //     });
+                setDeliveryFee("");
+                setCounties("");
+                setLocation("");
+                setSubCountiese("");
+                setPhone("");
 
-        //     setDeliveryFee("");
-        //     setCounties("");
-        //     setLocation("");
-        //     setSubCountiese("");
-        //     setPhone("");
+                setToggleCartMenu(!toggleCartMenu);
+                carrt.splice(0, carrt.length);
+                transactionProcessedSuccess();
+              } else {
+                setCheckDisble(false);
+                payMentError();
+              }
+            })
+            .catch((error) => {
+              setCheckDisble(false);
+              console.log(crt);
+              orderSuccess();
+              localStorage.setItem("county", "");
+              dispatch({
+                type: actionType.SET_COUNTY,
+                county: "",
+              });
+              localStorage.setItem("subCounty", "");
+              dispatch({
+                type: actionType.SET_SUBCOUNTY,
+                subCounty: "",
+              });
+              localStorage.setItem("location", "");
+              dispatch({
+                type: actionType.SET_LOCATION,
+                locationn: "",
+              });
+              localStorage.setItem("phone", "");
+              dispatch({
+                type: actionType.SET_PHONE,
+                phonee: "",
+              });
 
-        //     setToggleCartMenu(!toggleCartMenu);
-        //     carrt.splice(0, carrt.length);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //     orderError();
-        //   });
+              localStorage.setItem("fee", "");
+              dispatch({
+                type: actionType.SET_DELIVERY,
+                deliveryfee: "",
+              });
 
-        // }else{
-        await axios
-          .post(`${process.env.REACT_APP_Server_Url}Orders/`,userData)
-          .then((crt) => {
-            console.log(crt);
-            orderSuccess();
-            localStorage.setItem("county", "");
-            dispatch({
-              type: actionType.SET_COUNTY,
-              county: "",
+              localStorage.setItem("cart", null);
+              dispatch({
+                type: actionType.SET_CART,
+                cart: null,
+              });
+
+              setDeliveryFee("");
+              setCounties("");
+              setLocation("");
+              setSubCountiese("");
+              setPhone("");
+
+              setToggleCartMenu(!toggleCartMenu);
+              carrt.splice(0, carrt.length);
+              // orderError();
             });
-            localStorage.setItem("subCounty", "");
-            dispatch({
-              type: actionType.SET_SUBCOUNTY,
-              subCounty: "",
-            });
-            localStorage.setItem("location", "");
-            dispatch({
-              type: actionType.SET_LOCATION,
-              locationn: "",
-            });
-            localStorage.setItem("phone", "");
-            dispatch({
-              type: actionType.SET_PHONE,
-              phonee: "",
-            });
+        } else {
+          await axios
+            .post(`${process.env.REACT_APP_Server_Url}Orders/`, userData)
+            .then((crt) => {
+              console.log(crt);
+              orderSuccess();
+              localStorage.setItem("county", "");
+              dispatch({
+                type: actionType.SET_COUNTY,
+                county: "",
+              });
+              localStorage.setItem("subCounty", "");
+              dispatch({
+                type: actionType.SET_SUBCOUNTY,
+                subCounty: "",
+              });
+              localStorage.setItem("location", "");
+              dispatch({
+                type: actionType.SET_LOCATION,
+                locationn: "",
+              });
+              localStorage.setItem("phone", "");
+              dispatch({
+                type: actionType.SET_PHONE,
+                phonee: "",
+              });
 
-            localStorage.setItem("fee", "");
-            dispatch({
-              type: actionType.SET_DELIVERY,
-              deliveryfee: "",
+              localStorage.setItem("fee", "");
+              dispatch({
+                type: actionType.SET_DELIVERY,
+                deliveryfee: "",
+              });
+
+              localStorage.setItem("cart", null);
+              dispatch({
+                type: actionType.SET_CART,
+                cart: null,
+              });
+
+              setDeliveryFee("");
+              setCounties("");
+              setLocation("");
+              setSubCountiese("");
+              setPhone("");
+
+              setToggleCartMenu(!toggleCartMenu);
+              carrt.splice(0, carrt.length);
+            })
+            .catch((error) => {
+              setCheckDisble(false);
+              orderError();
             });
-
-            localStorage.setItem("cart", null);
-            dispatch({
-              type: actionType.SET_CART,
-              cart: null,
-            });
-
-            setDeliveryFee("");
-            setCounties("");
-            setLocation("");
-            setSubCountiese("");
-            setPhone("");
-
-            setToggleCartMenu(!toggleCartMenu);
-            carrt.splice(0, carrt.length);
-          })
-          .catch((error) => {
-            console.log(error);
-            orderError();
-          });
         }
-      // }
+      }
     }
   };
 
@@ -691,7 +748,7 @@ function Frontend({ isItemActivee }) {
                   <div className="checkboxes">
                     <form className="paywith-wat">
                       <div className="checkboxCash">
-                        <label htmlFor="cash">Cash</label>
+                        <label htmlFor="cash">On delivery</label>
                         <input
                           type="radio"
                           id="cash"
@@ -702,7 +759,7 @@ function Frontend({ isItemActivee }) {
                       </div>
 
                       <div className="checkboxCash">
-                        <label htmlFor="mpesa">Mpesa</label>
+                        <label htmlFor="mpesa">Before delivery</label>
                         <input
                           type="radio"
                           id="mpesa"
@@ -1066,11 +1123,11 @@ function Frontend({ isItemActivee }) {
                 </p>
               </div>
               <div className="total check">
-                <p>Pay On Delivery With</p>
+                <p>{`Pay with mpesa (Till: 5412199)`}</p>
                 <div className="checkboxes">
                   <form className="paywith-wat">
                     <div className="checkboxCash">
-                      <label htmlFor="cash">Cash</label>
+                      <label htmlFor="cash">{`On delivery`}</label>
                       <input
                         type="radio"
                         id="cash"
@@ -1081,7 +1138,7 @@ function Frontend({ isItemActivee }) {
                     </div>
 
                     <div className="checkboxCash">
-                      <label htmlFor="mpesa">{`Mpesa(Till no: 5412199)`}</label>
+                      <label htmlFor="mpesa">{`Before delivery`}</label>
                       <input
                         type="radio"
                         id="mpesa"
