@@ -162,7 +162,7 @@ const BasicTable = ({ rows }) => {
                     row.delivery ? row.delivery : 0
                   }`}</TableCell>
                   <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
-                  <TableCell className="dash-tableCell">{`${row.payment}`}</TableCell>
+                  <TableCell className="dash-tableCell">{`${row.payment === "cash" ? "On Delivery" : "Before Delivery"}`}</TableCell>
                   <TableCell className="dash-tableCell">{`${
                     row.transactionId ? row.transactionId : ""
                   }`}</TableCell>
