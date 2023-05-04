@@ -97,7 +97,14 @@ const BasicTable = ({ rows }) => {
 
   function formatDate(isoDateString) {
     const date = new Date(isoDateString);
-    const options = { day: "numeric", month: "long", year: "numeric" };
+    const options = {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
     return date.toLocaleDateString("en-US", options);
   }
   return (
@@ -162,7 +169,9 @@ const BasicTable = ({ rows }) => {
                     row.delivery ? row.delivery : 0
                   }`}</TableCell>
                   <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
-                  <TableCell className="dash-tableCell">{`${row.payment === "cash" ? "On Delivery" : "Before Delivery"}`}</TableCell>
+                  <TableCell className="dash-tableCell">{`${
+                    row.payment === "cash" ? "On Delivery" : "Before Delivery"
+                  }`}</TableCell>
                   <TableCell className="dash-tableCell">{`${
                     row.transactionId ? row.transactionId : ""
                   }`}</TableCell>
