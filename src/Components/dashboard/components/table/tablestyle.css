@@ -5,6 +5,9 @@
   align-items: center;
   overflow-x: scroll;
 }
+.dash-table-table {
+  width: 100% !important;
+}
 
 .dash-productimgwrapper {
   display: flex;
@@ -100,6 +103,9 @@
 .dash-tableCell:hover {
   cursor: pointer;
 }
+.dash-tableCell-date {
+  width: 100% !important;
+}
 .dash-dialog {
   width: 100%;
   height: 100%;
@@ -127,45 +133,44 @@
   cursor: pointer;
   color: green;
 }
-.order-del{
+.order-del {
   margin-left: 40px;
 }
 
-.order-del:hover{
+.order-del:hover {
   cursor: pointer;
 }
-.text-inpt{
+.text-inpt {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
 }
-.text-inpt > h4{
+.text-inpt > h4 {
   margin-bottom: 6px;
 }
-.text-inpt > .submit-text > button{
+.text-inpt > .submit-text > button {
   width: 60px;
   padding: 10px;
   margin-left: 20px;
   border: none;
 }
 
-.text-inpt > .submit-text > button:hover{
+.text-inpt > .submit-text > button:hover {
   cursor: pointer;
   box-shadow: 0px 0px 20px rgba(0, 0, 0.1, 0.6);
 }
-.submit-text{
+.submit-text {
   display: flex;
   justify-content: flex-end;
 }
-.bt-nt-show{
+.bt-nt-show {
   display: none;
 }
-.bt-show{
-display: block;
+.bt-show {
+  display: block;
 }
-.dash-input-box{
+.dash-input-box {
   height: 100px;
   width: 100%;
   padding: 20px;

@@ -154,7 +154,7 @@ const BasicTable = ({ rows }) => {
                       {row.userName}
                     </div>
                   </TableCell>
-                  <TableCell className="dash-tableCell">
+                  <TableCell className="dash-tableCell dash-tableCell-date">
                     {formatDate(row.createdAt)}
                   </TableCell>
                   <TableCell className="dash-tableCell">{row.phone}</TableCell>
@@ -169,7 +169,7 @@ const BasicTable = ({ rows }) => {
                     row.delivery ? row.delivery : 0
                   }`}</TableCell>
                   <TableCell className="dash-tableCell">{`${row.orders.length}`}</TableCell>
-                  <TableCell className="dash-tableCell">{`${
+                  <TableCell className="dash-tableCell dash-tableCell-date">{`${
                     row.payment === "cash" ? "On Delivery" : "Before Delivery"
                   }`}</TableCell>
                   <TableCell className="dash-tableCell">{`${

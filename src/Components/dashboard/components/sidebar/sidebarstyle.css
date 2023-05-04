@@ -1,5 +1,6 @@
 .dash-sidebar {
-  flex: 1;
+  /* flex: 1; */
+  width: 10%;
   background-color: #161a27;
   position: sticky;
   left: 0;
