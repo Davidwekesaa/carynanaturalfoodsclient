@@ -5,9 +5,9 @@
   align-items: center;
   overflow-x: scroll;
 }
-.dash-table-table {
+/* .dash-table-table {
   width: 100% !important;
-}
+} */
 
 .dash-productimgwrapper {
   display: flex;
