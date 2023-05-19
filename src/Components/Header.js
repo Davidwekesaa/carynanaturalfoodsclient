@@ -19,7 +19,7 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
   };
   return (
     <header>
-      
+
       <img src={logo} alt="Logo" className="logo" />
       <div className="inputBox">
         <SearchIcon className="searchIcon" />
@@ -29,7 +29,7 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           onChange={(e) => serch(e.target.value)}
         />
       </div>
-      <div className="shoppingCart">
+      <div className="shoppingCart todisplay">
         <ShoppingCartIcon className="cart" />
         <div className="cart_content">
           <p>
@@ -60,7 +60,18 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
         className={`toggleMenu ${toggleCartMenu ? "toggleMenuDeg" : ""}`}
         onClick={(e) => setToggleCartMenu(!toggleCartMenu)}
       >
-        <BarChartIcon className="toggleIcon" />
+        <div className="shoppingCart">
+        <ShoppingCartIcon className="cart" />
+        <div className="cart_content">
+          <p>
+            {cart
+              ? cart.reduce((acc, curr) => {
+                  return acc + curr.qty;
+                }, 0)
+              : 0}
+          </p>
+        </div>
+      </div>
       </div>
     </header>
   );

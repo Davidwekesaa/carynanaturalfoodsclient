@@ -115,7 +115,7 @@ header {
 }
 .toggleMenu {
   transition: 0.34s;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 .toggleMenu .toggleIcon {
   color: #373848;
@@ -449,7 +449,7 @@ main {
 
 .toggleMenuDeg {
   transition: 0.34s;
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
 }
 
 .rightContainer .debitCardContainer {
@@ -777,6 +777,10 @@ label {
 .bottomMenu ul li:nth-child(4).active ~ .indicator {
   transform: translate(calc(60px * 3));
 }
+
+.todisplay{
+  display: none;
+}
 /* bottom menu ends */
 
 /* table screens */
@@ -806,6 +810,9 @@ label {
 @media screen and (min-width: 950px) {
   .toggleMenu {
     display: none;
+  }
+  .todisplay{
+    display: block;
   }
   .profileContainer .userName {
     display: block;
