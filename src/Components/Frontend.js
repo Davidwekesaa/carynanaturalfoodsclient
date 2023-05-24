@@ -36,6 +36,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LanguageIcon from "@mui/icons-material/Language";
 import Sliderr from "./Sliderr";
 import Footer from "./Footer";
+import RowContainer from "./RowContainer";
 
 function Frontend({ isItemActivee }) {
   const [
@@ -604,22 +605,7 @@ function Frontend({ isItemActivee }) {
             <div className="menuCard">
               <SubMenuContainer name={"Menu category"} />
             </div>
-            <div className="rowContainer">
-              {menuItems &&
-                menuItems?.map((data) => (
-                  <div
-                    key={data._id}
-                    onClick={(e) => setFilterData(data._id, e)}
-                  >
-                    <MenuCard
-                      // imgSrc={data.imgSrc}
-                      imgSrc={data.imgSrc}
-                      name={data.name}
-                      isActive={menuItems.indexOf(data)}
-                    />
-                  </div>
-                ))}
-            </div>
+            <RowContainer menuItems={menuItems} setFilterData={setFilterData} />
             <div className="dishItemContainer">
               {search.trim().length != 0
                 ? isMainDishSearch?.map((data) => (
