@@ -55,68 +55,64 @@ function ItemCard({
     setToggleCartMenu(!toggleCartMenu);
   };
 
-  
   return (
-    <div>
-      <div
-        className="itemCard"
-        id={itemId}
-        onClick={
-          // (e) =>
-          // setIsCart({
-          //   id: itemId,
-          //   name: name,
-          //   imgSrc: imgSrc,
-          //   price: price,
-          //   total: price,
-          //   capacity: capacity,
-          //   kgs: kg,
-          //   qty: 1,
-          // })
-          checkIsItemInCart
-        }
-      >
-        <div className="imgBox">
-          <img src={imgSrc} alt="" className="itemImage" />
-        </div>
-        <div className="itemContent">
-          <h3 className="itemName">{name}</h3>
-          <div className="bottom">
-            <div className="pricediv">
-              <h4>
-                {kg}
-                <span> {capacity}</span>
-              </h4>
-              <h3 className="price">
-                <span>Ksh </span>
-                <p> {price}</p>
-              </h3>
-            </div>
-            <i
-              className="addToCart"
-              // onClick={() => setIsCart(items.find((n) => n.id === itemId))}
-              onClick={
-                // (e) =>
-                // setIsCart({
-                //   id: itemId,
-                //   name: name,
-                //   imgSrc: imgSrc,
-                //   price: price,
-                //   total: price,
-                //   capacity: capacity,
-                //   kgs: kg,
-                //   qty: 1,
-                // })
-
-                checkIsItemInCart
-              }
-            >
-              <AddIcon />
-            </i>
+    <div
+      className="itemCard mbl"
+      id={itemId}
+      onClick={
+        // (e) =>
+        // setIsCart({
+        //   id: itemId,
+        //   name: name,
+        //   imgSrc: imgSrc,
+        //   price: price,
+        //   total: price,
+        //   capacity: capacity,
+        //   kgs: kg,
+        //   qty: 1,
+        // })
+        checkIsItemInCart
+      }
+    >
+      <div className="imgBox mblImageBox">
+        <img src={imgSrc} alt="" className="itemImage" />
+      </div>
+      <div className="itemContent">
+        <h3 className="itemName">{name}</h3>
+        <div className="bottom">
+          <div className="pricediv">
+            <h4>
+              {kg}
+              <span> {capacity}</span>
+            </h4>
+            <h3 className="price">
+              <span>Ksh </span>
+              <p> {price}</p>
+            </h3>
           </div>
+          <i
+            className="addToCart"
+            // onClick={() => setIsCart(items.find((n) => n.id === itemId))}
+            onClick={
+              // (e) =>
+              // setIsCart({
+              //   id: itemId,
+              //   name: name,
+              //   imgSrc: imgSrc,
+              //   price: price,
+              //   total: price,
+              //   capacity: capacity,
+              //   kgs: kg,
+              //   qty: 1,
+              // })
+
+              checkIsItemInCart
+            }
+          >
+            <AddIcon />
+          </i>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }
