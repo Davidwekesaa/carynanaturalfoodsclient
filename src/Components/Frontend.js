@@ -37,6 +37,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import Sliderr from "./Sliderr";
 import Footer from "./Footer";
 import RowContainer from "./RowContainer";
+import DishItemContainer from "./DishItemContainer";
 
 function Frontend({ isItemActivee }) {
   const [
@@ -606,59 +607,15 @@ function Frontend({ isItemActivee }) {
               <SubMenuContainer name={"Menu category"} />
             </div>
             <RowContainer menuItems={menuItems} setFilterData={setFilterData} />
-            <div className="dishItemContainer">
-              {search.trim().length != 0
-                ? isMainDishSearch?.map((data) => (
-                    <ItemCard
-                      key={data._id}
-                      itemId={data._id}
-                      imgSrc={data.imgSrc}
-                      name={data.name}
-                      price={data.price}
-                      kg={data.kgs}
-                      capacity={data.capacity}
-                      items={Items}
-                    />
-                  ))
-                : isMainDish?.length != 0
-                ? isMainDish?.map((data) =>
-                    data.qty == 0 ? (
-                      ""
-                    ) : (
-                      <ItemCard
-                        key={data._id}
-                        itemId={data._id}
-                        imgSrc={data.imgSrc}
-                        name={data.name}
-                        price={data.price}
-                        kg={data.kgs}
-                        capacity={data.capacity}
-                        items={Items}
-                        setToggleCartMenu={setToggleCartMenu}
-                        toggleCartMenu={toggleCartMenu}
-                      />
-                    )
-                  )
-                : Items?.filter((item) => item.itemId === isItemActive).map(
-                    (data) =>
-                      data.qty == 0 ? (
-                        ""
-                      ) : (
-                        <ItemCard
-                          key={data._id}
-                          itemId={data._id}
-                          imgSrc={data.imgSrc}
-                          name={data.name}
-                          price={data.price}
-                          kg={data.kgs}
-                          capacity={data.capacity}
-                          items={Items}
-                          setToggleCartMenu={setToggleCartMenu}
-                          toggleCartMenu={toggleCartMenu}
-                        />
-                      )
-                  )}
-            </div>
+            <DishItemContainer
+              search={search}
+              isMainDishSearch={isMainDishSearch}
+              isMainDish={isMainDish}
+              setToggleCartMenu={setToggleCartMenu}
+              toggleCartMenu={toggleCartMenu}
+              Items={Items}
+              isItemActive={isItemActive}
+            />
           </div>
 
           <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
