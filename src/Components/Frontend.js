@@ -1,30 +1,16 @@
 import { useEffect, useState } from "react";
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   useNavigate,
-//   Switch,
-// } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
-// import { Switch, Route,useNavigate } from 'react-router';
 import "../App.css";
 import Header from "./Header";
 import MenuContainer from "./MenuContainer";
 import HomeIcon from "@mui/icons-material/Home";
-// import ChatIcon from "@mui/icons-material/Chat";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-// import SettingsIcon from "@mui/icons-material/Settings";
 import BannerName from "./BannerName";
 import delivery from "../assets/delivery.png";
 import droplet1 from "../assets/droplet1.png";
 import droplet12 from "../assets/droplet12.png";
 import droplet13 from "../assets/droplet12.png";
-// import honey from "./assets/honey.png";
 import SubMenuContainer from "./SubMenuContainer";
 import MenuCard from "./MenuCard";
-// import { menuItems, Items } from "./Components/Data";
 import ItemCard from "./ItemCard";
 import DebitCard from "./DebitCard";
 import CartItem from "./CartItem";
@@ -48,27 +34,8 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LanguageIcon from "@mui/icons-material/Language";
-
-const slideImages = [
-  {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.34_AM-removebg-preview%20(1)scale(1kg).png?alt=media&token=2ae96bc9-7b89-4fca-8682-f801cc4b7d66",
-    caption: "Slide 1",
-    message:
-      "Welcome to Caryna Natural Foods' virtual shop.For enquiries and support, please use our contacts below .",
-  },
-  {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.33_AM-removebg-preview%20(1)scale(300).png?alt=media&token=d046dbda-720b-4eea-8b3e-2585b87929f1",
-    caption: "Slide 2",
-    message:
-      "We offer you pure honey, harvested from Baringo's expansive forests, naturally processed and packed, with no additives used.",
-  },
-  {
-    url: "https://firebasestorage.googleapis.com/v0/b/caryna-379b6.appspot.com/o/WhatsApp_Image_2023-04-13_at_8.28.34_AM__1_-removebg-preview%20(1)scale(500).png?alt=media&token=0fb26f40-4dad-466e-8b97-195098ada2bd",
-    caption: "Slide 3",
-    message:
-      "Enjoy this thick and smooth product,100% full of natural taste of sweetness.",
-  },
-];
+import Sliderr from "./Sliderr";
+import Footer from "./Footer";
 
 function Frontend({ isItemActivee }) {
   const [
@@ -125,7 +92,6 @@ function Frontend({ isItemActivee }) {
         .get(`${process.env.REACT_APP_Server_Url}Category/`)
         .then((category) => {
           getAllProducts();
-          // setItems(product.data);
           setmenuItems(category.data);
           setisItemActive(category.data[0]._id);
           setIsMainDish(
@@ -189,7 +155,6 @@ function Frontend({ isItemActivee }) {
   }, [search]);
   //selected county
   useEffect(() => {
-    // const cuti = counties.toString().toLowerCase();
     const cuti = Counties.find(
       (item) =>
         item?.name?.toString().toLowerCase() ===
@@ -222,20 +187,6 @@ function Frontend({ isItemActivee }) {
       setIsMainDish([]);
     }
   };
-  //set delivery
-  // useEffect(() => {
-  //   if (counties.toLowerCase() === "kiambu") {
-  //     setDeliveryFee("100");
-  //     // setCounties(event.target.value);
-  //   } else if (counties.toLowerCase() === "nairobi") {
-  //     setDeliveryFee("150");
-  //     // setCounties(event.target.value);
-  //   } else {
-  //     setDeliveryFee("350");
-  //     // setCounties(event.target.value);
-  //   }
-  // }, [counties]);
-
   function handleDelivery(event) {
     event.preventDefault();
     if (event.target.value.toLowerCase() === "kiambu") {
@@ -457,7 +408,6 @@ function Frontend({ isItemActivee }) {
   if (
     Items.length === 0 ||
     menuItems.length === 0 ||
-    // isMainDish.length === 0 ||
     isItemActive.trim().length === 0
   ) {
     return (
@@ -470,129 +420,8 @@ function Frontend({ isItemActivee }) {
         {/* main container */}
         <main>
           <div className="mainContainer">
-            {/* Banner */}
-            <Slide arrows={false}>
-              {slideImages.map((slideImage, index) => (
-                <div className="Banner" key={index}>
-                  <img
-                    src={slideImage.url}
-                    alt="delivery"
-                    className="deliver"
-                  />
-                  <div className="bnn">
-                    <BannerName
-                      name={user === null ? "" : user.userName}
-                      bannername={slideImage.message}
-                    />
-                  </div>
-                  <img src={delivery} alt="delivery" className="delivery" />
-                </div>
-              ))}
-            </Slide>
-            <div className="footerr">
-              {/* <h1>Contact Us</h1> */}
-              <div className="contact-icon">
-                <div className="icon-name">
-                  <ul>
-                    <MenuContainer
-                      link={"#"}
-                      icon={
-                        <AddIcCallIcon
-                          style={{
-                            color: "black",
-                            background: "white",
-                            borderRadius: "10px",
-                            marginRight: "10px",
-                          }}
-                        />
-                      }
-                    />
-                    <MenuContainer
-                      link={"https://wa.me/c/254111201762"}
-                      icon={
-                        <WhatsAppIcon
-                          style={{
-                            color: "#1bd741",
-                            background: "white",
-                            borderRadius: "10px",
-                          }}
-                        />
-                      }
-                    />
-                  </ul>
-                  <p>0111 201 762</p>
-                </div>
-                <div className="icon-name">
-                  <ul>
-                    <MenuContainer
-                      link={"#"}
-                      icon={
-                        <InstagramIcon
-                          className="instaa"
-                          style={{
-                            color: "black",
-                            borderRadius: "10px",
-                            marginRight: "10px",
-                          }}
-                        />
-                      }
-                    />
-                    <MenuContainer
-                      link={
-                        "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
-                      }
-                      icon={
-                        <FacebookIcon
-                          style={{
-                            color: "#4867aa",
-                            background: "white",
-                            borderRadius: "10px",
-                          }}
-                        />
-                      }
-                    />
-                  </ul>
-                  <p>carynanaturalfoods</p>
-                </div>
-                <div className="icon-name">
-                  <ul className="ul-emails">
-                    <div className="emails">
-                      <MenuContainer
-                        link={"#"}
-                        icon={
-                          <MailOutlineIcon
-                            style={{
-                              color: "black",
-                              borderRadius: "10px",
-                              background: "white",
-                              marginRight: "10px",
-                            }}
-                          />
-                        }
-                      />
-                      <p>carynanaturalfoods@gmail.com</p>
-                    </div>
-
-                    <div className="emails">
-                      <MenuContainer
-                        link={"#"}
-                        icon={
-                          <LanguageIcon
-                            style={{
-                              color: "black",
-                              borderRadius: "10px",
-                              background: "white",
-                              marginRight: "10px",
-                            }}
-                          />
-                        }
-                      />
-                      <p>carynanaturalfoods.com</p>
-                    </div>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <Sliderr />
+            <Footer />
 
             <div className="dishContainer progress">
               <CircularProgress className="circularProgress" />
@@ -728,9 +557,6 @@ function Frontend({ isItemActivee }) {
                     </form>
                   </div>
                   <div className={`inputBox `}>
-                    {/* ${
-                              mpesa && mpesa === "cash" ? "cashh" : "mpesaa"
-                            } */}
                     <input
                       type="text"
                       placeholder="Enter Phone Number"
@@ -749,7 +575,6 @@ function Frontend({ isItemActivee }) {
                     : false
                 }
               >
-                {/* onClick={checkOut} */}
                 <p> Check Out</p>
               </button>
             </div>
@@ -772,129 +597,9 @@ function Frontend({ isItemActivee }) {
         <div className="mainContainer">
           {/* Banner */}
           <div>
-            <Slide arrows={false}>
-              {slideImages.map((slideImage, index) => (
-                <div className="Banner" key={index}>
-                  <img
-                    src={slideImage.url}
-                    alt="delivery"
-                    className="deliver"
-                  />
-                  <div className="bnn">
-                    <BannerName
-                      name={user === null ? "" : user.userName}
-                      bannername={slideImage.message}
-                    />
-                  </div>
-                  <img src={delivery} alt="delivery" className="delivery" />
-                </div>
-              ))}
-            </Slide>
+            <Sliderr />
           </div>
-          <div className="footerr">
-            {/* <h1>Contact Us</h1> */}
-            <div className="contact-icon">
-              <div className="icon-name">
-                <ul>
-                  <MenuContainer
-                    link={"#"}
-                    icon={
-                      <AddIcCallIcon
-                        style={{
-                          color: "black",
-                          background: "white",
-                          borderRadius: "10px",
-                          marginRight: "10px",
-                        }}
-                      />
-                    }
-                  />
-                  <MenuContainer
-                    link={"https://wa.me/c/254111201762"}
-                    icon={
-                      <WhatsAppIcon
-                        style={{
-                          color: "#1bd741",
-                          background: "white",
-                          borderRadius: "10px",
-                        }}
-                      />
-                    }
-                  />
-                </ul>
-                <p>0111 201 762</p>
-              </div>
-              <div className="icon-name">
-                <ul>
-                  <MenuContainer
-                    link={"#"}
-                    icon={
-                      <InstagramIcon
-                        className="instaa"
-                        style={{
-                          color: "black",
-                          borderRadius: "10px",
-                          marginRight: "10px",
-                        }}
-                      />
-                    }
-                  />
-                  <MenuContainer
-                    link={
-                      "https://www.facebook.com/profile.php?id=100086557214247&mibextid=ZbWKwL"
-                    }
-                    icon={
-                      <FacebookIcon
-                        style={{
-                          color: "#4867aa",
-                          background: "white",
-                          borderRadius: "10px",
-                        }}
-                      />
-                    }
-                  />
-                </ul>
-                <p>carynanaturalfoods</p>
-              </div>
-              <div className="icon-name">
-                <ul className="ul-emails">
-                  <div className="emails">
-                    <MenuContainer
-                      link={"#"}
-                      icon={
-                        <MailOutlineIcon
-                          style={{
-                            color: "black",
-                            borderRadius: "10px",
-                            background: "white",
-                            marginRight: "10px",
-                          }}
-                        />
-                      }
-                    />
-                    <p>carynanaturalfoods@gmail.com</p>
-                  </div>
-
-                  <div className="emails">
-                    <MenuContainer
-                      link={"#"}
-                      icon={
-                        <LanguageIcon
-                          style={{
-                            color: "black",
-                            borderRadius: "10px",
-                            background: "white",
-                            marginRight: "10px",
-                          }}
-                        />
-                      }
-                    />
-                    <p>carynanaturalfoods.com</p>
-                  </div>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <Footer />
           <div className="dishContainer">
             <div className="menuCard">
               <SubMenuContainer name={"Menu category"} />
@@ -1025,13 +730,6 @@ function Frontend({ isItemActivee }) {
                   onChange={(e) => setLocation(e.target.value)}
                   value={location}
                 />
-                {/* <datalist id="location">
-                  {locations?.map((data, index) => (
-                    <option key={index} value={data.name}>
-                      {data.name}
-                    </option>
-                  ))}
-                </datalist> */}
               </form>
             </div>
 
@@ -1117,17 +815,6 @@ function Frontend({ isItemActivee }) {
                         checked={recepientTrue}
                       />
                     </div>
-
-                    {/* <div className="checkboxCash">
-                      <label htmlFor="mpesa">{`Mpesa(Till no: 5412199)`}</label>
-                      <input
-                        type="radio"
-                        id="mpesa"
-                        name="payment"
-                        value="mpesa"
-                        onChange={(e) => setMpesa(e.target.value)}
-                      />
-                    </div> */}
                   </form>
                   <div
                     className={`inputBox ${
@@ -1143,9 +830,6 @@ function Frontend({ isItemActivee }) {
                   </div>
                 </div>
                 <div className={`inputBox `}>
-                  {/* ${
-                              mpesa && mpesa === "cash" ? "cashh" : "mpesaa"
-                            } */}
                   <input
                     type="number"
                     placeholder="Enter Phone Number"
