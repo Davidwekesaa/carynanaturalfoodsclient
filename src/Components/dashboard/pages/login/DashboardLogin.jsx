@@ -32,7 +32,7 @@ function DashboardLogin() {
             type: actionType.SET_USER,
             user: logins.data,
           });
-          logins.data;
+
           user.userRights === 0 ? rights() : navigate("/dashboard");
         })
         .catch((error) => {

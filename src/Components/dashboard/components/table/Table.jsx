@@ -71,18 +71,11 @@ const BasicTable = ({ rows }) => {
         orderSuccess();
         handleClose();
       })
-      .catch((error) => {
-        error;
-      });
+      .catch((error) => {});
   };
 
   const hundleRowDelete = async (e) => {
     e.preventDefault();
-
-    // const confirmed = confirm("you are about to delete!");
-    // if (confirmed) {
-    //   (true);
-    // }
 
     await axios
       .delete(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`)
@@ -90,9 +83,7 @@ const BasicTable = ({ rows }) => {
         orderDeleteSuccess();
         handleClose();
       })
-      .catch((error) => {
-        error;
-      });
+      .catch((error) => {});
   };
 
   function formatDate(isoDateString) {

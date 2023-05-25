@@ -18,9 +18,7 @@ function Expenses() {
         .then((user) => {
           setUsers(user.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getMonthAmount = async () => {
@@ -30,9 +28,7 @@ function Expenses() {
           // (useroders.data)
           setDataAmout(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     getTotalUsers();

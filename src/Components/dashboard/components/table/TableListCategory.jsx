@@ -84,14 +84,13 @@ const TableListCategory = ({ rows }) => {
   const hundleRowDelete = async (e, id) => {
     e.preventDefault();
     // setUpdateId(idRowDialog);
-    id;
+
     await axios
       .delete(`${process.env.REACT_APP_Server_Url}Category/${id}`)
       .then((user) => {
         orderSuccess();
       })
       .catch((error) => {
-        error;
         orderError();
       });
   };

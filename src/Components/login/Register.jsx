@@ -12,10 +12,6 @@ import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase";
-// import { AuthContext } from "../../context/AuthContext";
-
 function Register() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -23,7 +19,6 @@ function Register() {
   const [imgUpload, setImgUpload] = useState(null);
   const [{}, dispatch] = useStateValue();
   const navigate = useNavigate();
-  // const { dispatch } = useContext(AuthContext);
   const emptyFields = () => toast.error("All the fields are required");
   const wronUser = () => toast.error("An Error Occured");
 
@@ -55,7 +50,6 @@ function Register() {
           navigate("/");
         })
         .catch((error) => {
-          error;
           wronUser();
         });
     }
@@ -65,7 +59,6 @@ function Register() {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      ("select file to upload");
     } else {
       const imageRef = ref(storage, `profile/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {

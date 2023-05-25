@@ -34,28 +34,11 @@ const Expense = ({ rows }) => {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}about/`)
         .then((user) => {
-          user.data.length != 0 ? user.data[0]._id : "";
-          setOpenEdit(user.data.length != 0 ? user.data[0].About : "");
-          setOpenAboutId(user.data.length != 0 ? user.data[0]._id : "");
+          setOpenEdit(user?.data?.length !== 0 ? user.data[0]?.About : "");
+          setOpenAboutId(user?.data?.length !== 0 ? user.data[0]?._id : "");
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
-
-    // const updateAbout = async () => {
-    //   await axios
-    //     .put(`${process.env.REACT_APP_Server_Url}about/${openAboutId}`,{
-    //       About:openEdit
-    //     })
-    //     .then((useroders) => {
-    //       // (useroders.data)
-    //       deleteSuccess()
-    //     })
-    //     .catch((error) => {
-    //       (error);
-    //     });
-    // };
 
     getAbout();
     // updateAbout()
@@ -71,9 +54,7 @@ const Expense = ({ rows }) => {
         // (useroders.data)
         deleteSuccess();
       })
-      .catch((error) => {
-        error;
-      });
+      .catch((error) => {});
   };
 
   const handleSend = async (e) => {
@@ -86,74 +67,11 @@ const Expense = ({ rows }) => {
         // (useroders.data)
         deleteSuccess();
       })
-      .catch((error) => {
-        error;
-      });
+      .catch((error) => {});
   };
 
   return (
     <div className="dash-table-data">
-      {/* <div className="dash-user-add-user">
-        <div
-          className="dash-user-add-user-add add-category"
-          onClick={handleClickOpenCategory}
-        >
-          <LibraryAddIcon />
-          <p>Add Expense</p>
-        </div>
-
-        <div className="dash-user-add-user-add" onClick={handleClickOpen}>
-          <LibraryAddIcon />
-          <p>Add Expense Cost</p>
-        </div>
-      </div> */}
-      {/* <TableContainer component={Paper} className="dash-table">
-        <Table
-          sx={{ minWidth: 650, textAlign: "center" }}
-          aria-label="simple table"
-        >
-          <TableHead className="dash-tableHead">
-            <TableRow>
-              <TableCell className="dash-tableCell">Expense</TableCell>
-              <TableCell className="dash-tableCell">Total Cost(ksh)</TableCell>
-              {user.userRights !== 1 ? (
-                <TableCell className="dash-tableCell">Action</TableCell>
-              ) : (
-                ""
-              )}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row._id} className="dash-table-row">
-                <TableCell className="dash-tableCell">
-                  <div className="dash-productimgwrapper">
-                    {row.expenseName}
-                  </div>
-                </TableCell>
-                <TableCell className="dash-tableCell">
-                  {`${row.expenses?.reduce((acc, curr) => {
-                    return acc + curr;
-                  }, 0)}`}
-                </TableCell>
-                {user.userRights !== 1 ? (
-                  <TableCell className="dash-tableCell">
-                    <span
-                      className={`dash-status declined`}
-                      // onClick={(`${row.status}`)}
-                      onClick={(e) => hundleRowDelete(e, row._id)}
-                    >
-                      Delete
-                    </span>
-                  </TableCell>
-                ) : (
-                  ""
-                )}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer> */}
       <div className="text-inpt">
         <h4>Edit about Page</h4>
         <textarea
@@ -166,7 +84,7 @@ const Expense = ({ rows }) => {
           <button
             onClick={handleUpdate}
             className={
-              openAboutId.trim().length === 0 ? "bt-nt-show" : "  bt-show"
+              openAboutId?.trim().length === 0 ? "bt-nt-show" : "  bt-show"
             }
           >
             update
@@ -174,7 +92,7 @@ const Expense = ({ rows }) => {
           <button
             onClick={handleSend}
             className={
-              openAboutId.trim().length === 0 ? "bt-show" : "bt-nt-show"
+              openAboutId?.trim().length === 0 ? "bt-show" : "bt-nt-show"
             }
           >
             send
@@ -182,42 +100,6 @@ const Expense = ({ rows }) => {
         </div>
         <div></div>
       </div>
-
-      {/* <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        // className="dash-dialog"
-        fullWidth={true}
-        maxWidth="sm"
-      >
-        <DialogTitle id="alert-dialog-title" className="dialog-dish-clear">
-          <ClearIcon onClick={handleClose} />
-        </DialogTitle>
-        <DialogContent>
-          <UserExpenses />
-        </DialogContent>
-        <DialogActions className="dailog-dash-status"></DialogActions>
-      </Dialog> */}
-
-      {/* <Dialog
-        open={openCategory}
-        onClose={handleClickCloseCategory}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        // className="dash-dialog"
-        fullWidth={true}
-        maxWidth="sm"
-      >
-        <DialogTitle id="alert-dialog-title" className="dialog-dish-clear">
-          <ClearIcon onClick={handleClickCloseCategory} />
-        </DialogTitle>
-        <DialogContent>
-          <Expenser />
-        </DialogContent>
-        <DialogActions className="dailog-dash-status"></DialogActions>
-      </Dialog> */}
       <ToastContainer />
     </div>
   );

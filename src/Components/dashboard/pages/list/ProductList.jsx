@@ -19,9 +19,7 @@ function ProductList() {
         .then((user) => {
           setUsers(user.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getTotalCategory = async () => {
@@ -30,9 +28,7 @@ function ProductList() {
         .then((user) => {
           setCategory(user.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     getTotalUsers();

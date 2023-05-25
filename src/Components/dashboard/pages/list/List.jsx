@@ -16,9 +16,7 @@ function List() {
         .then((user) => {
           setUsers(user.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     getTotalUsers();

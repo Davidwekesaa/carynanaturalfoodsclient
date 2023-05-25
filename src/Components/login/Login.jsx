@@ -32,7 +32,7 @@ function Login() {
             type: actionType.SET_USER,
             user: logins.data,
           });
-          logins.data;
+
           navigate("/");
         })
         .catch((error) => {

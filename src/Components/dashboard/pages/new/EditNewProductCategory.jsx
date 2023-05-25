@@ -24,13 +24,11 @@ function NewProductCategory({ id }) {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}Category/${id}`)
         .then((category) => {
-          category?.data;
           setFile(category?.data?.imgSrc);
           setName(category?.data?.name);
         })
         .catch((error) => {
           // wronUser();
-          error;
         });
     };
     getCategory();
@@ -51,7 +49,6 @@ function NewProductCategory({ id }) {
         })
         .catch((error) => {
           // wronUser();
-          error;
         });
     }
   };
@@ -61,7 +58,6 @@ function NewProductCategory({ id }) {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      ("select file to upload");
     } else {
       const imageRef = ref(storage, `category/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {

@@ -33,7 +33,6 @@ function NewProductCategory({ img, title, inputs }) {
         })
         .catch((error) => {
           // wronUser();
-          error;
         });
     }
   };

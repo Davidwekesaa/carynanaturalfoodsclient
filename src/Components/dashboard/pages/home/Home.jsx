@@ -44,9 +44,7 @@ function Home() {
         .then((user) => {
           setUsers(user.data.length);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
     const getTotalOders = async () => {
       await axios
@@ -55,9 +53,7 @@ function Home() {
           setcountOrders(oders.data.orders.length);
           setOrdersTotal(oders.data.totalSum);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getUserOders = async () => {
@@ -66,9 +62,7 @@ function Home() {
         .then((useroders) => {
           setOrders(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getMonthAmount = async () => {
@@ -78,21 +72,16 @@ function Home() {
           // (useroders.data)
           setDataAmout(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getTodayOeders = async () => {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}todayorders/`)
         .then((useroders) => {
-          useroders.data;
           setTodayOrder(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getWeekOeders = async () => {
@@ -102,9 +91,7 @@ function Home() {
           // (useroders.data)
           setWeekOrder(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
 
     const getMonthOeders = async () => {
@@ -114,9 +101,7 @@ function Home() {
           // (useroders.data)
           setMonthOrder(useroders.data);
         })
-        .catch((error) => {
-          error;
-        });
+        .catch((error) => {});
     };
     getTotalUsers();
     getTotalOders();
