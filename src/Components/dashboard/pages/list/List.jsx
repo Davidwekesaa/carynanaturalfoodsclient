@@ -17,7 +17,7 @@ function List() {
           setUsers(user.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -40,23 +40,23 @@ function List() {
     // </div>
 
     <div className="dash-home">
-    <Sidebar />
-    <div className="dash-homecontainer">
-      <Navbar />
-      
-      <div className="dash-tablecontainer">
-        {/* <div className="dash-tableTitle">Latest Transactions</div> */}
-        {users === null ? (
-          <div className="dash-circular">
-            <CircularProgress />
-          </div>
-        ) : (
-          <TableList rows={users} />
-        )}
+      <Sidebar />
+      <div className="dash-homecontainer">
+        <Navbar />
+
+        <div className="dash-tablecontainer">
+          {/* <div className="dash-tableTitle">Latest Transactions</div> */}
+          {users === null ? (
+            <div className="dash-circular">
+              <CircularProgress />
+            </div>
+          ) : (
+            <TableList rows={users} />
+          )}
+        </div>
+        {/* <div className="dash-circular"><CircularProgress/></div> */}
       </div>
-      {/* <div className="dash-circular"><CircularProgress/></div> */}
     </div>
-  </div>
   );
 }
 

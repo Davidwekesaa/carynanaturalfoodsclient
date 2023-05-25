@@ -34,7 +34,7 @@ function NewUserProduct({ img, title, inputs }) {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     };
     getCategory();
@@ -74,7 +74,7 @@ function NewUserProduct({ img, title, inputs }) {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     }
   };
@@ -84,7 +84,7 @@ function NewUserProduct({ img, title, inputs }) {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      console.log("select file to upload");
+      ("select file to upload");
     } else {
       const imageRef = ref(storage, `products/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {

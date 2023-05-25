@@ -82,21 +82,21 @@ const TableListProduct = ({ rows }) => {
   const hundleRowDelete = async (e, id) => {
     e.preventDefault();
     // setUpdateId(idRowDialog);
-    console.log(id);
+    id;
     await axios
       .delete(`${process.env.REACT_APP_Server_Url}Product/${id}`)
       .then((user) => {
         orderSuccess();
       })
       .catch((error) => {
-        console.log(error);
+        error;
         orderError();
       });
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    // console.log(updateId);
+    // (updateId);
     // await axios
     //   .put(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`, {
     //     status: status.toString(),
@@ -106,7 +106,7 @@ const TableListProduct = ({ rows }) => {
     //     handleClose();
     //   })
     //   .catch((error) => {
-    //     console.log(error);
+    //     (error);
     //   });
   };
   return (
@@ -167,23 +167,27 @@ const TableListProduct = ({ rows }) => {
                 <TableCell className="dash-tableCell">{`${row.kgs} ${row.capacity}`}</TableCell>
                 <TableCell className="dash-tableCell">{`${row.qty}`}</TableCell>
 
-              {user.userRights !== 1 ?  <TableCell className="dash-tableCell">
-                  <span
-                    className={`dash-status edit`}
-                    // onClick={console.log(`${row.status}`)}
-                    onClick={(e) => handleClickOpenEdit(e, row._id)}
-                  >
-                    Edit
-                  </span>
-                  {"   "}
-                  <span
-                    className={`dash-status declined`}
-                    // onClick={console.log(`${row.status}`)}
-                    onClick={(e) => hundleRowDelete(e, row._id)}
-                  >
-                    Delete
-                  </span>
-                </TableCell>: "" }
+                {user.userRights !== 1 ? (
+                  <TableCell className="dash-tableCell">
+                    <span
+                      className={`dash-status edit`}
+                      // onClick={(`${row.status}`)}
+                      onClick={(e) => handleClickOpenEdit(e, row._id)}
+                    >
+                      Edit
+                    </span>
+                    {"   "}
+                    <span
+                      className={`dash-status declined`}
+                      // onClick={(`${row.status}`)}
+                      onClick={(e) => hundleRowDelete(e, row._id)}
+                    >
+                      Delete
+                    </span>
+                  </TableCell>
+                ) : (
+                  ""
+                )}
               </TableRow>
             ))}
           </TableBody>

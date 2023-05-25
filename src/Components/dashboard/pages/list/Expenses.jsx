@@ -19,7 +19,7 @@ function Expenses() {
           setUsers(user.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -27,16 +27,16 @@ function Expenses() {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}month/`)
         .then((useroders) => {
-          // console.log(useroders.data)
+          // (useroders.data)
           setDataAmout(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
     getTotalUsers();
-    getMonthAmount()
+    getMonthAmount();
   }, []);
   return (
     // <div className="dash-list">
@@ -53,7 +53,6 @@ function Expenses() {
     //     )}
     //   </div>
     // </div>
-
 
     <div className="dash-home">
       <Sidebar />

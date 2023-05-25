@@ -20,7 +20,7 @@ function UserExpenses() {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     };
     getCategory();
@@ -40,7 +40,7 @@ function UserExpenses() {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     }
   };

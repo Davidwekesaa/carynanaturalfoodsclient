@@ -17,7 +17,7 @@ const Datatable = () => {
 
   // const handleDelete = (id) => {
   //   setData(data.filter((item) => item.id !== id));
-  //   console.log("delte");
+  //   ("delte");
   // };
 
   //fetch all data from firebase ans store it
@@ -31,7 +31,7 @@ const Datatable = () => {
   //       });
   //       setData(list);
   //     } catch (err) {
-  //       console.log(err);
+  //       (err);
   //     }
   //   };
   //   fetchData();
@@ -49,7 +49,7 @@ const Datatable = () => {
   //       setData(list);
   //     },
   //     (error) => {
-  //       console.log(error);
+  //       (error);
   //     }
   //   );
 
@@ -57,7 +57,7 @@ const Datatable = () => {
   //     unsub();
   //   };
   // }, []);
-  // console.log(data);
+  // (data);
 
   //delete data
   // const handleDelete = async (id) => {
@@ -65,7 +65,7 @@ const Datatable = () => {
   //     await deleteDoc(doc(db, "users", id));
   //     setData(data.filter((item) => item.id !== id));
   //   } catch (err) {
-  //     console.log(err);
+  //     (err);
   //   }
   // };
 

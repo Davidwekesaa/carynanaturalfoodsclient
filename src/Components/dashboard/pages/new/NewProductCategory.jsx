@@ -34,7 +34,7 @@ function NewProductCategory({ img, title, inputs }) {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     }
   };
@@ -44,7 +44,7 @@ function NewProductCategory({ img, title, inputs }) {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      console.log("select file to upload");
+      ("select file to upload");
     } else {
       const imageRef = ref(storage, `category/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {
@@ -79,7 +79,7 @@ function NewProductCategory({ img, title, inputs }) {
               {/*  onSubmit={handleDataSubmit} */}
               <div className="dash-formInput">
                 <label htmlFor="file" className="dash-label">
-                Category Image:
+                  Category Image:
                   <FileUploadRoundedIcon className="dash-icon" />
                 </label>
                 <input

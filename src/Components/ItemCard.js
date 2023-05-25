@@ -3,8 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useStateValue } from "../store/StateProvider";
 import { actionType } from "../store/reducer";
 import { ToastContainer, toast } from "react-toastify";
-import { carrt } from "./Functions";
-// const cart = [];
+import { addItemToCart, carrt } from "./Functions";
 function ItemCard({
   imgSrc,
   name,
@@ -16,31 +15,18 @@ function ItemCard({
   setToggleCartMenu,
   toggleCartMenu,
 }) {
+  const [{ cart }, dispatch] = useStateValue();
   const [isCart, setIsCart] = useState(null);
-  const [{}, dispatch] = useStateValue();
-
-  const alreadyInCart = () => toast.success("Item added to cart successfuly");
+  const alreadyInCart = (p) => toast.success(p, { autoClose: 500 });
 
   useEffect(() => {
     if (isCart) {
-      carrt.push(isCart);
-      console.log(carrt);
-      localStorage.setItem("cart", JSON.stringify(carrt));
-      dispatch({
-        type: actionType.SET_CART,
-        cart: carrt,
-      });
+      addItemToCart(cart, carrt, isCart, dispatch, actionType, alreadyInCart);
     }
   }, [isCart]);
 
   const checkIsItemInCart = (e, ids) => {
     e.preventDefault();
-    // const itCart = cart !=null? cart.filter((item) => item.id === ids) : [];
-    // console.log(itCart?.length);
-    // if (itCart?.length !== 0) {
-    //   alreadyInCart();
-
-    // } else {
     setIsCart({
       id: itemId,
       name: name,
@@ -51,7 +37,7 @@ function ItemCard({
       kgs: kg,
       qty: 1,
     });
-    alreadyInCart();
+
     setToggleCartMenu(!toggleCartMenu);
   };
 

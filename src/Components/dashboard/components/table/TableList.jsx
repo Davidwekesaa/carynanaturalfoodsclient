@@ -62,7 +62,7 @@ const TableList = ({ rows }) => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    // console.log(updateId);
+    // (updateId);
     // await axios
     //   .put(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`, {
     //     status: status.toString(),
@@ -72,21 +72,21 @@ const TableList = ({ rows }) => {
     //     handleClose();
     //   })
     //   .catch((error) => {
-    //     console.log(error);
+    //     (error);
     //   });
   };
 
   const hundleRowDelete = async (e, id) => {
     e.preventDefault();
     // setUpdateId(idRowDialog);
-    console.log(id);
+    id;
     await axios
       .delete(`${process.env.REACT_APP_Server_Url}user/${id}`)
       .then((user) => {
         orderSuccess();
       })
       .catch((error) => {
-        console.log(error);
+        error;
         orderError();
       });
   };
@@ -141,14 +141,14 @@ const TableList = ({ rows }) => {
                 <TableCell className="dash-tableCell">
                   {/* <span
                     className={`dash-status edit`}
-                    // onClick={console.log(`${row.status}`)}
+                    // onClick={(`${row.status}`)}
                   >
                     Edit
                   </span>
                   {"   "} */}
                   <span
                     className={`dash-status declined`}
-                    // onClick={console.log(`${row.status}`)}
+                    // onClick={(`${row.status}`)}
                     onClick={(e) => hundleRowDelete(e, row._id)}
                   >
                     Delete
@@ -173,7 +173,7 @@ const TableList = ({ rows }) => {
           <ClearIcon onClick={handleClose} />
         </DialogTitle>
         <DialogContent>
-        <NewUser />
+          <NewUser />
         </DialogContent>
         {/* <DialogActions className="dailog-dash-status">
           

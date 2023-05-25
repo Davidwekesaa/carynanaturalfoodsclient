@@ -112,7 +112,7 @@ const Expense = ({ rows }) => {
                   <TableCell className="dash-tableCell">
                     <span
                       className={`dash-status declined`}
-                      // onClick={console.log(`${row.status}`)}
+                      // onClick={(`${row.status}`)}
                       onClick={(e) => hundleRowDelete(e, row._id)}
                     >
                       Delete

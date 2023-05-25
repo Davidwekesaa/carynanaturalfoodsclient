@@ -84,21 +84,21 @@ const TableListCategory = ({ rows }) => {
   const hundleRowDelete = async (e, id) => {
     e.preventDefault();
     // setUpdateId(idRowDialog);
-    console.log(id);
+    id;
     await axios
       .delete(`${process.env.REACT_APP_Server_Url}Category/${id}`)
       .then((user) => {
         orderSuccess();
       })
       .catch((error) => {
-        console.log(error);
+        error;
         orderError();
       });
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    // console.log(updateId);
+    // (updateId);
     // await axios
     //   .put(`${process.env.REACT_APP_Server_Url}UserOrders/${updateId}`, {
     //     status: status.toString(),
@@ -108,7 +108,7 @@ const TableListCategory = ({ rows }) => {
     //     handleClose();
     //   })
     //   .catch((error) => {
-    //     console.log(error);
+    //     (error);
     //   });
   };
   return (
@@ -167,7 +167,7 @@ const TableListCategory = ({ rows }) => {
                   <TableCell className="dash-tableCell">
                     <span
                       className={`dash-status edit`}
-                      // onClick={console.log(`${row.status}`)}
+                      // onClick={(`${row.status}`)}
                       onClick={(e) => handleClickOpenEdit(e, row._id)}
                     >
                       Edit
@@ -175,7 +175,7 @@ const TableListCategory = ({ rows }) => {
                     {"   "}
                     <span
                       className={`dash-status declined`}
-                      // onClick={console.log(`${row.status}`)}
+                      // onClick={(`${row.status}`)}
                       onClick={(e) => hundleRowDelete(e, row._id)}
                     >
                       Delete

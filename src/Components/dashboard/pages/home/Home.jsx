@@ -45,7 +45,7 @@ function Home() {
           setUsers(user.data.length);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
     const getTotalOders = async () => {
@@ -56,7 +56,7 @@ function Home() {
           setOrdersTotal(oders.data.totalSum);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -67,7 +67,7 @@ function Home() {
           setOrders(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -75,11 +75,11 @@ function Home() {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}month/`)
         .then((useroders) => {
-          // console.log(useroders.data)
+          // (useroders.data)
           setDataAmout(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -87,11 +87,11 @@ function Home() {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}todayorders/`)
         .then((useroders) => {
-          console.log(useroders.data);
+          useroders.data;
           setTodayOrder(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -99,11 +99,11 @@ function Home() {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}weekorders/`)
         .then((useroders) => {
-          // console.log(useroders.data)
+          // (useroders.data)
           setWeekOrder(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -111,11 +111,11 @@ function Home() {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}monthorders/`)
         .then((useroders) => {
-          // console.log(useroders.data)
+          // (useroders.data)
           setMonthOrder(useroders.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
     getTotalUsers();
@@ -150,8 +150,7 @@ function Home() {
           ?.toString()
           .toLowerCase()
           .includes(filterr.toString().toLowerCase()) ||
-        item.OrderFor
-          ?.toString()
+        item.OrderFor?.toString()
           .toLowerCase()
           .includes(filterr.toString().toLowerCase())
     );
@@ -194,18 +193,18 @@ function Home() {
   // });
 
   const monthOrders = {
-    "January": 0,
-    "February": 1,
-    "March": 2,
-    "April": 3,
-    "May": 4,
-    "June": 5,
-    "July": 6,
-    "August": 7,
-    "September": 8,
-    "October": 9,
-    "November": 10,
-    "December": 11
+    January: 0,
+    February: 1,
+    March: 2,
+    April: 3,
+    May: 4,
+    June: 5,
+    July: 6,
+    August: 7,
+    September: 8,
+    October: 9,
+    November: 10,
+    December: 11,
   };
   return (
     <>
@@ -250,7 +249,9 @@ function Home() {
               <Chart
                 aspect={2 / 1}
                 title={"Total  Revenue Per Month"}
-                data={dataAmout?.sort((a, b) => monthOrders[a.name] - monthOrders[b.name])}
+                data={dataAmout?.sort(
+                  (a, b) => monthOrders[a.name] - monthOrders[b.name]
+                )}
               />
             ) : (
               ""

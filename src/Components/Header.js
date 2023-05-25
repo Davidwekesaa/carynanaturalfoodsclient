@@ -11,9 +11,6 @@ import ChatIcon from "@mui/icons-material/Chat";
 function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
   const [{ cart, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  // useEffect(() => {
-
-  // }, [cart]);
 
   const hundleLogout = (e) => {
     e.preventDefault();
@@ -34,10 +31,6 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
     }
   };
 
-  // const ContactMe = (e) => {
-  //   e.preventDefault();
-  //   navigate("/contact")
-  // };
   return (
     <header>
       <img src={logo} alt="Logo" className="logo" />
@@ -49,17 +42,13 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           onChange={(e) => serch(e.target.value)}
         />
       </div>
-      {/* <div className="contact-us" onClick={ContactMe}>
-        <h1>Contact Us</h1>
-        <ChatIcon />
-      </div> */}
       <div className="shoppingCart todisplay">
         <ShoppingCartIcon className="cart" />
         <div className="cart_content">
           <p>
             {cart
               ? cart.reduce((acc, curr) => {
-                  return acc + curr.qty;
+                  return acc + curr?.qty;
                 }, 0)
               : 0}
           </p>
@@ -96,8 +85,8 @@ function Header({ setToggleCartMenu, toggleCartMenu, serch }) {
           <div className="cart_content">
             <p>
               {cart
-                ? cart.reduce((acc, curr) => {
-                    return acc + curr.qty;
+                ? cart?.reduce((acc, curr) => {
+                    return acc + curr?.qty;
                   }, 0)
                 : 0}
             </p>

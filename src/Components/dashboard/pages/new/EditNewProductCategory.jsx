@@ -24,13 +24,13 @@ function NewProductCategory({ id }) {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}Category/${id}`)
         .then((category) => {
-          console.log(category?.data)
+          category?.data;
           setFile(category?.data?.imgSrc);
           setName(category?.data?.name);
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     };
     getCategory();
@@ -51,7 +51,7 @@ function NewProductCategory({ id }) {
         })
         .catch((error) => {
           // wronUser();
-          console.log(error);
+          error;
         });
     }
   };
@@ -61,7 +61,7 @@ function NewProductCategory({ id }) {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      console.log("select file to upload");
+      ("select file to upload");
     } else {
       const imageRef = ref(storage, `category/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {
@@ -96,7 +96,7 @@ function NewProductCategory({ id }) {
               {/*  onSubmit={handleDataSubmit} */}
               <div className="dash-formInput">
                 <label htmlFor="file" className="dash-label">
-                Category Image:
+                  Category Image:
                   <FileUploadRoundedIcon className="dash-icon" />
                 </label>
                 <input

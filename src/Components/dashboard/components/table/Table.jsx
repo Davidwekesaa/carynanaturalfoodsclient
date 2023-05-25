@@ -72,7 +72,7 @@ const BasicTable = ({ rows }) => {
         handleClose();
       })
       .catch((error) => {
-        console.log(error);
+        error;
       });
   };
 
@@ -81,7 +81,7 @@ const BasicTable = ({ rows }) => {
 
     // const confirmed = confirm("you are about to delete!");
     // if (confirmed) {
-    //   console.log(true);
+    //   (true);
     // }
 
     await axios
@@ -91,7 +91,7 @@ const BasicTable = ({ rows }) => {
         handleClose();
       })
       .catch((error) => {
-        console.log(error);
+        error;
       });
   };
 
@@ -178,7 +178,7 @@ const BasicTable = ({ rows }) => {
                   <TableCell className="dash-tableCell">
                     <span
                       className={`dash-status ${row.status}`}
-                      onClick={console.log(`${row.status}`)}
+                      onClick={`${row.status}`}
                     >
                       {row.status}
                     </span>{" "}

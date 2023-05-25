@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./tablestyle.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -34,12 +34,12 @@ const Expense = ({ rows }) => {
       await axios
         .get(`${process.env.REACT_APP_Server_Url}about/`)
         .then((user) => {
-          console.log(user.data.length != 0 ? user.data[0]._id : "" )
-          setOpenEdit(user.data.length != 0 ? user.data[0].About : "" );
-          setOpenAboutId(user.data.length != 0 ? user.data[0]._id : "")
+          user.data.length != 0 ? user.data[0]._id : "";
+          setOpenEdit(user.data.length != 0 ? user.data[0].About : "");
+          setOpenAboutId(user.data.length != 0 ? user.data[0]._id : "");
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -49,11 +49,11 @@ const Expense = ({ rows }) => {
     //       About:openEdit
     //     })
     //     .then((useroders) => {
-    //       // console.log(useroders.data)
+    //       // (useroders.data)
     //       deleteSuccess()
     //     })
     //     .catch((error) => {
-    //       console.log(error);
+    //       (error);
     //     });
     // };
 
@@ -64,32 +64,32 @@ const Expense = ({ rows }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     await axios
-    .put(`${process.env.REACT_APP_Server_Url}about/${openAboutId}`,{
-      About:openEdit
-    })
-    .then((useroders) => {
-      // console.log(useroders.data)
-      deleteSuccess()
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .put(`${process.env.REACT_APP_Server_Url}about/${openAboutId}`, {
+        About: openEdit,
+      })
+      .then((useroders) => {
+        // (useroders.data)
+        deleteSuccess();
+      })
+      .catch((error) => {
+        error;
+      });
   };
 
-  const handleSend = async (e) =>{
+  const handleSend = async (e) => {
     e.preventDefault();
     await axios
-        .post(`${process.env.REACT_APP_Server_Url}about/`,{
-          About:openEdit
-        })
-        .then((useroders) => {
-          // console.log(useroders.data)
-          deleteSuccess()
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  }
+      .post(`${process.env.REACT_APP_Server_Url}about/`, {
+        About: openEdit,
+      })
+      .then((useroders) => {
+        // (useroders.data)
+        deleteSuccess();
+      })
+      .catch((error) => {
+        error;
+      });
+  };
 
   return (
     <div className="dash-table-data">
@@ -140,7 +140,7 @@ const Expense = ({ rows }) => {
                   <TableCell className="dash-tableCell">
                     <span
                       className={`dash-status declined`}
-                      // onClick={console.log(`${row.status}`)}
+                      // onClick={(`${row.status}`)}
                       onClick={(e) => hundleRowDelete(e, row._id)}
                     >
                       Delete
@@ -163,8 +163,22 @@ const Expense = ({ rows }) => {
           onChange={(e) => setOpenEdit(e.target.value)}
         />
         <div className="submit-text">
-          <button onClick={handleUpdate} className={openAboutId.trim().length === 0 ?  "bt-nt-show" :"  bt-show"}>update</button>
-          <button onClick={handleSend} className={openAboutId.trim().length === 0 ? "bt-show" :"bt-nt-show"}>send</button>
+          <button
+            onClick={handleUpdate}
+            className={
+              openAboutId.trim().length === 0 ? "bt-nt-show" : "  bt-show"
+            }
+          >
+            update
+          </button>
+          <button
+            onClick={handleSend}
+            className={
+              openAboutId.trim().length === 0 ? "bt-show" : "bt-nt-show"
+            }
+          >
+            send
+          </button>
         </div>
         <div></div>
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import SubMenuContainerCart from "./SubMenuContainerCart";
 import CartItem from "./CartItem";
-
 function RightContainer({
   toggleCartMenu,
   handleDelivery,
@@ -113,7 +112,11 @@ function RightContainer({
           <h3>Cart Total</h3>
           <p>
             <span>Ksh </span>
-            {cart && total ? total : 0}
+            {cart
+              ? cart?.reduce((acc, curr) => {
+                  return acc + curr?.total;
+                }, 0)
+              : 0}
           </p>
         </div>
         <div className="total">
@@ -196,7 +199,7 @@ function RightContainer({
         className="checkOut"
         onClick={checkOut}
         disabled={
-          cart === null || cart.length == 0 || checkDisable ? true : false
+          cart === null || cart?.length == 0 || checkDisable ? true : false
         }
       >
         {/* onClick={checkOut} */}

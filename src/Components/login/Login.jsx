@@ -7,7 +7,6 @@ import axios from "axios";
 import { actionType } from "../../store/reducer";
 import { useStateValue } from "../../store/StateProvider";
 
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,13 +27,13 @@ function Login() {
           password: password,
         })
         .then((logins) => {
-          localStorage.setItem('user',JSON.stringify(logins.data))
+          localStorage.setItem("user", JSON.stringify(logins.data));
           dispatch({
             type: actionType.SET_USER,
             user: logins.data,
           });
-          console.log(logins.data)
-          navigate("/")
+          logins.data;
+          navigate("/");
         })
         .catch((error) => {
           wronUser();

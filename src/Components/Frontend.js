@@ -85,9 +85,7 @@ function Frontend({ isItemActivee }) {
         .then((product) => {
           setItems(product.data);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     };
     //get category
     const getAllCategory = async () => {
@@ -103,9 +101,7 @@ function Frontend({ isItemActivee }) {
             )
           );
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     };
     const getAbout = async () => {
       await axios
@@ -113,9 +109,7 @@ function Frontend({ isItemActivee }) {
         .then((user) => {
           setOpenEdit(user.data.length != 0 ? user.data[0].About : "");
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     };
 
     getAllCategory();
@@ -149,7 +143,6 @@ function Frontend({ isItemActivee }) {
 
   //serch
   useEffect(() => {
-    console.log(search);
     setIsMainDishSearch(
       Items.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
@@ -164,7 +157,6 @@ function Frontend({ isItemActivee }) {
         counties?.toString().toLowerCase()
     );
     setSelectCode(cuti ? cuti?.code : null);
-    console.log(selectCode);
   }, [counties]);
 
   //sub-County
@@ -174,7 +166,6 @@ function Frontend({ isItemActivee }) {
       (item) => item.code.toString().toLowerCase() === cuti
     );
     setSSbCounty(gb ? gb : subCounties);
-    console.log(sSbCounty);
   }, [selectCode]);
 
   //set main dish on filter
@@ -286,9 +277,7 @@ function Frontend({ isItemActivee }) {
           await axios
             .post(`${process.env.REACT_APP_Server_Url}mpesa/`, userData)
             .then((crt) => {
-              console.log(crt?.data);
               if (crt?.data === 0) {
-                console.log(crt);
                 orderSuccess();
                 localStorage.setItem("county", "");
                 dispatch({
@@ -345,7 +334,6 @@ function Frontend({ isItemActivee }) {
           await axios
             .post(`${process.env.REACT_APP_Server_Url}Orders/`, userData)
             .then((crt) => {
-              console.log(crt);
               orderSuccess();
               localStorage.setItem("county", "");
               dispatch({

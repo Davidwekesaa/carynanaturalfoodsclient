@@ -20,7 +20,7 @@ function ProductList() {
           setUsers(user.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
@@ -31,12 +31,12 @@ function ProductList() {
           setCategory(user.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
         });
     };
 
     getTotalUsers();
-    getTotalCategory()
+    getTotalCategory();
   }, []);
   return (
     // <div className="dash-list">

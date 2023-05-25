@@ -34,7 +34,6 @@ function NewUser({ img, title, inputs }) {
   const emptyFields = () => toast.error("All the fields are required");
   const userAddSuccess = () => toast.success("User added successfuly");
 
-
   const handleDataSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -47,13 +46,13 @@ function NewUser({ img, title, inputs }) {
     ) {
       emptyFields();
     } else {
-          await axios
+      await axios
         .post(`${process.env.REACT_APP_Server_Url}user/`, {
           userEmail: email,
           password: password,
           userName: name,
           profile: file,
-          userRights: parseInt( adminRight) ,
+          userRights: parseInt(adminRight),
           isAdmin: isAdmin,
         })
         .then((logins) => {
@@ -63,11 +62,11 @@ function NewUser({ img, title, inputs }) {
           //   user: logins.data,
           // });
           // navigate("/");
-          userAddSuccess()
+          userAddSuccess();
         })
         .catch((error) => {
           // wronUser();
-          console.log(error)
+          error;
         });
     }
   };
@@ -77,7 +76,7 @@ function NewUser({ img, title, inputs }) {
     // setImgUpload(e.target.files[0]);
     const selectedFile = e.target.files[0];
     if (!selectedFile) {
-      console.log("select file to upload");
+      ("select file to upload");
     } else {
       const imageRef = ref(storage, `profile/${selectedFile.name + v4()}`);
       uploadBytes(imageRef, selectedFile).then((snaphsot) => {

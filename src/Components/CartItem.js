@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useStateValue } from "../store/StateProvider";
 import { actionType } from "../store/reducer";
 import axios from "axios";
+import { DeleteOnCartMinus } from "./Functions";
 let cartItems = [];
 function CartItem({ name, imgSrc, price, itemId, itemQty }) {
   const [qty, setQty] = useState(parseInt(itemQty));
@@ -15,7 +16,6 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
     setItemPrice(parseInt(qty) * parseInt(price));
     const cartPriceUpdate = cartItems.find((uItem) => uItem.id === itemId);
     cartPriceUpdate.total = itemPrice;
-    console.log("price " + price + " total" + cartPriceUpdate.total);
     cartPriceUpdate.qty = qty;
     //update total
     dispatch({
@@ -24,8 +24,7 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
         return acc + curr.total;
       }, 0),
     });
-    localStorage.setItem('cart',JSON.stringify(cartItems))
-    console.log("cart", cart);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
     localStorage.setItem(
       "total",
       JSON.stringify(
@@ -42,20 +41,18 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
         await axios
           .get(`${process.env.REACT_APP_Server_Url}Product/${id}`)
           .then((logins) => {
-            if(logins.data.qty - (qty + 1) >= 0){
+            if (logins.data.qty - (qty + 1) > 0) {
               setQty(qty + 1);
             }
           })
           .catch((error) => {
             // wronUser();
-            console.log(error);
           });
       };
       getProductById();
-      
     } else {
       if (qty === 1) {
-        cartItems.pop(id);
+        DeleteOnCartMinus(cartItems, id);
         localStorage.setItem("cart", JSON.stringify(cartItems));
         dispatch({
           type: actionType.SET_CART,
@@ -71,9 +68,16 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
         <img src={imgSrc} alt="" />
       </div>
       <div className="itemSection">
-        <h2 className="itemName">{name}</h2>
+        <h2 className="itemName">
+          {cart?.find((n) => n.id === itemId)?.name +
+            " " +
+            "(" +
+            cart?.find((n) => n.id === itemId)?.kgs +
+            cart?.find((n) => n.id === itemId)?.capacity +
+            ")"}
+        </h2>
         <div className="itemQuantity">
-          <span>x {qty}</span>
+          <span>x {cart?.find((n) => n.id === itemId)?.qty}</span>
           <div className="quantity">
             <RemoveIcon
               className="itemRemove"
@@ -88,7 +92,9 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
       </div>
       <p className="itemPrice">
         <span className="currency">Ksh </span>
-        <span className="itemPriceValue">{itemPrice}</span>
+        <span className="itemPriceValue">
+          {cart?.find((n) => n.id === itemId)?.total}
+        </span>
       </p>
     </div>
   );
