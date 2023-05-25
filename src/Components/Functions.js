@@ -104,3 +104,9 @@ export const addItemToCart = (
     alreadyInCart("Item added to cart");
   }
 };
+
+//return the quanty of an item in cart
+export const returnCartItemQuantinty = (cart, id) => {
+  const index = cart?.find((obj) => obj.id === id)?.qty;
+  return parseInt(index);
+};

@@ -4,13 +4,15 @@ import AddIcon from "@mui/icons-material/Add";
 import { useStateValue } from "../store/StateProvider";
 import { actionType } from "../store/reducer";
 import axios from "axios";
-import { DeleteOnCartMinus } from "./Functions";
+import { DeleteOnCartMinus, returnCartItemQuantinty } from "./Functions";
 let cartItems = [];
 function CartItem({ name, imgSrc, price, itemId, itemQty }) {
-  const [qty, setQty] = useState(parseInt(itemQty));
   const [{ cart, total }, dispatch] = useStateValue();
+  const [qty, setQty] = useState(
+    parseInt(returnCartItemQuantinty(cart, itemId))
+  );
   const [itemPrice, setItemPrice] = useState(parseInt(qty) * parseInt(price));
-
+  returnCartItemQuantinty(cart, itemId);
   useEffect(() => {
     cartItems = cart;
     setItemPrice(parseInt(qty) * parseInt(price));
@@ -41,8 +43,11 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
         await axios
           .get(`${process.env.REACT_APP_Server_Url}Product/${id}`)
           .then((logins) => {
-            if (logins.data.qty - (qty + 1) > 0) {
-              setQty(qty + 1);
+            if (
+              logins.data.qty - (returnCartItemQuantinty(cart, itemId) + 1) >
+              0
+            ) {
+              setQty(returnCartItemQuantinty(cart, itemId) + 1);
             }
           })
           .catch((error) => {
@@ -51,7 +56,7 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
       };
       getProductById();
     } else {
-      if (qty === 1) {
+      if (returnCartItemQuantinty(cart, itemId) === 1) {
         DeleteOnCartMinus(cartItems, id);
         localStorage.setItem("cart", JSON.stringify(cartItems));
         dispatch({
@@ -59,7 +64,7 @@ function CartItem({ name, imgSrc, price, itemId, itemQty }) {
           cart: cartItems,
         });
       }
-      setQty(qty - 1);
+      setQty(returnCartItemQuantinty(cart, itemId) - 1);
     }
   };
   return (
