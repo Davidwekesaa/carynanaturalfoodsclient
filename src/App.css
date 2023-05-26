@@ -236,6 +236,9 @@ main {
 .menuCard {
   width: 100%;
 }
+.style-again {
+  margin-top: 0;
+}
 .subMenuContainer,
 .viewAll {
   display: flex;
@@ -566,7 +569,8 @@ main {
   width: 100%;
   height: 210px;
   max-height: 280px;
-  margin-top: 10px;
+  margin-top: 0px;
+  padding: 0px 2px;
   /* overflow-y: scroll; */
   overflow-x: hidden;
 }
@@ -668,7 +672,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0px;
+  padding: 2px 0px;
   /* margin: 15px 0px; */
   flex-direction: column;
 }
@@ -678,21 +682,28 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1px 0px;
+  padding: 0px 0px;
+  margin: 0;
   /* margin: 15px 0px; */
 }
 .totalSection .total h3 {
-  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
   color: #373848;
 }
 .totalSection .total p {
-  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
   color: #2a2b3c;
   color: var(--primary-color);
 }
 .totalSection .total p span {
+  padding: 0;
+  margin: 0;
   font-size: 14px;
   color: var(--primary-color);
 }
@@ -705,7 +716,7 @@ main {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   /* flex-direction: column; */
 }
 form {
@@ -878,7 +889,7 @@ label {
 }
 
 .f-last {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 /* bottom menu ends */
 
@@ -1041,7 +1052,7 @@ label {
     width: 70%;
   }
   .f-last {
-    margin-bottom: 1px;
+    margin-bottom: 1px !important;
   }
 }
 
@@ -1097,9 +1108,9 @@ label {
   } */
 
   .cartContainer {
-    height: 180px;
-
-    margin-top: 10px;
+    height: 280px;
+    padding: 0px 2px;
+    margin-top: 0px;
   }
   .rightContainer .debitCardContainer .debitCard {
     height: 100px;

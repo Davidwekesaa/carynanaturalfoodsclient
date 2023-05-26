@@ -90,6 +90,7 @@ function RightContainer({
           name={"Cart Items"}
           setToggleCartMenu={setToggleCartMenu}
           toggleCartMenu={toggleCartMenu}
+          clgf={"style-again"}
         />
         <div className="cartContainer">
           <div className="cartItems">
