@@ -31,7 +31,7 @@ header {
 }
 .logo {
   min-width: 40px;
-  width: 160px;
+  width: 161px;
 }
 .inputBox {
   background-color: var(--header-backgound);
