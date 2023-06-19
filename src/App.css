@@ -31,7 +31,7 @@ header {
 }
 .logo {
   min-width: 40px;
-  width: 100px;
+  width: 160px;
 }
 .inputBox {
   background-color: var(--header-backgound);
@@ -1122,7 +1122,7 @@ label {
   } */
   .logo {
     min-width: 40px;
-    width: 150px;
+    width: 210px;
   }
   .mainContainer .Banner {
     /* min-height: 250px; */
