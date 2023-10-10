@@ -16,14 +16,14 @@ const Navbar = () => {
   return (
     <div className="dash-navbar">
       <div className="dash-navbarwrapper">
-        <div className="dash-search">
+        {/* <div className="dash-search">
           <input
             className="dash-search-input"
             type="text"
             placeholder="Search here.."
           />
           <SearchRoundedIcon className="dash-navbaricon dash-searchicon" />
-        </div>
+        </div> */}
         <div className="dash-items">
           {/* <div className="dash-item dash-removebg">
             <LanguageRoundedIcon className="dash-navbaricon" />
@@ -46,9 +46,9 @@ const Navbar = () => {
             <FullscreenExitRoundedIcon className="dash-navbaricon" />
           </div> */}
 
-          <div className="dash-item dash-logo-item dash-removebg">
+          {/* <div className="dash-item dash-logo-item dash-removebg">
             <img className="dash-avatar" src={user.profile} alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

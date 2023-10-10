@@ -35,38 +35,10 @@ function Expenses() {
     getMonthAmount();
   }, []);
   return (
-    // <div className="dash-list">
-    //   <Sidebar />
-    //   <div className="dash-listcontainer">
-    //     <Navbar />
-
-    //     {users === null ? (
-    //       <div className="dash-circular">
-    //         <CircularProgress />
-    //       </div>
-    //     ) : (
-    //       <Expense rows={users} />
-    //     )}
-    //   </div>
-    // </div>
-
     <div className="dash-home">
       <Sidebar />
       <div className="dash-homecontainer">
         <Navbar />
-        {/* <div className="dash-charts dash-charts-height ">
-          <Feature />
-
-          {user.userRights !== 1 ? (
-            <Chart
-              aspect={2 / 1}
-              title={"Total  Expense Per Month"}
-              data={dataAmout}
-            />
-          ) : (
-            ""
-          )}
-        </div> */}
         <div className="dash-tablecontainer">
           {/* <div className="dash-tableTitle">Latest Transactions</div> */}
           {users === null ? (

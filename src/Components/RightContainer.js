@@ -29,7 +29,7 @@ function RightContainer({
   return (
     <div className={`rightContainer ${toggleCartMenu ? "active" : ""}`}>
       <div className="debitCardContainer">
-        <form className="form-select">
+        <form className="form-selectt">
           <label htmlFor="Countriess">County:</label>
           <input
             name="Countries"
@@ -48,7 +48,7 @@ function RightContainer({
           </datalist>
         </form>
 
-        <form className="form-select">
+        <form className="form-selectt">
           <label htmlFor="sub-countyy">Sub County:</label>
           <input
             list="sub-county"
@@ -72,7 +72,7 @@ function RightContainer({
           </datalist>
         </form>
 
-        <form className="form-select f-last">
+        <form className="form-selectt f-last">
           <label htmlFor="locations">Location:</label>
           <input
             name="location"
@@ -203,8 +203,7 @@ function RightContainer({
           cart === null || cart?.length == 0 || checkDisable ? true : false
         }
       >
-        {/* onClick={checkOut} */}
-        <p> Check Out</p>
+        Check Out
       </button>
     </div>
   );

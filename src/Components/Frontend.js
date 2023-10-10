@@ -40,7 +40,7 @@ import RowContainer from "./RowContainer";
 import DishItemContainer from "./DishItemContainer";
 import RightContainer from "./RightContainer";
 
-function Frontend({ isItemActivee }) {
+function Frontend({ isItemActivee, toggleCartMenu, setToggleCartMenu }) {
   const [
     { cart, total, user, county, subCounty, locationn, phonee, deliveryfee },
     dispatch,
@@ -53,7 +53,7 @@ function Frontend({ isItemActivee }) {
   const [search, setSearch] = useState("");
   const [isMainDish, setIsMainDish] = useState([]);
   const [isMainDishSearch, setIsMainDishSearch] = useState([]);
-  const [toggleCartMenu, setToggleCartMenu] = useState(false);
+  // const [toggleCartMenu, setToggleCartMenu] = useState(false);
   const [checkDisable, setCheckDisble] = useState(false);
 
   const [mpesa, setMpesa] = useState("");
@@ -403,17 +403,9 @@ function Frontend({ isItemActivee }) {
   ) {
     return (
       <div className="App">
-        {/* hearder container */}
-        <Header
-          setToggleCartMenu={setToggleCartMenu}
-          toggleCartMenu={toggleCartMenu}
-        />
         {/* main container */}
         <main>
           <div className="mainContainer">
-            <Sliderr />
-            <Footer />
-
             <div className="dishContainer progress">
               <CircularProgress className="circularProgress" />
             </div>
@@ -452,22 +444,12 @@ function Frontend({ isItemActivee }) {
 
   return (
     <div>
-      <Header
-        setToggleCartMenu={setToggleCartMenu}
-        toggleCartMenu={toggleCartMenu}
-        serch={setSearch}
-      />
       {/* main container */}
       <main>
         <div className="mainContainer">
-          {/* Banner */}
-          <div>
-            <Sliderr />
-          </div>
-          <Footer />
           <div className="dishContainer">
             <div className="menuCard">
-              <SubMenuContainer name={"Menu category"} />
+              <SubMenuContainer name={"Wellness Products"} />
             </div>
             <RowContainer menuItems={menuItems} setFilterData={setFilterData} />
             <DishItemContainer

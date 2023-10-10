@@ -27,9 +27,9 @@ const Sidebar = () => {
   return (
     <div className="dash-sidebar">
       <div className="dash-top">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        {/* <Link to="/" style={{ textDecoration: "none" }}>
           <img className="dash-logo " src={logo} alt="" />
-        </Link>
+        </Link> */}
       </div>
       <div className="dash-center">
         <ul>
@@ -76,6 +76,14 @@ const Sidebar = () => {
           ) : (
             ""
           )}
+          <hr className="dash-horizontal-line" />
+          <Link to="/dash-blog" style={{ textDecoration: "none" }}>
+            {" "}
+            <li>
+              <LocalShippingIcon className="dash-sidebaricon" />
+              <span>Blogs</span>
+            </li>
+          </Link>
           {/* <Link to="/" style={{textDecoration:'none'}}> <li><InsertChartIcon className="dash-sidebaricon" /><span>Charts</span></li></Link>
           <Link to="/" style={{textDecoration:'none'}}> <li><SettingsSystemDaydreamOutlinedIcon className="dash-sidebaricon" /><span>Cloud</span></li></Link> */}
           <div className="user">

@@ -28,11 +28,37 @@ import Single from "./Components/dashboard/pages/single/Single";
 import Home from "./Components/dashboard/pages/home/Home";
 import DashboardLogin from "./Components/dashboard/pages/login/DashboardLogin";
 import Frontend from "./Components/Frontend";
+import Blog from "./Components/Blog/Blog";
+import NavBar from "./Components/NavBar/NavBar";
+import Hero from "./Components/Hero/Hero";
+import Blogs from "./Components/dashboard/pages/list/Blogs";
 
 function App() {
   const [isItemActive, setisItemActive] = useState("");
   const [{ cart, total, user }, dispatch] = useStateValue();
+  const [toggleCartMenu, setToggleCartMenu] = useState(false);
+
   //get all products
+  useEffect(() => {
+    // // Get the parent element for the carousel indicators
+    // const heroCarouselIndicators = document.querySelector(
+    //   "#hero-carousel-indicators"
+    // );
+    // // Get all the carousel items
+    // const heroCarouselItems = document.querySelectorAll(
+    //   "#heroCarousel .carousel-item"
+    // );
+    // heroCarouselItems.forEach((item, index) => {
+    //   // Create a new list item element
+    //   const li = document.createElement("li");
+    //   // Set the data attributes and class for the list item
+    //   li.setAttribute("data-bs-target", "#heroCarousel");
+    //   li.setAttribute("data-bs-slide-to", index);
+    //   li.className = index === 0 ? "active" : "";
+    //   // Append the list item to the parent element
+    //   heroCarouselIndicators.appendChild(li);
+    // });
+  }, []);
   useEffect(() => {
     const getAllCategory = async () => {
       await axios
@@ -48,6 +74,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar
+          toggleCartMenu={toggleCartMenu}
+          setToggleCartMenu={setToggleCartMenu}
+        />
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -100,11 +130,30 @@ function App() {
             )}
           </Route>
 
+          <Route exact path="/dash-blog">
+            {user === null ? (
+              <Route index element={<DashboardLogin />} />
+            ) : user.userRights === 0 ? (
+              <Route index element={<DashboardLogin />} />
+            ) : (
+              <Route index element={<Blogs />} />
+            )}
+          </Route>
+
           <Route
             exact
-            path="/"
-            element={<Frontend isItemActivee={isItemActive} />}
+            path="/wellness-products"
+            element={
+              <Frontend
+                isItemActivee={isItemActive}
+                toggleCartMenu={toggleCartMenu}
+                setToggleCartMenu={setToggleCartMenu}
+              />
+            }
           />
+          <Route exact path="/blog" element={<Blog />} />
+
+          <Route exact path="/" element={<Hero />} />
         </Routes>
       </Router>
     </div>
