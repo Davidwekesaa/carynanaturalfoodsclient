@@ -11,9 +11,9 @@ function Footer() {
               <div className="footer-info">
                 <h3>Nurse Caren.</h3>
                 <p className="footer-d">
-                  <strong>Phone:</strong> 0111 201 762
+                  <strong>Phone:</strong> +254 111 201 762
                   <br />
-                  <strong>Email:</strong> carynanaturalfoods@gmail.com
+                  <strong>Email:</strong> info@nursecaren.com
                   <br />
                 </p>
                 <div className="social-links mt-3">
@@ -72,10 +72,7 @@ function Footer() {
 
             <div className="col-lg-4 col-md-6 footer-newsletter">
               <h4>Our Newsletter</h4>
-              <p>
-                Tamen quem nulla quae legam multos aute sint culpa legam noster
-                magna
-              </p>
+              <p>Subscribe to our newsletter</p>
               <form action="" method="post">
                 <input type="email" name="email" />
                 <input type="submit" value="Subscribe" />
@@ -85,7 +82,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container footer-bottom">
         <div className="copyright">
           &copy; Copyright{" "}
           <strong>

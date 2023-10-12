@@ -26,7 +26,10 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
 
   return (
     <>
-      <header id="header" className="fixed-top d-flex align-items-center">
+      <header
+        id="header"
+        className="fixed-top d-flex align-items-center header-color-color"
+      >
         <div className="container d-flex align-items-center">
           <a href="/" className="logo me-auto ">
             <img src={logo} alt="" className="img-fluid nav-logoo" />
