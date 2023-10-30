@@ -354,14 +354,28 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  position: relative;
   width: 100%;
   height: 100vh;
-  background-color: rgba(63, 73, 83, 0.8);
-  overflow: hidden;
-  position: relative;
 }
 
-#hero .carousel,
+#hero {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/slide/hero.jpeg") top center no-repeat;
+  background-size: cover;
+  opacity: 10;
+  position: relative;
+  background-color: rgba(63, 73, 83, 0.8);
+  background-position: top left !important;
+}
+.nurse-header-1 {
+  color: rgb(218, 72, 72) !important;
+  font-size: large;
+  font-weight: 800;
+}
+
+/* #hero .carousel,
 #hero .carousel-inner,
 #hero .carousel-item,
 #hero .carousel-item::before {
@@ -392,7 +406,7 @@ h6 {
   top: 70px;
   left: 50px;
   right: 50px;
-}
+} */
 
 #hero .container {
   text-align: center;
@@ -540,7 +554,7 @@ section {
   background-color: #f8f9fa;
 }
 
-.section-title {
+/* .section-title {
   padding-bottom: 40px;
 }
 
@@ -573,6 +587,36 @@ section {
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #556270;
+} */
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #e03a3c;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+.section-title p {
+  margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -636,40 +680,80 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about .content h2 {
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 60px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+.about .container {
+  position: relative;
+  z-index: 10;
+}
+
+.about .content {
+  padding: 30px 30px 30px 0;
 }
 
 .about .content h3 {
-  font-weight: 500;
-  line-height: 32px;
-  font-size: 24px;
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
 }
 
-.about .content ul {
-  list-style: none;
-  padding: 0;
+.about .content p {
+  margin-bottom: 30px;
 }
 
-.about .content ul li {
-  padding: 10px 0 0 28px;
-  position: relative;
+.about .content .about-btn {
+  padding: 8px 30px 9px 30px;
+  color: #e03a3c;
+  border-radius: 50px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid #e03a3c;
 }
 
-.about .content ul i {
-  left: 0;
-  top: 7px;
-  position: absolute;
+.about .content .about-btn i {
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.about .content .about-btn:hover {
+  background: #e35052;
+  background: #e03a3c;
+  color: #fff;
+}
+
+.about .icon-boxes .icon-box {
+  margin-top: 30px;
+}
+
+.about .icon-boxes .icon-box i {
+  font-size: 40px;
+  color: #e03a3c;
+  margin-bottom: 10px;
+}
+
+.about .icon-boxes .icon-box h4 {
   font-size: 20px;
-  color: #d9232d;
+  font-weight: 700;
+  margin: 0 0 10px 0;
 }
 
-.about .content p:last-child {
-  margin-bottom: 0;
+.about .icon-boxes .icon-box p {
+  font-size: 15px;
+  color: #848484;
+}
+
+@media (max-width: 1200px) {
+  .about .content {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    text-align: center;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1977,14 +2061,28 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #4a5562;
+  /* background: #4a5562; */
+  background: rgb(10, 22, 235);
+  background: linear-gradient(
+    90deg,
+    rgba(10, 22, 235, 0.4906337535014006) 0%,
+    rgba(250, 0, 31, 0.6446953781512605) 100%
+  );
+
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
 }
 
 #footer .footer-top {
-  background: #515d6a;
+  /* background: #515d6a; */
+  background: rgb(10, 22, 235);
+  background: linear-gradient(
+    90deg,
+    rgba(10, 22, 235, 0.4906337535014006) 0%,
+    rgba(250, 0, 31, 0.6446953781512605) 100%
+  );
+
   padding: 60px 0 30px 0;
 }
 
@@ -2131,7 +2229,7 @@ section {
 }
 /* test */
 .k {
-  background-image: url("../img/slide/slide-1.jpg");
+  background-image: url("../img/slide/hero.jpeg");
 }
 .kk {
   background-image: url("../img/slide/slide-2.jpg");

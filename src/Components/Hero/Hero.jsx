@@ -1,174 +1,105 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-import bannerImage from "../../assets/bannerImage.jpg";
-import honey from "../../assets/honey-g.jpg";
+import hero from "../../assets/hero.jpeg";
 function Hero() {
   return (
     <>
-      <section id="hero">
-        <div
-          id="heroCarousel"
-          data-bs-interval="5000"
-          className="carousel slide carousel-fade"
-          data-bs-ride="carousel"
-        >
-          {/* <ol
-            className="carousel-indicators"
-            id="hero-carousel-indicators"
-          ></ol> */}
-
-          <div className="carousel-inner" role="listbox">
-            <div className="carousel-item  k">
-              <div className="carousel-container">
-                <div className="container">
-                  <h2 className="animate__animated animate__fadeInDown">
-                    Welcome to <span>Sailor</span>
-                  </h2>
-                  <p className="animate__animated animate__fadeInUp">
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
-                  </p>
-                  <a
-                    href="#about"
-                    className="btn-get-started animate__animated animate__fadeInUp scrollto"
-                  >
-                    Read More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="carousel-item active kk">
-              <div className="carousel-container">
-                <div className="container">
-                  <h2 className="animate__animated animate__fadeInDown">
-                    Lorem Ipsum Dolor
-                  </h2>
-                  <p className="animate__animated animate__fadeInUp">
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
-                  </p>
-                  <a
-                    href="#about"
-                    className="btn-get-started animate__animated animate__fadeInUp scrollto"
-                  >
-                    Read More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="carousel-item kkk">
-              <div className="carousel-container">
-                <div className="container">
-                  <h2 className="animate__animated animate__fadeInDown">
-                    Sequi ea ut et est quaerat
-                  </h2>
-                  <p className="animate__animated animate__fadeInUp">
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
-                  </p>
-                  <a
-                    href="#about"
-                    className="btn-get-started animate__animated animate__fadeInUp scrollto"
-                  >
-                    Read More
-                  </a>
-                </div>
-              </div>
+      <section id="hero" class="d-flex align-items-center">
+        <div className="container" data-aos="zoom-out" data-aos-delay="100">
+          <div className="row">
+            <div className="col-xl-6">
+              <h2 className="nurse-header-1">
+                Welcome to Nurse Caren's Platform.
+              </h2>
+              <h2>
+                A certified Medical Virtual Assistant and Nutritionist
+                enthusiast.
+              </h2>
+              <a href="#about" className="btn-get-started scrollto">
+                Read more
+              </a>
             </div>
           </div>
-
-          <a
-            className="carousel-control-prev"
-            href="#heroCarousel"
-            role="button"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon bi bi-chevron-left"
-              aria-hidden="true"
-            ></span>
-          </a>
-
-          <a
-            className="carousel-control-next"
-            href="#heroCarousel"
-            role="button"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon bi bi-chevron-right"
-              aria-hidden="true"
-            ></span>
-          </a>
         </div>
-        {/* <div
-          id="carouselExampleSlidesOnly"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src={honey} alt="First slide" />
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src={bannerImage} alt="Second slide" />
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="..." alt="Third slide" />
-            </div>
-          </div>
-        </div> */}
       </section>
       {/* <!-- End Hero --> */}
       <main id="main" className="potd">
-        <section id="about" className="about">
-          <div className="container">
-            <div className="row content">
-              <div className="col-lg-6">
-                <h2>Eum ipsam laborum deleniti velitena</h2>
-                <h3>
-                  Voluptatem dignissimos provident quasi corporis voluptates sit
-                  assum perenda sruen jonee trave
-                </h3>
+        <section id="about" class="about section-bg">
+          <div class="container" data-aos="fade-up">
+            <div class="row no-gutters">
+              <div class="content col-xl-5 d-flex align-items-start">
+                <div class="content test">
+                  <h3>About Me</h3>
+                  <span>
+                    With over 5 years of experience in clinical and
+                    administrative nursing, Nurse Caren has worked in both
+                    government and private hospitals.
+                    <br />
+                    <br />
+                    With over 5 years of experience in clinical and
+                    administrative nursing, Nurse Caren has worked in both
+                    government and private hospitals.
+                    <br />
+                    <br />
+                    On this platform, she aims to simplify and clarify complex
+                    health topics, relating them to our everyday experiences in
+                    the healthcare journey. As a passionate advocate for
+                    nutrition, Nurse Caren provides health products that boost
+                    immunity and promote a healthy lifestyle. Feel free to
+                    explore our catalog of wellness products for more
+                    information
+                  </span>
+
+                  <p>
+                    With over 5 years of experience in clinical and
+                    administrative nursing, Nurse Caren has worked in both
+                    government and private hospitals.
+                  </p>
+                  <a href="#" class="about-btn">
+                    <span>About us</span> <i class="bx bx-chevron-right"></i>
+                  </a>
+                </div>
               </div>
-              <div className="col-lg-6 pt-4 pt-lg-0">
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                  aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum
-                </p>
-                <ul>
-                  <li>
-                    <i className="ri-check-double-line"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequa
-                  </li>
-                  <li>
-                    <i className="ri-check-double-line"></i> Duis aute irure
-                    dolor in reprehenderit in voluptate velit
-                  </li>
-                  <li>
-                    <i className="ri-check-double-line"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in
-                  </li>
-                </ul>
-                <p className="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+              <div class="col-xl-7 d-flex align-items-start">
+                <div class="content">
+                  <h3>Her areas of interest include:</h3>
+                  <div class="icon-boxes d-flex flex-column justify-content-center">
+                    <div class="row">
+                      <div
+                        class="col-md-6 icon-box"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                      >
+                        <i class="bi bi-kanban"></i>
+                        <h4>Administrative nursing</h4>
+                      </div>
+                      <div
+                        class="col-md-6 icon-box"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <i class="bx bx-cube-alt"></i>
+                        <h4>Mother and child health</h4>
+                      </div>
+                      <div
+                        class="col-md-6 icon-box"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                      >
+                        <i class="bx bx-images"></i>
+                        <h4>Sexual and reproductive health</h4>
+                      </div>
+                      <div
+                        class="col-md-6 icon-box"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                      >
+                        <i class="bx bx-shield"></i>
+                        <h4>Nutrition and Research</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -230,6 +161,13 @@ function Hero() {
 
         {/* <section id="services" className="services">
           <div className="container">
+            <div class="section-title">
+              <h2>Services</h2>
+              <p>
+                The firm provides the following principal and other related
+                Technical services
+              </p>
+            </div>
             <div className="row">
               <div className="col-md-6">
                 <div className="icon-box">
