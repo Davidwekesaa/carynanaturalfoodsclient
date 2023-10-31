@@ -47,7 +47,9 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
                 </Link>
               </li>
               <li>
-                <Link className="a_nav_link">Courses</Link>
+                <Link to={"/courses"} className="a_nav_link">
+                  Courses
+                </Link>
               </li>
 
               <li>

@@ -32,6 +32,7 @@ import Blog from "./Components/Blog/Blog";
 import NavBar from "./Components/NavBar/NavBar";
 import Hero from "./Components/Hero/Hero";
 import Blogs from "./Components/dashboard/pages/list/Blogs";
+import Courses from "./Components/courses/Courses";
 
 function App() {
   const [isItemActive, setisItemActive] = useState("");
@@ -152,6 +153,7 @@ function App() {
             }
           />
           <Route exact path="/blog" element={<Blog />} />
+          <Route exact path="/courses" element={<Courses />} />
 
           <Route exact path="/" element={<Hero />} />
         </Routes>

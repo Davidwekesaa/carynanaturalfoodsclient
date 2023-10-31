@@ -2248,3 +2248,16 @@ section {
   color: red;
   font-size: 50px !important;
 }
+
+.aboutus {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.p {
+  margin-top: -30px;
+}
+.about-btn {
+  margin-top: 5px;
+}

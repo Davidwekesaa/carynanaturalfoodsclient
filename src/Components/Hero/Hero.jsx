@@ -30,8 +30,8 @@ function Hero() {
         <section id="about" class="about section-bg">
           <div class="container" data-aos="fade-up">
             <div class="row no-gutters">
-              <div class="content col-xl-5 d-flex align-items-start">
-                <div class="content">
+              <div class="content col-xl-5 d-flex align-items-start p">
+                <div class="content aboutus">
                   <h3>About Me</h3>
                   <span>
                     With over 5 years of experience in clinical and
@@ -41,18 +41,13 @@ function Hero() {
                     <br />
                     On this platform, she aims to simplify and clarify complex
                     health topics, relating them to our everyday experiences in
-                    the healthcare journey. As a passionate advocate for
-                    nutrition, Nurse Caren provides health products that boost
-                    immunity and promote a healthy lifestyle. Feel free to
-                    explore our catalog of wellness products for more
-                    information
+                    the healthcare journey.
+                    <br /> <br /> As a passionate advocate for nutrition, Nurse
+                    Caren provides health products that boost immunity and
+                    promote a healthy lifestyle. Feel free to explore our
+                    catalog of wellness products for more information
                   </span>
 
-                  <p>
-                    With over 5 years of experience in clinical and
-                    administrative nursing, Nurse Caren has worked in both
-                    government and private hospitals.
-                  </p>
                   <a href="#" class="about-btn">
                     <span>About us</span> <i class="bx bx-chevron-right"></i>
                   </a>
