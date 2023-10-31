@@ -1,19 +1,22 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-import hero from "../../assets/hero.jpeg";
+import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
+import BabyChangingStationIcon from "@mui/icons-material/BabyChangingStation";
+import WcIcon from "@mui/icons-material/Wc";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
 function Hero() {
   return (
     <>
       <section id="hero" class="d-flex align-items-center">
         <div className="container" data-aos="zoom-out" data-aos-delay="100">
-          <div className="row">
+          <div className="row test">
             <div className="col-xl-6">
               <h2 className="nurse-header-1">
                 Welcome to Nurse Caren's Platform.
               </h2>
               <h2>
-                A certified Medical Virtual Assistant and Nutritionist
-                enthusiast.
+                A certified virtual medical assistant,health educator and
+                nutrition enthusiast.
               </h2>
               <a href="#about" className="btn-get-started scrollto">
                 Read more
@@ -28,14 +31,9 @@ function Hero() {
           <div class="container" data-aos="fade-up">
             <div class="row no-gutters">
               <div class="content col-xl-5 d-flex align-items-start">
-                <div class="content test">
+                <div class="content">
                   <h3>About Me</h3>
                   <span>
-                    With over 5 years of experience in clinical and
-                    administrative nursing, Nurse Caren has worked in both
-                    government and private hospitals.
-                    <br />
-                    <br />
                     With over 5 years of experience in clinical and
                     administrative nursing, Nurse Caren has worked in both
                     government and private hospitals.
@@ -70,15 +68,15 @@ function Hero() {
                         data-aos="fade-up"
                         data-aos-delay="100"
                       >
-                        <i class="bi bi-kanban"></i>
-                        <h4>Administrative nursing</h4>
+                        <MedicationLiquidIcon className="hero-icons" />
+                        <h4>Health education and training</h4>
                       </div>
                       <div
                         class="col-md-6 icon-box"
                         data-aos="fade-up"
                         data-aos-delay="200"
                       >
-                        <i class="bx bx-cube-alt"></i>
+                        <BabyChangingStationIcon className="hero-icons" />
                         <h4>Mother and child health</h4>
                       </div>
                       <div
@@ -86,7 +84,7 @@ function Hero() {
                         data-aos="fade-up"
                         data-aos-delay="300"
                       >
-                        <i class="bx bx-images"></i>
+                        <WcIcon className="hero-icons" />
                         <h4>Sexual and reproductive health</h4>
                       </div>
                       <div
@@ -94,7 +92,7 @@ function Hero() {
                         data-aos="fade-up"
                         data-aos-delay="400"
                       >
-                        <i class="bx bx-shield"></i>
+                        <LocalDiningIcon className="hero-icons" />
                         <h4>Nutrition and Research</h4>
                       </div>
                     </div>

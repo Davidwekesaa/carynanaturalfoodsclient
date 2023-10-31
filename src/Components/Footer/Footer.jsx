@@ -41,7 +41,7 @@ function Footer() {
                   <Link to={"/blog"}>Blog</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <Link>Causes</Link>
+                  <i className="bx bx-chevron-right"></i> <Link>Courses</Link>
                 </li>
               </ul>
             </div>
