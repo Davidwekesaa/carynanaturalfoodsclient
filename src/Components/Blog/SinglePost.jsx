@@ -5,7 +5,6 @@ import axios from "axios";
 import { formatDate } from "../utls/ExportFunction";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Link } from "react-router-dom";
-import he from "he";
 
 function SinglePost({ searchId, setsearchId }) {
   const [searchedPost, setsearchedPost] = useState([]);
