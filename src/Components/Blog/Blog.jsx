@@ -49,7 +49,7 @@ function Blog() {
         <main id="main " className="do">
           <section id="breadcrumbs" className="breadcrumbs">
             <div className="container" data-aos="fade-up">
-              <h1>No Post Yet...</h1>
+              <h1 className="comming">No Post Yet...</h1>
             </div>
           </section>
         </main>

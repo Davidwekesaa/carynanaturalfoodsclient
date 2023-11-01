@@ -2261,3 +2261,8 @@ section {
 .about-btn {
   margin-top: 5px;
 }
+.comming {
+  color: red;
+  font-size: 30px;
+  font-weight: 900;
+}
