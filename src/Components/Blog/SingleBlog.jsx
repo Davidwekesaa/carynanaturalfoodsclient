@@ -35,7 +35,11 @@ function SingleBlog({ blg, setsearchId }) {
         </div>
 
         <div className="entry-content">
-          <p>{trancateWords(blg?.blogBody)}</p>
+          {/* <p>{trancateWords(blg?.blogBody)}</p> */}
+          <span
+            class="entry-content"
+            dangerouslySetInnerHTML={{ __html: blg?.blogBody }}
+          />
           <div className="read-more">
             <button onClick={(e) => setsearchId(blg?._id)}>Read More</button>
           </div>

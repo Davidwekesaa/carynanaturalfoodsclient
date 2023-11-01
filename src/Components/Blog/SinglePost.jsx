@@ -5,6 +5,7 @@ import axios from "axios";
 import { formatDate } from "../utls/ExportFunction";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Link } from "react-router-dom";
+import he from "he";
 
 function SinglePost({ searchId, setsearchId }) {
   const [searchedPost, setsearchedPost] = useState([]);
@@ -65,9 +66,13 @@ function SinglePost({ searchId, setsearchId }) {
           </ul>
         </div>
 
-        <div class="entry-content">
-          <p>{searchedPost?.blogBody}</p>
-        </div>
+        {/* <div class="entry-content">
+          <p>{he.decode(he.encode(searchedPost?.blogBody))}</p>
+        </div> */}
+        <span
+          class="entry-content"
+          dangerouslySetInnerHTML={{ __html: searchedPost?.blogBody }}
+        />
       </article>
       <div class="blog-comments">
         <h4 class="comments-count">
