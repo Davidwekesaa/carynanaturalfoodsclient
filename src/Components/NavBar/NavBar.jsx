@@ -16,7 +16,7 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
           .querySelector(".navbar-mobile")
           ?.classList?.remove("navbar-mobile");
 
-        setNavbarMobile(!navbarMobile);
+        setNavbarMobile(false);
       });
     });
   }, []);
