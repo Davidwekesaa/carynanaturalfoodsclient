@@ -28,9 +28,13 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
       setNavbarMobile(!navbarMobile);
     }
   };
-  const Ppper = (e) => {
+  const closee = (e) => {
     e.preventDefault();
-    console.log("testtstttt");
+    document
+      .querySelector(".navbar-mobile")
+      ?.classList?.remove("navbar-mobile");
+
+    setNavbarMobile(false);
   };
 
   return (
@@ -73,7 +77,7 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
                 <i
                   className={`bi  bi-x 
                    mobile-nav-toggle tgl`}
-                  // onClick={(e) => setClickedd(v4())}
+                  onClick={(e) => closee(e)}
                 ></i>
               ) : (
                 <i
