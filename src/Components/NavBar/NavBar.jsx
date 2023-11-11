@@ -12,6 +12,11 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
       navLinkEl.addEventListener("click", function () {
         document.querySelector(".active")?.classList?.remove("active");
         navLinkEl.classList.add("active");
+        document
+          .querySelector(".navbar-mobile")
+          ?.classList?.remove("navbar-mobile");
+
+        setNavbarMobile(!navbarMobile);
       });
     });
   }, []);
@@ -20,8 +25,12 @@ function NavBar({ toggleCartMenu, setToggleCartMenu }) {
     const navbar = document?.getElementById("navbar");
     if (navbar) {
       navbar.classList.toggle("navbar-mobile");
-      setNavbarMobile(true);
+      setNavbarMobile(!navbarMobile);
     }
+  };
+  const Ppper = (e) => {
+    e.preventDefault();
+    console.log("testtstttt");
   };
 
   return (

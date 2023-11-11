@@ -86,6 +86,7 @@
   /**
    * Mobile nav dropdowns activate
    */
+
   on(
     "click",
     ".navbar .dropdown > a",
