@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDate, trancateWords } from "../utls/ExportFunction";
+import ShareBlogPost from "./ShareBlogPost";
 
 function SingleBlog({ blg, setsearchId }) {
   return (
@@ -30,6 +31,10 @@ function SingleBlog({ blg, setsearchId }) {
               <a href="blog-single.html">
                 {blg?.blogComments?.length} Comments
               </a>
+            </li>
+
+            <li className="d-flex align-items-center">
+              <ShareBlogPost blogHeading={blg?.blogHeading} />
             </li>
           </ul>
         </div>

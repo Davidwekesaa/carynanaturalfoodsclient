@@ -1089,6 +1089,12 @@ label {
   width: 100%;
   margin-right: 10px;
 }
+.sharebtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+}
 /* table screens */
 @media screen and (min-width: 650px) {
   .rightContainer {

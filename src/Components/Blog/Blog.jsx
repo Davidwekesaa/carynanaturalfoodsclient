@@ -43,6 +43,18 @@ function Blog() {
     fetchRecentPosts();
   }, [page, rowsPerPage]);
 
+  useEffect(() => {
+    // Function to get search parameters from the URL
+    const getSearchParamsFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const searchTermFromUrl = params.get("q") || ""; // 'q' is the parameter name, change it accordingly
+      console.log("parameter", searchTermFromUrl);
+    };
+
+    // Call the function when the component mounts
+    getSearchParamsFromUrl();
+  }, []);
+
   if (blogs?.length === 0 || recentblogs?.length === 0) {
     return (
       <>

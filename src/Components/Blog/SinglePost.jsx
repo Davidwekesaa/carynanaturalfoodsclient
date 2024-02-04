@@ -5,6 +5,7 @@ import axios from "axios";
 import { formatDate } from "../utls/ExportFunction";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Link } from "react-router-dom";
+import ShareBlogPost from "./ShareBlogPost";
 
 function SinglePost({ searchId, setsearchId }) {
   const [searchedPost, setsearchedPost] = useState([]);
@@ -61,6 +62,10 @@ function SinglePost({ searchId, setsearchId }) {
               <a href="blog-single.html">
                 {searchedPost?.blogComments?.length} Comments
               </a>
+            </li>
+
+            <li className="d-flex align-items-center">
+              <ShareBlogPost blogHeading={searchedPost?.blogHeading} />
             </li>
           </ul>
         </div>
