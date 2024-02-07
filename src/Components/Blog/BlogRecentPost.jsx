@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { formatDate } from "../utls/ExportFunction";
+import { formatDate, updateSearchParams } from "../utls/ExportFunction";
 
 function BlogRecentPost({ setsearchId }) {
   const [recentblogs, setRecentblogs] = useState([]);
@@ -29,15 +29,17 @@ function BlogRecentPost({ setsearchId }) {
     );
   }
   return (
+    // onClick={(e) => setsearchId(rcb?._id)}
     <>
       <h3 className="sidebar-title">Recent Posts</h3>
       <div className="sidebar-item recent-posts">
         {recentblogs?.map((rcb) => (
-          <div className="post-item clearfix">
+          <div
+            className="post-item clearfix"
+            onClick={(e) => updateSearchParams(e, rcb?.blogHeading)}
+          >
             <img src={rcb?.blogImage} alt="" />
-            <h4 className="recentb" onClick={(e) => setsearchId(rcb?._id)}>
-              {rcb?.blogHeading}
-            </h4>
+            <h4 className="recentb">{rcb?.blogHeading}</h4>
             <time datetime="2020-01-01">{formatDate(rcb?.blogDAte)}</time>
           </div>
         ))}

@@ -6,10 +6,12 @@ import BlogRecentPost from "./BlogRecentPost";
 import axios from "axios";
 import SinglePost from "./SinglePost";
 import Footer from "../Footer/Footer";
+import spinner from "../../assets/spinner.gif";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [recentblogs, setrecentBlogs] = useState([]);
+  const [searchedPost, setsearchedPost] = useState([]);
   const [searchId, setsearchId] = useState("");
   const [page, setPage] = useState(1);
   const [rowsPerPage, setrowsPerPage] = useState(3);
@@ -43,13 +45,34 @@ function Blog() {
     fetchRecentPosts();
   }, [page, rowsPerPage]);
 
+  useEffect(() => {
+    // Function to get search parameters from the URL
+    const getSearchParamsFromUrl = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const searchTermFromUrl = params.get("q") || ""; // 'q' is the parameter name, change it accordingly
+      console.log("parameter", searchTermFromUrl);
+      await axios
+        .get(
+          `${process.env.REACT_APP_Server_Url}Blog/searchblog/blog?q=${searchTermFromUrl}`
+        )
+        .then((product) => {
+          setsearchedPost(product.data);
+          console.log("blogs from search", product);
+        })
+        .catch((error) => {});
+    };
+
+    // Call the function when the component mounts
+    getSearchParamsFromUrl();
+  }, []);
+
   if (blogs?.length === 0 || recentblogs?.length === 0) {
     return (
       <>
-        <main id="main " className="do">
+        <main id="main" className="do">
           <section id="breadcrumbs" className="breadcrumbs">
-            <div className="container" data-aos="fade-up">
-              <h1 className="comming">No Post Yet...</h1>
+            <div className="container gifs" data-aos="fade-up">
+              <img src={spinner} alt="Your GIF" className="gifs" />
             </div>
           </section>
         </main>
@@ -76,8 +99,11 @@ function Blog() {
           <div className="container" data-aos="fade-up">
             <div className="row">
               <div className="col-lg-8 entries">
-                {searchId?.trim()?.length !== 0 ? (
-                  <SinglePost searchId={searchId} setsearchId={setsearchId} />
+                {searchedPost?.length !== 0 ? (
+                  <SinglePost
+                    searchedPost={searchedPost}
+                    setsearchedPost={setsearchedPost}
+                  />
                 ) : (
                   <>
                     {blogs?.map((blg) => (

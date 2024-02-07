@@ -1089,6 +1089,19 @@ label {
   width: 100%;
   margin-right: 10px;
 }
+.sharebtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+}
+.gifs {
+  width: 100% !important;
+  height: 100% !important;
+}
+.imgwithsd {
+  min-width: 100%;
+}
 /* table screens */
 @media screen and (min-width: 650px) {
   .rightContainer {
