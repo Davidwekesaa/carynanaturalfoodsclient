@@ -30,3 +30,13 @@ export const formatDate = (inputedate) => {
   const monthName = months[month - 1];
   return `${monthName} ${day}, ${year}`;
 };
+
+export const updateSearchParams = (e, bhad) => {
+  e.preventDefault();
+  const params = new URLSearchParams(window.location.search);
+  params.set("q", bhad); // 'q' is the parameter name, change it accordingly
+  const newUrl = `${window.location.pathname}?${params.toString()}`;
+  // Update the URL without refreshing the page
+  window.history.pushState({}, "", newUrl);
+  window.location.reload();
+};

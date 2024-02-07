@@ -8,6 +8,7 @@ import { v4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import { useStateValue } from "../../../../store/StateProvider";
 import BlogTable from "../table/BlogTable";
+import TextEditor from "../../../Blog/TextEditor";
 
 function BlogsEdit() {
   const [{ user }, dispatch] = useStateValue();
@@ -29,6 +30,7 @@ function BlogsEdit() {
       blogHeading.trim().length == 0 ||
       blogBody.trim().length == 0
     ) {
+      console.log("blog body", blogBody);
       emptyFields();
     } else {
       await axios
@@ -135,13 +137,14 @@ function BlogsEdit() {
               </div>
               <div class="row">
                 <div class="col form-group">
-                  <textarea
+                  {/* <textarea
                     name="comment"
                     class="form-control blog-input"
                     placeholder="Blog Content"
                     value={blogBody}
                     onChange={(e) => setBlogBody(e.target.value)}
-                  />
+                  /> */}
+                  <TextEditor value={blogBody} setValue={setBlogBody} />
                 </div>
               </div>
               <div className="to-post">
@@ -163,6 +166,7 @@ function BlogsEdit() {
           </div>
         </div>
       </div>
+
       <BlogTable
         setBlogHeading={setBlogHeading}
         setBlogBody={setBlogBody}

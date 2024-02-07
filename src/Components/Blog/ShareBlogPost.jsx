@@ -9,7 +9,8 @@ function ShareBlogPost({ blogHeading }) {
   useEffect(() => {
     // Get the current URL
     const currentUrl = window.location.href;
-    const blogUrl = `${currentUrl}?q=${blogHeading}`;
+    const blogUrl = `${currentUrl}?q=${blogHeading.toString()}`;
+
     setCopyValue(blogUrl);
     console.log("Current URL:", blogUrl);
   }, []);
