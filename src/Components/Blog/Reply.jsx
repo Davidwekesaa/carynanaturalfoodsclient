@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
+import { v4 } from "uuid";
 import { useStateValue } from "../../store/StateProvider";
 
-function Comment({ searchId, setSinglePageRefresh }) {
+function Reply({ searchId, setSinglePageRefresh, commentId }) {
   const [{ user }, dispatch] = useStateValue();
   const [userName, setUserName] = useState(user?.userName);
   const [userComment, setUserComment] = useState("");
@@ -17,12 +17,13 @@ function Comment({ searchId, setSinglePageRefresh }) {
         .put(`${process.env.REACT_APP_Server_Url}Blog/comment/${searchId}`, {
           name: userName,
           comment: userComment,
+          parentId: commentId,
         })
         .then((product) => {
           commentAdded();
           setUserName("");
           setUserComment("");
-          setSinglePageRefresh(uuidv4());
+          setSinglePageRefresh(v4());
         })
         .catch((error) => {});
     }
@@ -30,7 +31,7 @@ function Comment({ searchId, setSinglePageRefresh }) {
   return (
     <>
       <div class="reply-form">
-        <h4>Leave a Comment</h4>
+        <h4>Leave a Reply</h4>
         <p>Required fields are marked * </p>
         <div>
           <div class="row">
@@ -84,4 +85,4 @@ function Comment({ searchId, setSinglePageRefresh }) {
   );
 }
 
-export default Comment;
+export default Reply;

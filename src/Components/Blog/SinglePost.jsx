@@ -84,7 +84,11 @@ function SinglePost({ searchedPost, setsearchedPost }) {
           {searchedPost[0]?.blogComments?.length} Comments
         </h4>
 
-        <BlogComment comments={searchedPost[0]?.blogComments} />
+        <BlogComment
+          comments={searchedPost[0]?.blogComments}
+          searchId={searchedPost[0]?._id}
+          setSinglePageRefresh={setSinglePageRefresh}
+        />
 
         <Comment
           searchId={searchedPost[0]?._id}
