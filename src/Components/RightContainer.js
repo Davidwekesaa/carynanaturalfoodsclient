@@ -149,7 +149,7 @@ function RightContainer({
                 />
               </div>
 
-              <div className="checkboxCash">
+              {/* <div className="checkboxCash">
                 <label htmlFor="mpesa">{`Before delivery`}</label>
                 <input
                   type="radio"
@@ -158,7 +158,7 @@ function RightContainer({
                   value="mpesa"
                   onChange={(e) => setMpesa(e.target.value)}
                 />
-              </div>
+              </div> */}
             </form>
           </div>
           <div className="checkboxes">
