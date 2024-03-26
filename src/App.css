@@ -1130,8 +1130,11 @@ label {
   height: 100% !important;
 }
 .imgwithsd {
-  min-width: 100%;
+  min-width: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
+
 /* table screens */
 @media screen and (min-width: 650px) {
   .rightContainer {

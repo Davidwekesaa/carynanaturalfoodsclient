@@ -22,7 +22,8 @@ function SinglePost({ searchedPost, setsearchedPost }) {
   //   };
   //   getAllCategory();
   // }, [searchId, singlepageRefresh]);
-  console.log("searchedPost", searchedPost[0]?._id);
+  console.log("searchedPost", searchedPost[0]?.blogBody);
+
   return (
     <>
       <div className="subMenuContainer">
@@ -35,9 +36,9 @@ function SinglePost({ searchedPost, setsearchedPost }) {
           </button>
         </div>
       </div>
-      <article class="entry entry-single">
-        <div class="entry-img imgwithsd">
-          <img src={searchedPost[0]?.blogImage} alt="" class="img-fluid" />
+      <div class="entry entry-single">
+        <div class=" imgwithsd">
+          <img src={searchedPost[0]?.blogImage} alt="" class=" imgwithsd" />
         </div>
 
         <h2 class="entry-title">
@@ -74,11 +75,27 @@ function SinglePost({ searchedPost, setsearchedPost }) {
         {/* <div class="entry-content">
           <p>{he.decode(he.encode(searchedPost?.blogBody))}</p>
         </div> */}
-        <span
+        {/* <span
           class="entry-content"
+          style={{
+            wordWrap: "break-word",
+            width: "100%",
+            overflowWrap: "break-word",
+          }}
           dangerouslySetInnerHTML={{ __html: searchedPost[0]?.blogBody }}
-        />
-      </article>
+        /> */}
+        <div className="entry-content">
+          <span
+            class="entry-content"
+            style={{
+              wordWrap: "break-word",
+              width: "100%",
+              overflowWrap: "break-word",
+            }}
+            dangerouslySetInnerHTML={{ __html: searchedPost[0]?.blogBody }}
+          />
+        </div>
+      </div>
       <div class="blog-comments">
         <h4 class="comments-count">
           {searchedPost[0]?.blogComments?.length} Comments

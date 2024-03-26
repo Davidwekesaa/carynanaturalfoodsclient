@@ -20,8 +20,8 @@ function SingleBlog({ blg, setsearchId }) {
   return (
     <>
       <article className="entry">
-        <div className="entry-img">
-          <img src={blg?.blogImage} alt="" className="img-fluid" />
+        <div className="imgwithsd">
+          <img src={blg?.blogImage} alt="" className="imgwithsd" />
         </div>
 
         <h2 className="entry-title">
@@ -57,6 +57,11 @@ function SingleBlog({ blg, setsearchId }) {
           {/* <p>{trancateWords(blg?.blogBody)}</p> */}
           <p
             class="entry-content"
+            style={{
+              wordWrap: "break-word",
+              width: "100%",
+              overflowWrap: "break-word",
+            }}
             dangerouslySetInnerHTML={{ __html: trancateWords(blg?.blogBody) }}
           />
           <div className="read-more">
